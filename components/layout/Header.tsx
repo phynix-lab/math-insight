@@ -1,6 +1,7 @@
 "use client"
 
-import { Menu, User, Shield } from "lucide-react"
+import { Menu, User, Shield, LogOut } from "lucide-react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/layout/ThemeToggle"
 import { useCurrentRole } from "@/components/providers/RoleProvider"
@@ -12,15 +13,22 @@ interface HeaderProps {
 }
 
 export function Header({ onOpenMobile }: HeaderProps) {
+  const router = useRouter()
   const {
     currentRole,
     setRole,
     canReviewApplications,
     setCanReviewApplications,
     userDisplayName,
+    logout,
   } = useCurrentRole()
 
   const roles: AppRole[] = ["admin", "teacher", "student"]
+
+  function handleLogout() {
+    logout()
+    router.push("/login")
+  }
 
   return (
     <header className="sticky top-0 z-30 flex h-16 w-full items-center justify-between border-b border-border bg-background/95 px-4 backdrop-blur-sm sm:px-6">
@@ -96,7 +104,7 @@ export function Header({ onOpenMobile }: HeaderProps) {
         {/* Nút chuyển chế độ sáng / tối */}
         <ThemeToggle />
 
-        {/* Thông tin tài khoản người dùng */}
+        {/* Thông tin tài khoản người dùng & Đăng xuất */}
         <div className="flex items-center gap-2 pl-1 border-l border-border">
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary font-semibold text-xs">
             <User className="h-4 w-4" />
@@ -104,6 +112,16 @@ export function Header({ onOpenMobile }: HeaderProps) {
           <span className="hidden xl:inline text-xs font-medium text-foreground max-w-[120px] truncate">
             {userDisplayName}
           </span>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={handleLogout}
+            title="Đăng xuất khỏi hệ thống"
+            className="h-8 px-2 text-xs text-muted-foreground hover:text-destructive"
+          >
+            <LogOut className="h-4 w-4 sm:mr-1" />
+            <span className="hidden sm:inline">Đăng xuất</span>
+          </Button>
         </div>
       </div>
     </header>
