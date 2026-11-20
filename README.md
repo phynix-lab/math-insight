@@ -1,16 +1,24 @@
-# Next.js template
+# Math Insight
 
-This is a Next.js template with shadcn/ui.
+Monorepo sử dụng pnpm workspace. Ứng dụng frontend (Next.js + shadcn/ui) nằm ở `packages/web`.
 
-## Adding components
-
-To add components to your app, run the following command:
+## Commands
 
 ```bash
-npx shadcn@latest add button
+pnpm install
+pnpm dev
+pnpm typecheck
+pnpm lint
+pnpm build
 ```
 
-This will place the ui components in the `components` directory.
+## Adding shadcn components
+
+```bash
+pnpm --dir packages/web dlx shadcn@latest add button
+```
+
+This will place the ui components in `packages/web/components`.
 
 ## Using components
 

@@ -11,12 +11,13 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 # Quy ước của dự án
 
-Dự án sử dụng Next.js App Router. Khi thêm hoặc chỉnh sửa mã nguồn, hãy tuân
-theo các quy ước sau:
+Dự án tổ chức dạng pnpm monorepo (`pnpm-workspace.yaml`). Ứng dụng frontend
+Next.js App Router nằm trong `packages/web` (`@math-insight/web`). Khi thêm
+hoặc chỉnh sửa mã nguồn trong `packages/web`, hãy tuân theo các quy ước sau:
 
 - Trước khi sửa mã Next.js, đọc hướng dẫn tương ứng trong
-  `node_modules/next/dist/docs/` theo phiên bản đang cài. Với API, đọc tài liệu
-  Route Handler và lưu ý `params` của dynamic route là một promise.
+  `packages/web/node_modules/next/dist/docs/` theo phiên bản đang cài. Với API,
+  đọc tài liệu Route Handler và lưu ý `params` của dynamic route là một promise.
 - Luồng xử lý API: `app/api/**/route.ts` (HTTP và response) →
   `server/services/` (nghiệp vụ ứng dụng) → `server/repositories/` (truy cập dữ
   liệu). Helper HTTP dùng chung phía server đặt trong `server/utils/`.

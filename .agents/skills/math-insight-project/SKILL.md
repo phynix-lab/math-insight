@@ -13,12 +13,12 @@ tắc của dự án.
 
 - Kiểm tra các file liên quan và giữ nhất quán với cách triển khai hiện có.
 - Trước khi viết mã liên quan đến Next.js, đọc hướng dẫn tương ứng trong
-  `node_modules/next/dist/docs/` theo phiên bản đang cài. Chọn tài liệu App
+  `packages/web/node_modules/next/dist/docs/` theo phiên bản đang cài. Chọn tài liệu App
   Router phù hợp với page, layout, Server/Client Component hoặc Route Handler.
 - Kiểm tra xem schema Zod hoặc UI component dùng chung đã có chưa trước khi
   tạo thêm.
 
-## Kiến trúc
+## Kiến trúc (trong `packages/web/`)
 
 - Luồng API: `app/api/**/route.ts` → `server/services/` →
   `server/repositories/`.
@@ -55,6 +55,6 @@ tắc của dự án.
 ## Hoàn tất
 
 - Rà soát các file đã sửa để đảm bảo type nhất quán và import chính xác.
-- Khi phù hợp, chạy lệnh kiểm tra liên quan (`npm run typecheck`,
-  `npm run lint` hoặc `npm run build`) và ghi rõ đã chạy lệnh nào. Không khẳng
+- Khi phù hợp, chạy lệnh kiểm tra liên quan (`pnpm typecheck`,
+  `pnpm lint` hoặc `pnpm build`) và ghi rõ đã chạy lệnh nào. Không khẳng
   định kiểm tra thành công nếu chưa chạy.
