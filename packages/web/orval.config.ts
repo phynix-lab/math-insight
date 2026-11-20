@@ -15,6 +15,17 @@ export default defineConfig({
       httpClient: "fetch",
       baseUrl: "/api",
       clean: true,
+      mock: {
+        indexMockFiles: true,
+        generators: [
+          {
+            type: "msw",
+            baseUrl: "/api",
+            delay: 200,
+            useExamples: true,
+          },
+        ],
+      },
       override: {
         mutator: {
           path: "./lib/api/custom-fetch.ts",

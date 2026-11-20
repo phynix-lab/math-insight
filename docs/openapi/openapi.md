@@ -64,27 +64,43 @@
 - **`data` (required)**: array of [Todo](#scalar-schema-todo)
 - **`meta` (required)**: [Common.PageMeta](#scalar-schema-commonpagemeta)
 
-<a id="scalar-example-1"></a>
-
-**Generated example:**
+**Example:**
 
 ```json
 {
   "data": [
     {
-      "id": "123e4567-e89b-12d3-a456-426614174000",
-      "title": "",
-      "description": "",
-      "priority": "low",
+      "id": "550e8400-e29b-41d4-a716-446655440001",
+      "title": "Ôn tập giải tích chương 1",
+      "description": "Làm 10 bài tập giới hạn hàm số và đạo hàm cơ bản",
+      "priority": "high",
+      "completed": false,
+      "createdAt": "2026-11-20T08:00:00Z",
+      "updatedAt": "2026-11-20T08:30:00Z"
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440002",
+      "title": "Hoàn thành bài tập đại số tuyến tính",
+      "description": "Giải hệ phương trình bằng phép khử Gauss và ma trận nghịch đảo",
+      "priority": "medium",
       "completed": true,
-      "createdAt": "2026-11-20T05:58:15.425Z",
-      "updatedAt": "2026-11-20T05:58:15.425Z"
+      "createdAt": "2026-11-19T14:00:00Z",
+      "updatedAt": "2026-11-20T07:45:00Z"
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440003",
+      "title": "Đọc tài liệu xác suất thống kê",
+      "description": "Tóm tắt phân phối chuẩn và định lý Bayes",
+      "priority": "low",
+      "completed": false,
+      "createdAt": "2026-11-18T10:15:00Z",
+      "updatedAt": "2026-11-18T10:15:00Z"
     }
   ],
   "meta": {
     "page": 1,
-    "limit": 1,
-    "total": 0
+    "limit": 20,
+    "total": 3
   }
 }
 ```
@@ -95,7 +111,7 @@
 
 [Common.ErrorBody](#scalar-schema-commonerrorbody)
 
-<a id="scalar-example-2"></a>
+<a id="scalar-example-1"></a>
 
 **Generated example:**
 
@@ -132,7 +148,7 @@
 
 [CreateTodoRequest](#scalar-schema-createtodorequest)
 
-<a id="scalar-example-3"></a>
+<a id="scalar-example-2"></a>
 
 **Generated example:**
 
@@ -153,7 +169,7 @@
 
 - **`data` (required)**: [Todo](#scalar-schema-todo)
 
-<a id="scalar-example-4"></a>
+<a id="scalar-example-3"></a>
 
 **Generated example:**
 
@@ -165,8 +181,8 @@
     "description": "",
     "priority": "low",
     "completed": true,
-    "createdAt": "2026-11-20T05:58:15.431Z",
-    "updatedAt": "2026-11-20T05:58:15.431Z"
+    "createdAt": "2026-11-20T06:26:39.824Z",
+    "updatedAt": "2026-11-20T06:26:39.825Z"
   }
 }
 ```
@@ -177,7 +193,7 @@
 
 [Common.ErrorBody](#scalar-schema-commonerrorbody)
 
-[Generated example](#scalar-example-2)
+[Generated example](#scalar-example-1)
 
 <a id="scalar-operation-get-todosid"></a>
 
@@ -202,20 +218,18 @@
 
 - **`data` (required)**: [Todo](#scalar-schema-todo)
 
-<a id="scalar-example-5"></a>
-
-**Generated example:**
+**Example:**
 
 ```json
 {
   "data": {
-    "id": "123e4567-e89b-12d3-a456-426614174000",
-    "title": "",
-    "description": "",
-    "priority": "low",
-    "completed": true,
-    "createdAt": "2026-11-20T05:58:15.433Z",
-    "updatedAt": "2026-11-20T05:58:15.433Z"
+    "id": "550e8400-e29b-41d4-a716-446655440001",
+    "title": "Ôn tập giải tích chương 1",
+    "description": "Làm 10 bài tập giới hạn hàm số và đạo hàm cơ bản",
+    "priority": "high",
+    "completed": false,
+    "createdAt": "2026-11-20T08:00:00Z",
+    "updatedAt": "2026-11-20T08:30:00Z"
   }
 }
 ```
@@ -226,7 +240,7 @@
 
 [Common.ErrorBody](#scalar-schema-commonerrorbody)
 
-[Generated example](#scalar-example-2)
+[Generated example](#scalar-example-1)
 
 <a id="scalar-operation-patch-todosid"></a>
 
@@ -251,7 +265,7 @@
 
 [UpdateTodoRequest](#scalar-schema-updatetodorequest)
 
-<a id="scalar-example-6"></a>
+<a id="scalar-example-4"></a>
 
 **Generated example:**
 
@@ -272,7 +286,7 @@
 
 - **`data` (required)**: [Todo](#scalar-schema-todo)
 
-<a id="scalar-example-7"></a>
+<a id="scalar-example-5"></a>
 
 **Generated example:**
 
@@ -284,8 +298,8 @@
     "description": "",
     "priority": "low",
     "completed": true,
-    "createdAt": "2026-11-20T05:58:15.435Z",
-    "updatedAt": "2026-11-20T05:58:15.435Z"
+    "createdAt": "2026-11-20T06:26:39.829Z",
+    "updatedAt": "2026-11-20T06:26:39.829Z"
   }
 }
 ```
@@ -299,7 +313,7 @@
 
 [Common.ErrorBody](#scalar-schema-commonerrorbody)
 
-[Generated example](#scalar-example-2)
+[Generated example](#scalar-example-1)
 
 <a id="scalar-operation-delete-todosid"></a>
 
@@ -326,7 +340,7 @@
 
 [Common.ErrorBody](#scalar-schema-commonerrorbody)
 
-[Generated example](#scalar-example-2)
+[Generated example](#scalar-example-1)
 
 ## Schemas
 
@@ -339,7 +353,7 @@
 - **`error` (required)**: `string`
 - **`details`**: array of [Common.ValidationIssue](#scalar-schema-commonvalidationissue)
 
-<a id="scalar-example-8"></a>
+<a id="scalar-example-6"></a>
 
 **Generated example:**
 
@@ -367,7 +381,7 @@
 - **`page` (required)**: `integer`, format: `int32`, minimum: `1`
 - **`total` (required)**: `integer`, format: `int32`, minimum: `0`
 
-<a id="scalar-example-9"></a>
+<a id="scalar-example-7"></a>
 
 **Generated example:**
 
@@ -400,7 +414,7 @@
   - `string`
   - `integer`, format: `int32`
 
-<a id="scalar-example-10"></a>
+<a id="scalar-example-8"></a>
 
 **Generated example:**
 
@@ -424,7 +438,7 @@
 - **`description`**: `string`, default: `""`, maxLength: `500`
 - **`priority`**: `string`, possible values: `"low", "medium", "high"`, default: `"medium"`
 
-<a id="scalar-example-11"></a>
+<a id="scalar-example-9"></a>
 
 **Generated example:**
 
@@ -451,7 +465,7 @@
 - **`title` (required)**: `string`, minLength: `1`, maxLength: `120`
 - **`updatedAt` (required)**: `string`, format: `date-time`
 
-<a id="scalar-example-12"></a>
+<a id="scalar-example-10"></a>
 
 **Generated example:**
 
@@ -462,8 +476,8 @@
   "description": "",
   "priority": "low",
   "completed": true,
-  "createdAt": "2026-11-20T05:58:15.446Z",
-  "updatedAt": "2026-11-20T05:58:15.446Z"
+  "createdAt": "2026-11-20T06:26:39.839Z",
+  "updatedAt": "2026-11-20T06:26:39.839Z"
 }
 ```
 
@@ -484,7 +498,7 @@
 - **`priority`**: `string`, possible values: `"low", "medium", "high"`
 - **`title`**: `string`, minLength: `1`, maxLength: `120`
 
-<a id="scalar-example-13"></a>
+<a id="scalar-example-11"></a>
 
 **Generated example:**
 
