@@ -35,6 +35,8 @@ tắc của dự án.
   `components/form/TextField/TextField.tsx` cho input thông thường.
 - Ưu tiên các primitive trong `components/ui/` và quy tắc style hiện có trước
   khi tạo cách triển khai song song.
+- Đặt UI chính theo từng tính năng trong `features/<domain>/<Component>/<Component>.tsx`;
+  `app/**/page.tsx` chỉ xử lý layout và bọc `SuspenseWrapper`.
 
 ## Chi tiết triển khai
 

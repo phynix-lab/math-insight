@@ -38,6 +38,9 @@ hoặc chỉnh sửa mã nguồn trong `packages/web`, hãy tuân theo các quy 
   component trong `components/ui/` trước khi tạo primitive mới.
 - Mặc định dùng Server Component. Chỉ thêm `"use client"` khi module cần state,
   event handler, effect hoặc API của trình duyệt.
+- Tách UI nghiệp vụ theo domain vào `features/<domain>/<Component>/<Component>.tsx`
+  (ví dụ `features/todos/TodoList/TodoList.tsx`, `features/todos/AddTodo/AddTodo.tsx`);
+  file `app/**/page.tsx` chỉ xử lý layout và bọc `SuspenseWrapper`.
 - Mỗi module chỉ chạy phía server trong `server/` cần có
   `import "server-only"` ở đầu file.
 - Dữ liệu Task hiện được lưu trong bộ nhớ tạm tại
