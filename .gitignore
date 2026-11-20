@@ -37,3 +37,10 @@ pnpm-debug.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# typespec
+tsp-output/
+
+# orval
+packages/web/lib/api/generated/
+packages/web/types/generated/
