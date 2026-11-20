@@ -1,0 +1,530 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Math Insight API",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "Todos"
+    }
+  ],
+  "paths": {
+    "/todos": {
+      "get": {
+        "operationId": "Todos_list",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Common.PaginationQuery.page"
+          },
+          {
+            "$ref": "#/components/parameters/Common.PaginationQuery.limit"
+          },
+          {
+            "$ref": "#/components/parameters/TodoListQuery.completed"
+          },
+          {
+            "$ref": "#/components/parameters/TodoListQuery.priority"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request has succeeded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Todo"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Common.PageMeta"
+                    }
+                  }
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "550e8400-e29b-41d4-a716-446655440001",
+                      "title": "Ôn tập giải tích chương 1",
+                      "description": "Làm 10 bài tập giới hạn hàm số và đạo hàm cơ bản",
+                      "priority": "high",
+                      "completed": false,
+                      "createdAt": "2026-11-20T08:00:00Z",
+                      "updatedAt": "2026-11-20T08:30:00Z"
+                    },
+                    {
+                      "id": "550e8400-e29b-41d4-a716-446655440002",
+                      "title": "Hoàn thành bài tập đại số tuyến tính",
+                      "description": "Giải hệ phương trình bằng phép khử Gauss và ma trận nghịch đảo",
+                      "priority": "medium",
+                      "completed": true,
+                      "createdAt": "2026-11-19T14:00:00Z",
+                      "updatedAt": "2026-11-20T07:45:00Z"
+                    },
+                    {
+                      "id": "550e8400-e29b-41d4-a716-446655440003",
+                      "title": "Đọc tài liệu xác suất thống kê",
+                      "description": "Tóm tắt phân phối chuẩn và định lý Bayes",
+                      "priority": "low",
+                      "completed": false,
+                      "createdAt": "2026-11-18T10:15:00Z",
+                      "updatedAt": "2026-11-18T10:15:00Z"
+                    }
+                  ],
+                  "meta": {
+                    "page": 1,
+                    "limit": 20,
+                    "total": 3
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The server could not understand the request due to invalid syntax.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Common.ErrorBody"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Todos"
+        ]
+      },
+      "post": {
+        "operationId": "Todos_create",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "The request has succeeded and a new resource has been created as a result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Common.IdPayload"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The server could not understand the request due to invalid syntax.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Common.ErrorBody"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Todos"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTodoRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/todos/{id}": {
+      "get": {
+        "operationId": "Todos_get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Common.Uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request has succeeded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Todo"
+                    }
+                  }
+                },
+                "example": {
+                  "data": {
+                    "id": "550e8400-e29b-41d4-a716-446655440001",
+                    "title": "Ôn tập giải tích chương 1",
+                    "description": "Làm 10 bài tập giới hạn hàm số và đạo hàm cơ bản",
+                    "priority": "high",
+                    "completed": false,
+                    "createdAt": "2026-11-20T08:00:00Z",
+                    "updatedAt": "2026-11-20T08:30:00Z"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The server cannot find the requested resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Common.ErrorBody"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Todos"
+        ]
+      },
+      "patch": {
+        "operationId": "Todos_update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Common.Uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "There is no content to send for this request, but the headers may be useful."
+          },
+          "400": {
+            "description": "The server could not understand the request due to invalid syntax.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Common.ErrorBody"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The server cannot find the requested resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Common.ErrorBody"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Todos"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTodoRequest"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "Todos_delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Common.Uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "There is no content to send for this request, but the headers may be useful."
+          },
+          "404": {
+            "description": "The server cannot find the requested resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Common.ErrorBody"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Todos"
+        ]
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "Common.PaginationQuery.limit": {
+        "name": "limit",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "explode": false
+      },
+      "Common.PaginationQuery.page": {
+        "name": "page",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 1,
+          "default": 1
+        },
+        "explode": false
+      },
+      "TodoListQuery.completed": {
+        "name": "completed",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "explode": false
+      },
+      "TodoListQuery.priority": {
+        "name": "priority",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "$ref": "#/components/schemas/TodoPriority"
+        },
+        "explode": false
+      }
+    },
+    "schemas": {
+      "Common.ErrorBody": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Common.ValidationIssue"
+            }
+          }
+        }
+      },
+      "Common.IdPayload": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Common.Uuid"
+          }
+        }
+      },
+      "Common.PageMeta": {
+        "type": "object",
+        "required": [
+          "page",
+          "limit",
+          "total"
+        ],
+        "properties": {
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 1
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 1
+          },
+          "total": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          }
+        }
+      },
+      "Common.Uuid": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "Common.ValidationIssue": {
+        "type": "object",
+        "required": [
+          "path",
+          "message"
+        ],
+        "properties": {
+          "path": {
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateTodoRequest": {
+        "type": "object",
+        "required": [
+          "title"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 500,
+            "default": ""
+          },
+          "priority": {
+            "$ref": "#/components/schemas/TodoPriority",
+            "default": "medium"
+          },
+          "completed": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "Todo": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "description",
+          "priority",
+          "completed",
+          "createdAt",
+          "updatedAt"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Common.Uuid"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "priority": {
+            "$ref": "#/components/schemas/TodoPriority"
+          },
+          "completed": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "TodoPriority": {
+        "type": "string",
+        "enum": [
+          "low",
+          "medium",
+          "high"
+        ]
+      },
+      "UpdateTodoRequest": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "priority": {
+            "$ref": "#/components/schemas/TodoPriority"
+          },
+          "completed": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "/api",
+      "description": "API base path",
+      "variables": {}
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { MockProvider } from "@/components/providers/MockProvider"
 import { QueryProvider } from "@/components/providers/QueryProvider"
 import { cn } from "@/lib/utils"
 
@@ -17,6 +18,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const enableMock = process.env.ENABLE_MOCK === "true"
+
   return (
     <html
       lang="en"
@@ -24,9 +27,11 @@ export default function RootLayout({
       className={cn("antialiased", fontMono.variable, "font-sans", geist.variable)}
     >
       <body>
-        <QueryProvider>
-          <ThemeProvider>{children}</ThemeProvider>
-        </QueryProvider>
+        <ThemeProvider>
+          <MockProvider enabled={enableMock}>
+            <QueryProvider>{children}</QueryProvider>
+          </MockProvider>
+        </ThemeProvider>
       </body>
     </html>
   )
