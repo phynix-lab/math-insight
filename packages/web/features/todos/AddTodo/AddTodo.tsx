@@ -11,14 +11,13 @@ import {
 } from "@/lib/api/generated/todos/todos"
 import {
   CreateTodoRequest,
-  type CreateTodoRequest as CreateTodoFormValues,
-  type CreateTodoRequestOutput,
+  CreateTodoRequest as createTodoRequest,
 } from "@/types/generated/mathInsightAPI.schemas.zod"
 
 export function AddTodo() {
   const queryClient = useQueryClient()
-  const form = useForm<CreateTodoFormValues, unknown, CreateTodoRequestOutput>({
-    resolver: zodResolver(CreateTodoRequest),
+  const form = useForm<CreateTodoRequest>({
+    resolver: zodResolver(createTodoRequest),
     defaultValues: {
       title: "",
       description: "",
@@ -38,7 +37,7 @@ export function AddTodo() {
     },
   })
 
-  function onSubmit(values: CreateTodoRequestOutput) {
+  function onSubmit(values: CreateTodoRequest) {
     createMutation.mutate({ data: values })
   }
 

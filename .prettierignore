@@ -5,3 +5,7 @@ node_modules/
 coverage/
 pnpm-lock.yaml
 .pnpm-store/
+packages/web/lib/api/generated/
+packages/web/types/generated/
+packages/web/public/mockServiceWorker.js
+docs/openapi/
