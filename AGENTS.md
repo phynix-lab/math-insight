@@ -9,47 +9,24 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 <!-- END:nextjs-agent-rules -->
 
 
-# Quy ước của dự án
+# Kiến trúc & Quy ước dự án Math Insight
 
-Dự án tổ chức dạng pnpm monorepo (`pnpm-workspace.yaml`). Ứng dụng frontend
-Next.js App Router nằm trong `packages/web` (`@math-insight/web`). Khi thêm
-hoặc chỉnh sửa mã nguồn trong `packages/web`, hãy tuân theo các quy ước sau:
+Monorepo sử dụng `pnpm` workspace (`pnpm-workspace.yaml`) gồm 2 package chính:
+- `packages/openapi` (`@math-insight/openapi`): nguồn sự thật cho API contract bằng **TypeSpec**, biên dịch ra `docs/openapi/openapi.json` và `docs/openapi/openapi.md`.
+- `packages/web` (`@math-insight/web`): ứng dụng **Next.js App Router** (React 19, Tailwind CSS v4, shadcn `base-nova` trên `@base-ui/react`, TanStack React Query, React Hook Form, Zod v4, Orval, MSW).
 
-- Trước khi sửa mã Next.js, đọc hướng dẫn tương ứng trong
-  `packages/web/node_modules/next/dist/docs/` theo phiên bản đang cài. Với API,
-  đọc tài liệu Route Handler và lưu ý `params` của dynamic route là một promise.
-- Luồng xử lý API: `app/api/**/route.ts` (HTTP và response) →
-  `server/services/` (nghiệp vụ ứng dụng) → `server/repositories/` (truy cập dữ
-  liệu). Helper HTTP dùng chung phía server đặt trong `server/utils/`.
-- Không đặt mã server trong `lib/api/`; thư mục này chứa các hàm phía browser
-  gọi endpoint của ứng dụng. Không import module trong `server/` vào Client
-  Component.
-- Đặt schema request dùng chung trong `types/` bằng Zod. Suy ra TypeScript type
-  bằng `z.input`, `z.output` hoặc `z.infer`, không khai báo lặp lại cấu trúc dữ
-  liệu. Schema dùng chung không được phụ thuộc vào mã chỉ chạy phía server.
-- Route Handler dùng helper parse request và tạo response trong
-  `server/utils/route-utils.ts`. Xác thực input ở ranh giới API trước khi gọi
-  service; không đặt logic lưu trữ trong route.
-- Dùng React Query cho truy vấn và mutation phía client. Provider là
-  `components/providers/QueryProvider.tsx`; các hàm gọi endpoint đặt trong
-  `lib/api/`.
-- Dùng React Hook Form cùng `zodResolver` cho form cần validation. Tái sử dụng
-  `components/form/TextField/TextField.tsx` cho input thông thường và ưu tiên
-  component trong `components/ui/` trước khi tạo primitive mới.
-- Mặc định dùng Server Component. Chỉ thêm `"use client"` khi module cần state,
-  event handler, effect hoặc API của trình duyệt.
-- Tách UI nghiệp vụ theo domain vào `features/<domain>/<Component>/<Component>.tsx`
-  (ví dụ `features/todos/TodoList/TodoList.tsx`, `features/todos/AddTodo/AddTodo.tsx`);
-  file `app/**/page.tsx` chỉ xử lý layout và bọc `SuspenseWrapper`.
-- Mỗi module chỉ chạy phía server trong `server/` cần có
-  `import "server-only"` ở đầu file.
-- Dữ liệu Task hiện được lưu trong bộ nhớ tạm tại
-  `server/repositories/task.repository.ts`, không tồn tại sau khi server khởi
-  động lại. Giữ rõ giới hạn này trong ví dụ và tài liệu cho đến khi có database
-  lưu trữ bền vững.
+## Bất biến kiến trúc
 
-## Skill của dự án
+- **Contract-first API**: Định nghĩa endpoint, model, enum và `@opExample` trong `packages/openapi/`, sau đó đồng bộ sang web bằng `pnpm --filter @math-insight/openapi build && pnpm --filter @math-insight/web generate:api`. Các thư mục `docs/openapi/`, `packages/web/lib/api/generated/`, `packages/web/types/generated/` là file sinh tự động — sửa TypeSpec và chạy sync thay vì sửa tay.
+- **Đọc docs Next.js theo phiên bản cài**: Trước khi viết mã Next.js, đọc tài liệu tương ứng tại `packages/web/node_modules/next/dist/docs/`. Lưu ý `params` trong dynamic Route Handler là `Promise`.
+- **Server Component mặc định & `SuspenseWrapper`**: Chỉ thêm `"use client"` khi cần tương tác, hook hoặc browser API. File `app/**/page.tsx` chỉ lo layout và bọc component tải dữ liệu bằng `SuspenseWrapper`; UI nghiệp vụ đặt trong `features/<domain>/<Component>/<Component>.tsx`.
+- **Dữ liệu & Form phía client**: Dùng React Query hooks (ưu tiên `use*Suspense` + `get*QueryKey()`) và Zod v4 schemas sinh từ Orval; form dùng React Hook Form + `zodResolver` + `components/form/TextField/TextField.tsx` và primitive trong `components/ui/` (`@base-ui/react`).
+- **Mock API**: MSW tự nạp handler sinh từ Orval tại `packages/web/mocks/handlers.ts`, điều khiển bằng biến môi trường `ENABLE_MOCK=true` qua `MockProvider`.
+- **Tầng Server / BFF nội bộ**: Khi viết Route Handler trong `packages/web`, theo luồng `app/api/**/route.ts` → `server/services/` → `server/repositories/`, dùng `server/utils/route-utils.ts`, và thêm `import "server-only"` ở đầu mỗi file trong `server/`. Tách biệt `server/` khỏi Client Component và `lib/api/`. Lưu ý `server/repositories/task.repository.ts` hiện lưu in-memory tạm thời.
 
-Khi triển khai tính năng trong repository này, hãy làm theo
-`.agents/skills/math-insight-project/SKILL.md`. Khi viết hoặc sửa code và
-comment, áp dụng thêm `.agents/skills/math-insight-code-style/SKILL.md`.
+## Skills của dự án
+
+Đọc và áp dụng skill tương ứng trước khi sửa mã:
+- **Tính năng & kiến trúc web** (Next.js, `app/`, `features/`, `SuspenseWrapper`, form, shadcn Base UI, `server/`): `.agents/skills/math-insight-project/SKILL.md`
+- **API contract, codegen & mock** (TypeSpec, OpenAPI, Orval, `customFetch`, MSW): `.agents/skills/math-insight-api-contract/SKILL.md`
+- **Chuẩn code, kiểu dữ liệu, format & comment**: `.agents/skills/math-insight-code-style/SKILL.md`

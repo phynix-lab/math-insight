@@ -1,7 +1,7 @@
 @AGENTS.md
 
-Khi thực hiện tác vụ lập trình trong repository này, hãy làm theo quy ước dự án
-cùng các skill liên quan:
+Khi thực hiện tác vụ lập trình trong repository này, áp dụng các skill tương ứng:
 
-- Kiến trúc và quy trình: `.agents/skills/math-insight-project/SKILL.md`.
-- Nguyên tắc code và comment: `.agents/skills/math-insight-code-style/SKILL.md`.
+- Kiến trúc web và quy trình triển khai: `.agents/skills/math-insight-project/SKILL.md`.
+- Contract-first API (TypeSpec, OpenAPI, Orval, MSW): `.agents/skills/math-insight-api-contract/SKILL.md`.
+- Quy chuẩn code, format và comment: `.agents/skills/math-insight-code-style/SKILL.md`.
