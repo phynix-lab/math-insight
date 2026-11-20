@@ -52,7 +52,7 @@ interface Todos {
 
   @post
   create(@body body: CreateTodoRequest):
-    | ApiCreatedResponse<Todo>
+    | ApiCreatedResponse<IdPayload>
     | BadRequestError;
 
   @get
@@ -74,7 +74,7 @@ interface Todos {
 
   @patch
   update(@path id: Uuid, @body body: UpdateTodoRequest):
-    | ApiResponse<Todo>
+    | NoContentResponse
     | BadRequestError
     | NotFoundError;
 

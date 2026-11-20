@@ -1,8 +1,13 @@
 import "@typespec/http";
+import "./types.tsp";
 
 using Http;
 
 namespace Common;
+
+model IdPayload {
+  id: Uuid;
+}
 
 model ApiResponse<T> {
   data: T;

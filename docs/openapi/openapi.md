@@ -16,6 +16,7 @@
 **Schemas**
 
 - [Common.ErrorBody](#scalar-schema-commonerrorbody)
+- [Common.IdPayload](#scalar-schema-commonidpayload)
 - [Common.PageMeta](#scalar-schema-commonpagemeta)
 - [Common.Uuid](#scalar-schema-commonuuid)
 - [Common.ValidationIssue](#scalar-schema-commonvalidationissue)
@@ -167,7 +168,7 @@
 
 **Content type:** `application/json`
 
-- **`data` (required)**: [Todo](#scalar-schema-todo)
+- **`data` (required)**: [Common.IdPayload](#scalar-schema-commonidpayload)
 
 <a id="scalar-example-3"></a>
 
@@ -176,13 +177,7 @@
 ```json
 {
   "data": {
-    "id": "123e4567-e89b-12d3-a456-426614174000",
-    "title": "",
-    "description": "",
-    "priority": "low",
-    "completed": true,
-    "createdAt": "2026-11-20T06:26:39.824Z",
-    "updatedAt": "2026-11-20T06:26:39.825Z"
+    "id": "123e4567-e89b-12d3-a456-426614174000"
   }
 }
 ```
@@ -280,29 +275,7 @@
 
 #### Responses
 
-##### 200 The request has succeeded.
-
-**Content type:** `application/json`
-
-- **`data` (required)**: [Todo](#scalar-schema-todo)
-
-<a id="scalar-example-5"></a>
-
-**Generated example:**
-
-```json
-{
-  "data": {
-    "id": "123e4567-e89b-12d3-a456-426614174000",
-    "title": "",
-    "description": "",
-    "priority": "low",
-    "completed": true,
-    "createdAt": "2026-11-20T06:26:39.829Z",
-    "updatedAt": "2026-11-20T06:26:39.829Z"
-  }
-}
-```
+##### 204 There is no content to send for this request, but the headers may be useful.
 
 ##### 400, 404
 
@@ -353,7 +326,7 @@
 - **`error` (required)**: `string`
 - **`details`**: array of [Common.ValidationIssue](#scalar-schema-commonvalidationissue)
 
-<a id="scalar-example-6"></a>
+<a id="scalar-example-5"></a>
 
 **Generated example:**
 
@@ -368,6 +341,24 @@
       "message": ""
     }
   ]
+}
+```
+
+<a id="scalar-schema-commonidpayload"></a>
+
+### Common.IdPayload
+
+**Type:** `object`
+
+- **`id` (required)**: `string`, format: `uuid`
+
+<a id="scalar-example-6"></a>
+
+**Generated example:**
+
+```json
+{
+  "id": "123e4567-e89b-12d3-a456-426614174000"
 }
 ```
 
@@ -476,8 +467,8 @@
   "description": "",
   "priority": "low",
   "completed": true,
-  "createdAt": "2026-11-20T06:26:39.839Z",
-  "updatedAt": "2026-11-20T06:26:39.839Z"
+  "createdAt": "2026-11-20T06:46:28.915Z",
+  "updatedAt": "2026-11-20T06:46:28.916Z"
 }
 ```
 

@@ -119,7 +119,7 @@
                   ],
                   "properties": {
                     "data": {
-                      "$ref": "#/components/schemas/Todo"
+                      "$ref": "#/components/schemas/Common.IdPayload"
                     }
                   }
                 }
@@ -223,23 +223,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "The request has succeeded.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "data"
-                  ],
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Todo"
-                    }
-                  }
-                }
-              }
-            }
+          "204": {
+            "description": "There is no content to send for this request, but the headers may be useful."
           },
           "400": {
             "description": "The server could not understand the request due to invalid syntax.",
@@ -370,6 +355,17 @@
             "items": {
               "$ref": "#/components/schemas/Common.ValidationIssue"
             }
+          }
+        }
+      },
+      "Common.IdPayload": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Common.Uuid"
           }
         }
       },
