@@ -62,7 +62,7 @@ export function TodoList() {
                   </span>
                 </div>
                 {todo.description && (
-                  <p className="break-words text-sm text-muted-foreground">
+                  <p className="text-sm break-words text-muted-foreground">
                     {todo.description}
                   </p>
                 )}
