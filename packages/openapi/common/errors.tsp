@@ -43,3 +43,9 @@ model ConflictError {
   @statusCode statusCode: 409;
   @body body: ErrorBody;
 }
+
+@error
+model TooManyRequestsError {
+  @statusCode statusCode: 429;
+  @body body: ErrorBody;
+}
