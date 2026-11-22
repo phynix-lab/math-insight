@@ -1,52 +1,31 @@
 ---
 name: math-insight-code-style
-description: Viết hoặc chỉnh sửa mã nguồn trong Math Insight theo nguyên tắc đặt tên, cấu trúc, tái sử dụng và comment của dự án.
+description: Viết, refactor hoặc rà soát mã nguồn TypeScript/TSX/TypeSpec trong Math Insight theo chuẩn đặt tên, kiểu dữ liệu, format Prettier/Tailwind, accessibility và comment.
 ---
 
-# Nguyên tắc code và comment của Math Insight
+# Quy chuẩn Code và Comment của Math Insight
 
-Áp dụng skill này khi tạo hoặc chỉnh sửa mã nguồn trong repository Math
-Insight. Kết hợp với `math-insight-project` khi công việc liên quan đến kiến
-trúc hoặc framework của dự án.
+Áp dụng skill này khi viết, chỉnh sửa hoặc review mã nguồn trong toàn bộ monorepo (`packages/web`, `packages/openapi`). Kết hợp với `math-insight-project` hoặc `math-insight-api-contract` khi đụng tới kiến trúc hoặc API.
 
 ## Nguyên tắc viết code
 
-- Trước tiên đọc các file lân cận để bắt chước cách tổ chức, format và cách đặt
-  tên đang dùng. Không tạo thêm một pattern mới nếu pattern hiện có đáp ứng yêu
-  cầu.
-- Viết TypeScript có kiểu rõ ràng ở ranh giới giữa các lớp và khi dữ liệu đi
-  qua API. Tránh `any`; ưu tiên suy luận kiểu, `unknown` kèm validation, hoặc
-  type suy ra từ schema Zod.
-- Chọn tên mô tả ý nghĩa và vai trò. Dùng tiếng Anh cho identifier trong mã
-  nguồn; dùng tiếng Việt cho nội dung giao diện hướng tới người dùng khi phù
-  hợp với ngữ cảnh hiện có.
-- Giữ hàm và component tập trung vào một nhiệm vụ. Tách helper khi logic được
-  dùng lại hoặc khi việc tách tên hàm giúp luồng xử lý dễ hiểu hơn; tránh tạo
-  abstraction chỉ để bọc một dòng code đơn giản.
-- Tái sử dụng component, schema, helper và dependency đã có. Chỉ thêm thư viện
-  mới khi nhu cầu không được đáp ứng hợp lý bằng stack hiện tại.
-- Giữ accessibility cơ bản cho giao diện: input có tên truy cập được, trạng
-  thái validation được truyền tới input, và thông báo lỗi được trình bày rõ.
-- Giữ code format nhất quán với Prettier và quy tắc ESLint hiện có. Không sửa
-  các file không liên quan chỉ để áp một phong cách cá nhân.
+- **Bắt chước pattern lân cận**: Đọc file cùng thư mục trước khi sửa để khớp cấu trúc, import alias (`@/...`) và đặt tên. Chỉ giới thiệu pattern mới khi pattern hiện có không đáp ứng được.
+- **TypeScript chặt chẽ**: Tránh `any` và ép kiểu cưỡng bức (`as unknown as ...`). Ưu tiên kiểu sinh ra từ Orval/TypeSpec (`@/lib/api/generated/model`, `@/types/generated/*.zod.ts`) hoặc suy ra bằng `z.input`/`z.output`/`z.infer`, dùng `unknown` kèm validation ở ranh giới dữ liệu ngoài.
+- **Đặt tên rõ ràng**: Dùng tiếng Anh cho identifier, tên file, tên type/hook/model; dùng tiếng Việt cho nhãn giao diện, thông báo lỗi và ví dụ dữ liệu hướng tới người dùng.
+- **Hàm và component gọn, một trách nhiệm**: Dùng early return xử lý nhánh lỗi/rỗng trước; tách magic number/string lặp lại thành hằng số có tên rõ nghĩa; chỉ tách abstraction khi tái sử dụng thật sự hoặc làm luồng đọc rõ hơn.
+- **Tái sử dụng stack hiện có**: Ưu tiên `components/ui/`, `components/form/`, `lib/utils.ts` và dependency đã cài trong `package.json`. Chỉ thêm thư viện mới khi stack hiện tại không giải quyết hợp lý.
+- **Accessibility cơ bản**: Mọi input có label hoặc `aria-label`, trạng thái lỗi gắn `aria-invalid` + `aria-describedby`, thông báo lỗi đặt `role="alert"`.
+- **Format nhất quán**: Tuân theo `.prettierrc` (không dấu `;`, nháy kép `"`, indent 2 space, tự sắp xếp class Tailwind cho `cn`/`cva`) và ESLint (`packages/web/eslint.config.mjs`). Giữ diff tập trung vào phạm vi yêu cầu, bỏ qua thư mục generated (`lib/api/generated/`, `types/generated/`, `docs/openapi/`).
 
 ## Nguyên tắc viết comment
 
-- Comment giải thích lý do, ràng buộc hoặc quyết định không thể hiện rõ qua
-  code; không diễn giải lại từng dòng code.
-- Viết comment mới bằng tiếng Việt, ngắn gọn và cụ thể. Giữ nguyên các thuật
-  ngữ kỹ thuật, tên API, tên thư viện và identifier tiếng Anh khi cần.
-- Dùng JSDoc cho component, helper hoặc API dùng chung khi người gọi cần biết
-  mục đích, tham số, kết quả hoặc giới hạn sử dụng. Dùng `@param` và `@returns`
-  khi các thông tin đó giúp người đọc sử dụng đúng hàm.
-- Không bắt buộc JSDoc cho mọi hàm nội bộ đơn giản hoặc hàm mà ý nghĩa đã rõ
-  qua tên và kiểu dữ liệu.
-- Comment về giới hạn hoặc hành vi tạm thời phải được cập nhật khi code thay
-  đổi. Không để lại TODO chung chung nếu chưa nêu được việc cần làm cụ thể.
+- Comment giải thích **lý do, ràng buộc hoặc quyết định thiết kế** không tự bộc lộ qua code; tránh tường thuật từng dòng lệnh hiển nhiên.
+- Viết comment mới bằng **tiếng Việt ngắn gọn**, giữ nguyên thuật ngữ kỹ thuật, tên API, thư viện và identifier tiếng Anh.
+- Dùng JSDoc (`@param`, `@returns`) cho component, hook, helper dùng chung khi người gọi cần biết mục đích, tham số hoặc giới hạn sử dụng; không bắt buộc với hàm nội bộ ngắn đã tự rõ qua tên và kiểu.
+- Cập nhật hoặc xóa comment về giới hạn/hành vi tạm ngay khi code thay đổi. Mọi `TODO` phải nêu rõ việc cụ thể cần làm.
 
 ## Rà soát trước khi hoàn tất
 
-- Xóa import, biến và comment không còn cần thiết.
-- Đảm bảo comment vẫn đúng với hành vi hiện tại và không mâu thuẫn với tên
-  hàm, kiểu dữ liệu hoặc validation.
-- Giữ diff tập trung vào yêu cầu; nêu rõ các bước kiểm tra đã chạy nếu có.
+- Loại bỏ import, biến, type và comment thừa.
+- Đối chiếu comment, tên hàm, kiểu dữ liệu và validation khớp với hành vi mới nhất.
+- Chạy `pnpm format` (hoặc `pnpm --filter @math-insight/openapi format` với `.tsp`) nếu cần, xác nhận `pnpm typecheck` và `pnpm lint` sạch lỗi.
