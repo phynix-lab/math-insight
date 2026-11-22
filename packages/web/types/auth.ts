@@ -6,10 +6,11 @@ export interface AuthUser {
   displayName: string
   role: AppRole
   canReviewApplications?: boolean
+  isActive?: boolean
 }
 
 /**
- * 3 tài khoản mẫu được cấu hình sẵn theo 3 vai trò trong Database Design v0.6
+ * Các tài khoản mẫu được cấu hình sẵn theo Database Design v0.6 và phục vụ kiểm thử AC-3
  */
 export const DEMO_ACCOUNTS = [
   {
@@ -21,6 +22,7 @@ export const DEMO_ACCOUNTS = [
     description:
       "Toàn quyền quản trị: lớp, học sinh, giáo viên, phân quyền và audit logs",
     canReviewApplications: true,
+    isActive: true,
   },
   {
     role: "teacher" as AppRole,
@@ -31,6 +33,7 @@ export const DEMO_ACCOUNTS = [
     description:
       "Quản lý lớp phụ trách, điểm danh QR, xem học sinh, duyệt đơn tuyển sinh",
     canReviewApplications: true,
+    isActive: true,
   },
   {
     role: "student" as AppRole,
@@ -41,5 +44,17 @@ export const DEMO_ACCOUNTS = [
     description:
       "Theo dõi lớp đang học, xem lịch học và xuất trình mã điểm danh cá nhân",
     canReviewApplications: false,
+    isActive: true,
+  },
+  {
+    role: "teacher" as AppRole,
+    roleLabel: "Giáo viên (Đã khóa)",
+    email: "inactive.teacher@mathinsight.edu.vn",
+    password: "teacher123",
+    displayName: "Cô Mai (Ngừng hoạt động)",
+    description:
+      "Tài khoản giáo viên đã khóa để kiểm thử AC-3: chặn đăng nhập tài khoản ngừng hoạt động",
+    canReviewApplications: false,
+    isActive: false,
   },
 ]

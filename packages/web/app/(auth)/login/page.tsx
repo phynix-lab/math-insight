@@ -2,6 +2,8 @@
 
 import { useState, useTransition } from "react"
 import { useRouter } from "next/navigation"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
 import {
   ShieldCheck,
   GraduationCap,
@@ -9,37 +11,60 @@ import {
   ArrowRight,
   AlertCircle,
   Key,
+  UserX,
 } from "lucide-react"
+
+import TextField from "@/components/form/TextField/TextField"
 import { Button } from "@/components/ui/button"
 import { useCurrentRole } from "@/components/providers/RoleProvider"
+import {
+  LoginRequest,
+  type LoginRequestOutput,
+} from "@/types/generated/mathInsightAPI.schemas.zod"
 import { DEMO_ACCOUNTS } from "@/types/auth"
-import type { AppRole } from "@/types/navigation"
 
 export default function LoginPage() {
   const router = useRouter()
-  const { login, quickLogin } = useCurrentRole()
-  const [email, setEmail] = useState("admin@mathinsight.edu.vn")
-  const [password, setPassword] = useState("admin123")
+  const { login } = useCurrentRole()
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [isPending, startTransition] = useTransition()
 
-  async function handleFormSubmit(e: React.FormEvent) {
-    e.preventDefault()
+  const form = useForm<LoginRequest, unknown, LoginRequestOutput>({
+    resolver: zodResolver(LoginRequest),
+    defaultValues: {
+      email: "admin@mathinsight.edu.vn",
+      password: "admin123",
+    },
+  })
+
+  async function onSubmit(values: LoginRequestOutput) {
     setErrorMessage(null)
 
     startTransition(async () => {
-      const result = await login(email, password)
+      const result = await login(values.email, values.password)
       if (result.success) {
+        // Đăng nhập thành công -> chuyển về trang chủ theo vai trò (AC-1)
         router.push("/")
       } else {
-        setErrorMessage(result.error ?? "Đăng nhập không thành công.")
+        // AC-2 (sai mật khẩu -> lỗi chung) & AC-3 (tài khoản ngừng hoạt động)
+        setErrorMessage(result.error ?? "Email hoặc mật khẩu không đúng")
       }
     })
   }
 
-  function handleQuickLogin(role: AppRole) {
-    quickLogin(role)
-    router.push("/")
+  function handleQuickLogin(account: (typeof DEMO_ACCOUNTS)[number]) {
+    form.setValue("email", account.email)
+    form.setValue("password", account.password)
+    setErrorMessage(null)
+
+    startTransition(async () => {
+      const result = await login(account.email, account.password)
+      if (result.success) {
+        router.push("/")
+      } else {
+        setErrorMessage(result.error ?? "Email hoặc mật khẩu không đúng")
+      }
+    })
   }
 
   return (
@@ -51,7 +76,8 @@ export default function LoginPage() {
             Đăng nhập hệ thống
           </h2>
           <p className="text-xs text-muted-foreground">
-            Chọn tài khoản mẫu bên dưới hoặc nhập thông tin đăng nhập.
+            Sử dụng email và mật khẩu hoặc chọn tài khoản mẫu bên dưới để kiểm
+            thử.
           </p>
         </div>
 
@@ -65,37 +91,40 @@ export default function LoginPage() {
           </div>
         )}
 
-        <form onSubmit={handleFormSubmit} className="space-y-3.5 pt-1">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-3.5 pt-1"
+        >
           <div className="space-y-1">
             <label className="text-xs font-medium text-foreground">
               Email đăng nhập
             </label>
-            <input
+            <TextField
+              control={form.control}
+              name="email"
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               placeholder="email@mathinsight.edu.vn"
-              required
-              className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground focus:ring-2 focus:ring-ring focus:outline-hidden"
+              aria-label="Email đăng nhập"
+              disabled={isPending}
             />
           </div>
 
           <div className="space-y-1">
             <div className="flex items-center justify-between">
               <label className="text-xs font-medium text-foreground">
-                Mật khẩu
+                Mật khẩu (tối thiểu 8 ký tự)
               </label>
               <span className="text-[11px] text-muted-foreground">
-                Demo: mật khẩu bên dưới
+                Tối thiểu 8 ký tự
               </span>
             </div>
-            <input
+            <TextField
+              control={form.control}
+              name="password"
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
-              required
-              className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground focus:ring-2 focus:ring-ring focus:outline-hidden"
+              aria-label="Mật khẩu"
+              disabled={isPending}
             />
           </div>
 
@@ -106,17 +135,19 @@ export default function LoginPage() {
         </form>
       </div>
 
-      {/* 3 Tài khoản mẫu theo 3 vai trò */}
+      {/* Danh sách tài khoản mẫu theo 3 vai trò và tài khoản test AC-3 */}
       <div className="space-y-2.5">
         <div className="flex items-center gap-1.5 px-1 text-xs font-medium text-muted-foreground">
           <Key className="h-3.5 w-3.5" />
-          <span>3 Tài khoản mẫu để kiểm thử nhanh (1-Click Login):</span>
+          <span>Tài khoản mẫu để kiểm thử nhanh (1-Click Login):</span>
         </div>
 
         <div className="space-y-2">
           {DEMO_ACCOUNTS.map((acc) => {
-            const Icon =
-              acc.role === "admin"
+            const isInactive = acc.isActive === false
+            const Icon = isInactive
+              ? UserX
+              : acc.role === "admin"
                 ? ShieldCheck
                 : acc.role === "teacher"
                   ? GraduationCap
@@ -124,11 +155,21 @@ export default function LoginPage() {
 
             return (
               <div
-                key={acc.role}
-                className="flex items-center justify-between gap-3 rounded-xl border border-border bg-card p-3.5 text-xs shadow-2xs transition-colors hover:border-primary/40"
+                key={acc.email}
+                className={`flex items-center justify-between gap-3 rounded-xl border p-3.5 text-xs shadow-2xs transition-colors ${
+                  isInactive
+                    ? "border-destructive/30 bg-destructive/5 hover:border-destructive/50"
+                    : "border-border bg-card hover:border-primary/40"
+                }`}
               >
                 <div className="flex min-w-0 items-start gap-2.5">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <div
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${
+                      isInactive
+                        ? "bg-destructive/15 text-destructive"
+                        : "bg-primary/10 text-primary"
+                    }`}
+                  >
                     <Icon className="h-4 w-4" />
                   </div>
                   <div className="min-w-0 space-y-0.5">
@@ -136,7 +177,13 @@ export default function LoginPage() {
                       <span className="truncate font-semibold text-foreground">
                         {acc.displayName}
                       </span>
-                      <span className="py-0.2 rounded-sm bg-muted px-1.5 text-[10px] font-medium text-muted-foreground">
+                      <span
+                        className={`rounded-sm px-1.5 py-0.5 text-[10px] font-medium ${
+                          isInactive
+                            ? "bg-destructive/15 text-destructive"
+                            : "bg-muted text-muted-foreground"
+                        }`}
+                      >
                         {acc.roleLabel}
                       </span>
                     </div>
@@ -148,16 +195,13 @@ export default function LoginPage() {
 
                 <Button
                   type="button"
-                  variant="outline"
+                  variant={isInactive ? "destructive" : "outline"}
                   size="sm"
-                  onClick={() => {
-                    setEmail(acc.email)
-                    setPassword(acc.password)
-                    handleQuickLogin(acc.role)
-                  }}
+                  disabled={isPending}
+                  onClick={() => handleQuickLogin(acc)}
                   className="h-7 shrink-0 text-xs"
                 >
-                  Vào ngay
+                  {isInactive ? "Thử chặn AC-3" : "Vào ngay"}
                 </Button>
               </div>
             )
