@@ -5,13 +5,7 @@ import Link from "next/link"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import {
-  FileQuestion,
-  Shield,
-  Sparkles,
-  Inbox,
-  ListTodo,
-} from "lucide-react"
+import { FileQuestion, Shield, Sparkles, Inbox, ListTodo } from "lucide-react"
 
 import TextField from "@/components/form/TextField/TextField"
 import { SuspenseWrapper } from "@/components/SuspenseWrapper"
@@ -33,8 +27,12 @@ import {
 const tasksQueryKey = ["tasks"]
 
 export default function DashboardHomePage() {
-  const { currentRole, setRole, canReviewApplications, setCanReviewApplications } =
-    useCurrentRole()
+  const {
+    currentRole,
+    setRole,
+    canReviewApplications,
+    setCanReviewApplications,
+  } = useCurrentRole()
   const queryClient = useQueryClient()
 
   // State phục vụ việc mô phỏng và kiểm thử các trạng thái UI của ticket MI-002
@@ -74,7 +72,7 @@ export default function DashboardHomePage() {
   return (
     <div className="mx-auto max-w-5xl space-y-8 pb-12">
       {/* Banner chào mừng & Thông tin vai trò */}
-      <div className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-card via-card to-muted/40 p-6 sm:p-8 shadow-xs">
+      <div className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-card via-card to-muted/40 p-6 shadow-xs sm:p-8">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1.5">
             <div className="flex items-center gap-2">
@@ -89,14 +87,14 @@ export default function DashboardHomePage() {
             <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
               Xin chào, bạn đang ở vai trò {roleInfo.label}
             </h1>
-            <p className="text-sm text-muted-foreground max-w-2xl">
-              {roleInfo.description}. Menu điều hướng bên trái đã được lọc tự động
-              phù hợp với thẩm quyền của vai trò này.
+            <p className="max-w-2xl text-sm text-muted-foreground">
+              {roleInfo.description}. Menu điều hướng bên trái đã được lọc tự
+              động phù hợp với thẩm quyền của vai trò này.
             </p>
           </div>
 
           {/* Quick switcher trên banner */}
-          <div className="flex flex-wrap gap-2 shrink-0">
+          <div className="flex shrink-0 flex-wrap gap-2">
             {(["admin", "teacher", "student"] as AppRole[]).map((r) => (
               <Button
                 key={r}
@@ -115,20 +113,24 @@ export default function DashboardHomePage() {
         {/* Banner phụ: cảnh báo cờ FR-012 với giáo viên */}
         {currentRole === "teacher" && (
           <div className="mt-5 flex items-center justify-between rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 text-xs">
-            <div className="flex items-center gap-2 text-primary font-medium">
+            <div className="flex items-center gap-2 font-medium text-primary">
               <Shield className="h-4 w-4 shrink-0" />
               <span>
                 Quyền xét duyệt đơn tuyển sinh (FR-012):{" "}
-                <strong>{canReviewApplications ? "Được bật" : "Chưa được bật"}</strong>
+                <strong>
+                  {canReviewApplications ? "Được bật" : "Chưa được bật"}
+                </strong>
               </span>
             </div>
             <Button
               variant="outline"
               size="sm"
               onClick={() => setCanReviewApplications(!canReviewApplications)}
-              className="h-7 text-xs bg-background"
+              className="h-7 bg-background text-xs"
             >
-              {canReviewApplications ? "Tắt quyền duyệt đơn" : "Bật quyền duyệt đơn"}
+              {canReviewApplications
+                ? "Tắt quyền duyệt đơn"
+                : "Bật quyền duyệt đơn"}
             </Button>
           </div>
         )}
@@ -138,23 +140,27 @@ export default function DashboardHomePage() {
       <section className="space-y-4" aria-labelledby="showcase-heading">
         <div className="flex items-center justify-between">
           <div>
-            <h2 id="showcase-heading" className="text-lg font-semibold tracking-tight">
+            <h2
+              id="showcase-heading"
+              className="text-lg font-semibold tracking-tight"
+            >
               Kiểm tra các trạng thái giao diện chuẩn (MI-002)
             </h2>
             <p className="text-xs text-muted-foreground">
-              Bao gồm: Loading skeleton, Empty state, Error fallback, 404 & 500 pages.
+              Bao gồm: Loading skeleton, Empty state, Error fallback, 404 & 500
+              pages.
             </p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {/* Card 1: Mô phỏng Loading Skeleton */}
-          <div className="flex flex-col justify-between rounded-xl border border-border bg-card p-4 space-y-3">
+          <div className="flex flex-col justify-between space-y-3 rounded-xl border border-border bg-card p-4">
             <div className="space-y-1">
-              <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+              <span className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
                 Trạng thái chờ
               </span>
-              <h3 className="font-medium text-sm">Loading Skeleton</h3>
+              <h3 className="text-sm font-medium">Loading Skeleton</h3>
               <p className="text-xs text-muted-foreground">
                 Xem trước giao diện khung xương đồng bộ khi đang nạp dữ liệu.
               </p>
@@ -170,28 +176,28 @@ export default function DashboardHomePage() {
           </div>
 
           {/* Card 2: Thử nghiệm Empty State */}
-          <div className="flex flex-col justify-between rounded-xl border border-border bg-card p-4 space-y-3">
+          <div className="flex flex-col justify-between space-y-3 rounded-xl border border-border bg-card p-4">
             <div className="space-y-1">
-              <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+              <span className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
                 Trạng thái rỗng
               </span>
-              <h3 className="font-medium text-sm">Empty State</h3>
+              <h3 className="text-sm font-medium">Empty State</h3>
               <p className="text-xs text-muted-foreground">
                 Component hiển thị chuẩn khi danh sách dữ liệu chưa có mục nào.
               </p>
             </div>
-            <span className="text-xs text-primary font-medium">
+            <span className="text-xs font-medium text-primary">
               Áp dụng tại danh sách bên dưới ↓
             </span>
           </div>
 
           {/* Card 3: Thử nghiệm Error State */}
-          <div className="flex flex-col justify-between rounded-xl border border-border bg-card p-4 space-y-3">
+          <div className="flex flex-col justify-between space-y-3 rounded-xl border border-border bg-card p-4">
             <div className="space-y-1">
-              <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+              <span className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
                 Trạng thái lỗi
               </span>
-              <h3 className="font-medium text-sm">Error Fallback</h3>
+              <h3 className="text-sm font-medium">Error Fallback</h3>
               <p className="text-xs text-muted-foreground">
                 Hiển thị thông báo lỗi thân thiện kèm nút Thử lại (Retry).
               </p>
@@ -213,19 +219,23 @@ export default function DashboardHomePage() {
           </div>
 
           {/* Card 4: Kiểm tra trang 404 */}
-          <div className="flex flex-col justify-between rounded-xl border border-border bg-card p-4 space-y-3">
+          <div className="flex flex-col justify-between space-y-3 rounded-xl border border-border bg-card p-4">
             <div className="space-y-1">
-              <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+              <span className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
                 Trang lỗi 404
               </span>
-              <h3 className="font-medium text-sm">Not Found Page</h3>
+              <h3 className="text-sm font-medium">Not Found Page</h3>
               <p className="text-xs text-muted-foreground">
                 Điều hướng tới đường dẫn không tồn tại để kiểm tra trang 404.
               </p>
             </div>
             <Link
               href="/trang-khong-ton-tai"
-              className={buttonVariants({ variant: "outline", size: "sm", className: "w-full text-xs" })}
+              className={buttonVariants({
+                variant: "outline",
+                size: "sm",
+                className: "w-full text-xs",
+              })}
             >
               <FileQuestion className="mr-1.5 h-3.5 w-3.5" />
               Mở trang 404
@@ -235,8 +245,8 @@ export default function DashboardHomePage() {
 
         {/* Vùng hiển thị Skeleton khi bật chế độ xem trước */}
         {showSimulatedLoading && (
-          <div className="rounded-xl border border-dashed border-primary/40 bg-card p-6 space-y-4 animate-in fade-in duration-300">
-            <div className="flex items-center justify-between pb-2 border-b">
+          <div className="animate-in space-y-4 rounded-xl border border-dashed border-primary/40 bg-card p-6 duration-300 fade-in">
+            <div className="flex items-center justify-between border-b pb-2">
               <span className="text-xs font-semibold text-primary">
                 Xem trước: Skeleton Loading State
               </span>
@@ -252,7 +262,7 @@ export default function DashboardHomePage() {
             <div className="space-y-3">
               <Skeleton className="h-6 w-1/3" />
               <Skeleton className="h-4 w-2/3" />
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+              <div className="grid grid-cols-1 gap-3 pt-2 sm:grid-cols-3">
                 <Skeleton className="h-20 w-full rounded-lg" />
                 <Skeleton className="h-20 w-full rounded-lg" />
                 <Skeleton className="h-20 w-full rounded-lg" />
@@ -263,7 +273,7 @@ export default function DashboardHomePage() {
 
         {/* Vùng hiển thị ErrorView khi bật mô phỏng lỗi */}
         {simulatedError && (
-          <div className="animate-in fade-in duration-300">
+          <div className="animate-in duration-300 fade-in">
             <ErrorView
               title="Lỗi mô phỏng trong quá trình xử lý"
               message={simulatedError}
@@ -278,11 +288,15 @@ export default function DashboardHomePage() {
       <section className="space-y-4" aria-labelledby="tasks-section-heading">
         <div className="flex items-center justify-between">
           <div>
-            <h2 id="tasks-section-heading" className="text-lg font-semibold tracking-tight">
+            <h2
+              id="tasks-section-heading"
+              className="text-lg font-semibold tracking-tight"
+            >
               Quản lý công việc (Task Manager)
             </h2>
             <p className="text-xs text-muted-foreground">
-              Tích hợp API Tasks với form validation, danh sách và Empty State chuẩn.
+              Tích hợp API Tasks với form validation, danh sách và Empty State
+              chuẩn.
             </p>
           </div>
           {tasksQuery.data && (
@@ -297,7 +311,9 @@ export default function DashboardHomePage() {
           className="flex flex-col gap-3 rounded-xl border border-border bg-card p-5 shadow-xs"
           onSubmit={form.handleSubmit(onSubmit)}
         >
-          <h3 className="text-sm font-semibold text-foreground">Thêm công việc mới</h3>
+          <h3 className="text-sm font-semibold text-foreground">
+            Thêm công việc mới
+          </h3>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <TextField
               control={form.control}
@@ -354,20 +370,20 @@ export default function DashboardHomePage() {
             {tasksQuery.data.map((task) => (
               <li
                 key={task.id}
-                className="flex items-start justify-between gap-4 rounded-xl border border-border bg-card p-4 transition-colors hover:border-muted-foreground/30 shadow-2xs"
+                className="flex items-start justify-between gap-4 rounded-xl border border-border bg-card p-4 shadow-2xs transition-colors hover:border-muted-foreground/30"
               >
                 <div className="min-w-0 space-y-1">
                   <h4
                     className={
                       task.completed
-                        ? "text-sm font-medium line-through text-muted-foreground"
+                        ? "text-sm font-medium text-muted-foreground line-through"
                         : "text-sm font-medium text-foreground"
                     }
                   >
                     {task.title}
                   </h4>
                   {task.description && (
-                    <p className="break-words text-xs text-muted-foreground">
+                    <p className="text-xs break-words text-muted-foreground">
                       {task.description}
                     </p>
                   )}
@@ -379,7 +395,10 @@ export default function DashboardHomePage() {
                     size="sm"
                     disabled={updateMutation.isPending}
                     onClick={() =>
-                      updateMutation.mutate({ id: task.id, completed: !task.completed })
+                      updateMutation.mutate({
+                        id: task.id,
+                        completed: !task.completed,
+                      })
                     }
                     className="h-8 text-xs"
                   >
@@ -414,17 +433,21 @@ export default function DashboardHomePage() {
           <div className="space-y-1">
             <div className="flex items-center gap-2">
               <ListTodo className="h-4 w-4 text-primary" />
-              <h2 id="todos-heading" className="text-lg font-semibold tracking-tight">
+              <h2
+                id="todos-heading"
+                className="text-lg font-semibold tracking-tight"
+              >
                 Danh sách Todos (TypeSpec & MSW Mock)
               </h2>
             </div>
             <p className="text-xs text-muted-foreground">
-              Tạo, cập nhật trạng thái và xóa công việc qua API Todos sinh tự động từ TypeSpec contract.
+              Tạo, cập nhật trạng thái và xóa công việc qua API Todos sinh tự
+              động từ TypeSpec contract.
             </p>
           </div>
         </div>
 
-        <div className="rounded-xl border border-border bg-card p-5 shadow-xs space-y-6">
+        <div className="space-y-6 rounded-xl border border-border bg-card p-5 shadow-xs">
           <AddTodo />
 
           <SuspenseWrapper

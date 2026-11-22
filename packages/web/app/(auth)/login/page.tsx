@@ -2,7 +2,14 @@
 
 import { useState, useTransition } from "react"
 import { useRouter } from "next/navigation"
-import { ShieldCheck, GraduationCap, User, ArrowRight, AlertCircle, Key } from "lucide-react"
+import {
+  ShieldCheck,
+  GraduationCap,
+  User,
+  ArrowRight,
+  AlertCircle,
+  Key,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useCurrentRole } from "@/components/providers/RoleProvider"
 import { DEMO_ACCOUNTS } from "@/types/auth"
@@ -38,7 +45,7 @@ export default function LoginPage() {
   return (
     <div className="space-y-6">
       {/* Khung đăng nhập chính */}
-      <div className="rounded-2xl border border-border bg-card p-6 shadow-xs space-y-4">
+      <div className="space-y-4 rounded-2xl border border-border bg-card p-6 shadow-xs">
         <div className="space-y-1">
           <h2 className="text-lg font-semibold tracking-tight text-foreground">
             Đăng nhập hệ thống
@@ -60,21 +67,27 @@ export default function LoginPage() {
 
         <form onSubmit={handleFormSubmit} className="space-y-3.5 pt-1">
           <div className="space-y-1">
-            <label className="text-xs font-medium text-foreground">Email đăng nhập</label>
+            <label className="text-xs font-medium text-foreground">
+              Email đăng nhập
+            </label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="email@mathinsight.edu.vn"
               required
-              className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-hidden focus:ring-2 focus:ring-ring"
+              className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground focus:ring-2 focus:ring-ring focus:outline-hidden"
             />
           </div>
 
           <div className="space-y-1">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-medium text-foreground">Mật khẩu</label>
-              <span className="text-[11px] text-muted-foreground">Demo: mật khẩu bên dưới</span>
+              <label className="text-xs font-medium text-foreground">
+                Mật khẩu
+              </label>
+              <span className="text-[11px] text-muted-foreground">
+                Demo: mật khẩu bên dưới
+              </span>
             </div>
             <input
               type="password"
@@ -82,7 +95,7 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
               required
-              className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-hidden focus:ring-2 focus:ring-ring"
+              className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground focus:ring-2 focus:ring-ring focus:outline-hidden"
             />
           </div>
 
@@ -106,28 +119,28 @@ export default function LoginPage() {
               acc.role === "admin"
                 ? ShieldCheck
                 : acc.role === "teacher"
-                ? GraduationCap
-                : User
+                  ? GraduationCap
+                  : User
 
             return (
               <div
                 key={acc.role}
-                className="flex items-center justify-between gap-3 rounded-xl border border-border bg-card p-3.5 text-xs transition-colors hover:border-primary/40 shadow-2xs"
+                className="flex items-center justify-between gap-3 rounded-xl border border-border bg-card p-3.5 text-xs shadow-2xs transition-colors hover:border-primary/40"
               >
-                <div className="flex items-start gap-2.5 min-w-0">
+                <div className="flex min-w-0 items-start gap-2.5">
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                     <Icon className="h-4 w-4" />
                   </div>
                   <div className="min-w-0 space-y-0.5">
                     <div className="flex items-center gap-1.5">
-                      <span className="font-semibold text-foreground truncate">
+                      <span className="truncate font-semibold text-foreground">
                         {acc.displayName}
                       </span>
-                      <span className="rounded-sm bg-muted px-1.5 py-0.2 text-[10px] font-medium text-muted-foreground">
+                      <span className="py-0.2 rounded-sm bg-muted px-1.5 text-[10px] font-medium text-muted-foreground">
                         {acc.roleLabel}
                       </span>
                     </div>
-                    <p className="text-[11px] text-muted-foreground font-mono truncate">
+                    <p className="truncate font-mono text-[11px] text-muted-foreground">
                       {acc.email} • pass: <strong>{acc.password}</strong>
                     </p>
                   </div>
@@ -142,7 +155,7 @@ export default function LoginPage() {
                     setPassword(acc.password)
                     handleQuickLogin(acc.role)
                   }}
-                  className="shrink-0 text-xs h-7"
+                  className="h-7 shrink-0 text-xs"
                 >
                   Vào ngay
                 </Button>

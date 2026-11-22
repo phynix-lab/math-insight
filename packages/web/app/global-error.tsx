@@ -22,7 +22,7 @@ export default function GlobalError({ error, retry, reset }: GlobalErrorProps) {
 
   return (
     <html lang="vi">
-      <body className="flex min-h-screen items-center justify-center bg-background p-6 text-foreground font-sans antialiased">
+      <body className="flex min-h-screen items-center justify-center bg-background p-6 font-sans text-foreground antialiased">
         <ErrorView
           title="Lỗi hệ thống nghiêm trọng"
           message="Ứng dụng gặp sự cố khi khởi tạo giao diện gốc. Vui lòng tải lại hoặc thử lại."

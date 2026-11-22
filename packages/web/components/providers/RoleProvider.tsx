@@ -1,11 +1,6 @@
 "use client"
 
-import {
-  createContext,
-  useContext,
-  useState,
-  type ReactNode,
-} from "react"
+import { createContext, useContext, useState, type ReactNode } from "react"
 import type { AppRole } from "@/types/navigation"
 import { DEMO_ACCOUNTS, type AuthUser } from "@/types/auth"
 
@@ -17,7 +12,10 @@ interface RoleContextValue {
   canReviewApplications: boolean
   setCanReviewApplications: (enabled: boolean) => void
   userDisplayName: string
-  login: (email: string, password: string) => Promise<{ success: boolean; error?: string }>
+  login: (
+    email: string,
+    password: string
+  ) => Promise<{ success: boolean; error?: string }>
   quickLogin: (role: AppRole) => void
   logout: () => void
 }
@@ -58,18 +56,20 @@ export function RoleProvider({ children }: { children: ReactNode }) {
     }
   })
 
-  const [canReviewApplications, setCanReviewApplications] = useState<boolean>(() => {
-    if (typeof window === "undefined") return true
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY_CAN_REVIEW)
-      if (saved !== null) {
-        return saved === "true"
+  const [canReviewApplications, setCanReviewApplications] = useState<boolean>(
+    () => {
+      if (typeof window === "undefined") return true
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY_CAN_REVIEW)
+        if (saved !== null) {
+          return saved === "true"
+        }
+      } catch {
+        // Bỏ qua
       }
-    } catch {
-      // Bỏ qua
+      return true
     }
-    return true
-  })
+  )
 
   const currentRole: AppRole = currentUser?.role ?? "admin"
   const isAuthenticated = currentUser !== null
@@ -107,7 +107,10 @@ export function RoleProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  async function login(email: string, password: string): Promise<{ success: boolean; error?: string }> {
+  async function login(
+    email: string,
+    password: string
+  ): Promise<{ success: boolean; error?: string }> {
     const matched = DEMO_ACCOUNTS.find(
       (acc) => acc.email.toLowerCase() === email.trim().toLowerCase()
     )

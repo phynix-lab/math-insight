@@ -18,7 +18,8 @@ export const DEMO_ACCOUNTS = [
     email: "admin@mathinsight.edu.vn",
     password: "admin123",
     displayName: "Nguyễn Quốc Huy",
-    description: "Toàn quyền quản trị: lớp, học sinh, giáo viên, phân quyền và audit logs",
+    description:
+      "Toàn quyền quản trị: lớp, học sinh, giáo viên, phân quyền và audit logs",
     canReviewApplications: true,
   },
   {
@@ -27,7 +28,8 @@ export const DEMO_ACCOUNTS = [
     email: "teacher@mathinsight.edu.vn",
     password: "teacher123",
     displayName: "Thầy Hoàng Anh",
-    description: "Quản lý lớp phụ trách, điểm danh QR, xem học sinh, duyệt đơn tuyển sinh",
+    description:
+      "Quản lý lớp phụ trách, điểm danh QR, xem học sinh, duyệt đơn tuyển sinh",
     canReviewApplications: true,
   },
   {
@@ -36,7 +38,8 @@ export const DEMO_ACCOUNTS = [
     email: "student@mathinsight.edu.vn",
     password: "student123",
     displayName: "Em Minh Khôi",
-    description: "Theo dõi lớp đang học, xem lịch học và xuất trình mã điểm danh cá nhân",
+    description:
+      "Theo dõi lớp đang học, xem lịch học và xuất trình mã điểm danh cá nhân",
     canReviewApplications: false,
   },
 ]

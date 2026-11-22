@@ -27,22 +27,29 @@ export default function MyAttendancePage() {
           Điểm danh của tôi
         </h1>
         <p className="text-sm text-muted-foreground">
-          Theo dõi lịch sử tham dự các buổi học và xuất trình mã điểm danh cá nhân.
+          Theo dõi lịch sử tham dự các buổi học và xuất trình mã điểm danh cá
+          nhân.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <div className="rounded-xl border border-border bg-card p-5">
-          <span className="text-xs font-medium text-muted-foreground">Đã tham gia</span>
+          <span className="text-xs font-medium text-muted-foreground">
+            Đã tham gia
+          </span>
           <p className="mt-2 text-2xl font-bold text-foreground">0 buổi</p>
         </div>
         <div className="rounded-xl border border-border bg-card p-5">
-          <span className="text-xs font-medium text-muted-foreground">Tỷ lệ chuyên cần</span>
+          <span className="text-xs font-medium text-muted-foreground">
+            Tỷ lệ chuyên cần
+          </span>
           <p className="mt-2 text-2xl font-bold text-foreground">100%</p>
         </div>
         <div className="rounded-xl border border-border bg-card p-5">
-          <span className="text-xs font-medium text-muted-foreground">Trạng thái tài khoản</span>
-          <p className="mt-2 text-sm font-semibold text-emerald-600 flex items-center gap-1.5">
+          <span className="text-xs font-medium text-muted-foreground">
+            Trạng thái tài khoản
+          </span>
+          <p className="mt-2 flex items-center gap-1.5 text-sm font-semibold text-emerald-600">
             <CheckCircle2 className="h-4 w-4" /> Đã liên kết hồ sơ
           </p>
         </div>

@@ -27,12 +27,13 @@ export default function AuditLogsPage() {
           <h1 className="text-2xl font-bold tracking-tight text-foreground">
             Nhật ký hệ thống (Audit Logs)
           </h1>
-          <span className="rounded-md bg-muted px-2 py-0.5 text-xs font-mono text-muted-foreground">
+          <span className="rounded-md bg-muted px-2 py-0.5 font-mono text-xs text-muted-foreground">
             Append-only
           </span>
         </div>
         <p className="text-sm text-muted-foreground">
-          Ghi nhận tự động các thao tác quan trọng: sửa điểm danh, đổi giáo viên, duyệt đơn, thay đổi quyền tài khoản.
+          Ghi nhận tự động các thao tác quan trọng: sửa điểm danh, đổi giáo
+          viên, duyệt đơn, thay đổi quyền tài khoản.
         </p>
       </div>
 

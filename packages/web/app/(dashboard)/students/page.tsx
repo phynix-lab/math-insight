@@ -29,7 +29,8 @@ export default function StudentsPage() {
             Hồ sơ Học sinh
           </h1>
           <p className="text-sm text-muted-foreground">
-            Quản lý mã học sinh, thông tin phụ huynh (người giám hộ) và trạng thái tài khoản.
+            Quản lý mã học sinh, thông tin phụ huynh (người giám hộ) và trạng
+            thái tài khoản.
           </p>
         </div>
         <Button size="sm">

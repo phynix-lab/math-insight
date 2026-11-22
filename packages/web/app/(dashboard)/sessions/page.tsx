@@ -29,7 +29,8 @@ export default function SessionsPage() {
             Buổi học & Điểm danh
           </h1>
           <p className="text-sm text-muted-foreground">
-            Mở cửa sổ điểm danh QR ngắn hạn, điểm danh thủ công và tổng kết buổi học.
+            Mở cửa sổ điểm danh QR ngắn hạn, điểm danh thủ công và tổng kết buổi
+            học.
           </p>
         </div>
         <div className="flex gap-2">

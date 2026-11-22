@@ -12,14 +12,14 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
         <div className="flex flex-col items-center text-center">
           <Link
             href="/"
-            className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-primary-foreground font-bold text-lg shadow-sm mb-3"
+            className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-lg font-bold text-primary-foreground shadow-sm"
           >
             MI
           </Link>
           <h1 className="text-xl font-bold tracking-tight text-foreground">
             Math Insight
           </h1>
-          <p className="text-xs text-muted-foreground mt-0.5">
+          <p className="mt-0.5 text-xs text-muted-foreground">
             Hệ thống quản lý trung tâm toán học
           </p>
         </div>

@@ -46,7 +46,7 @@ export function Header({ onOpenMobile }: HeaderProps) {
           </Button>
         )}
 
-        <div className="hidden sm:flex flex-col">
+        <div className="hidden flex-col sm:flex">
           <span className="text-sm font-semibold tracking-tight text-foreground">
             Trung tâm Math Insight
           </span>
@@ -60,7 +60,7 @@ export function Header({ onOpenMobile }: HeaderProps) {
       <div className="flex items-center gap-2 sm:gap-3">
         {/* Bộ chuyển vai trò (Role Switcher) phục vụ test và kiểm tra layout */}
         <div className="flex items-center rounded-lg border border-border bg-muted/50 p-1 text-xs">
-          <span className="hidden lg:inline px-2 font-medium text-muted-foreground">
+          <span className="hidden px-2 font-medium text-muted-foreground lg:inline">
             Vai trò:
           </span>
           <div className="flex gap-0.5">
@@ -72,7 +72,7 @@ export function Header({ onOpenMobile }: HeaderProps) {
                 className={cn(
                   "rounded-md px-2 py-1 text-xs font-medium transition-colors",
                   currentRole === r
-                    ? "bg-background text-foreground shadow-2xs font-semibold"
+                    ? "bg-background font-semibold text-foreground shadow-2xs"
                     : "text-muted-foreground hover:text-foreground"
                 )}
                 aria-pressed={currentRole === r}
@@ -90,14 +90,16 @@ export function Header({ onOpenMobile }: HeaderProps) {
             onClick={() => setCanReviewApplications(!canReviewApplications)}
             title="Bật/tắt quyền duyệt đơn (FR-012) cho giáo viên để kiểm tra hiển thị menu"
             className={cn(
-              "hidden md:flex items-center gap-1.5 rounded-lg border px-2.5 py-1 text-xs font-medium transition-colors",
+              "hidden items-center gap-1.5 rounded-lg border px-2.5 py-1 text-xs font-medium transition-colors md:flex",
               canReviewApplications
                 ? "border-primary/40 bg-primary/10 text-primary"
                 : "border-border bg-muted/40 text-muted-foreground hover:text-foreground"
             )}
           >
             <Shield className="h-3.5 w-3.5" />
-            <span>Quyền duyệt đơn: {canReviewApplications ? "Bật" : "Tắt"}</span>
+            <span>
+              Quyền duyệt đơn: {canReviewApplications ? "Bật" : "Tắt"}
+            </span>
           </button>
         )}
 
@@ -105,11 +107,11 @@ export function Header({ onOpenMobile }: HeaderProps) {
         <ThemeToggle />
 
         {/* Thông tin tài khoản người dùng & Đăng xuất */}
-        <div className="flex items-center gap-2 pl-1 border-l border-border">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary font-semibold text-xs">
+        <div className="flex items-center gap-2 border-l border-border pl-1">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-xs font-semibold text-primary">
             <User className="h-4 w-4" />
           </div>
-          <span className="hidden xl:inline text-xs font-medium text-foreground max-w-[120px] truncate">
+          <span className="hidden max-w-[120px] truncate text-xs font-medium text-foreground xl:inline">
             {userDisplayName}
           </span>
           <Button

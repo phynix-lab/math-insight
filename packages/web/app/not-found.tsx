@@ -8,7 +8,7 @@ import { buttonVariants } from "@/components/ui/button"
 export default function NotFound() {
   return (
     <div className="flex min-h-[70vh] flex-col items-center justify-center p-6 text-center">
-      <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-muted text-muted-foreground mb-6 shadow-xs">
+      <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-muted text-muted-foreground shadow-xs">
         <FileQuestion className="h-8 w-8 text-primary" />
       </div>
 
@@ -21,8 +21,8 @@ export default function NotFound() {
       </h1>
 
       <p className="mt-2 max-w-md text-sm text-muted-foreground">
-        Đường dẫn bạn đang truy cập có thể đã bị thay đổi, chuyển đi nơi khác hoặc
-        bạn chưa được cấp quyền truy cập vào phân hệ này.
+        Đường dẫn bạn đang truy cập có thể đã bị thay đổi, chuyển đi nơi khác
+        hoặc bạn chưa được cấp quyền truy cập vào phân hệ này.
       </p>
 
       <div className="mt-8 flex flex-wrap items-center justify-center gap-3">

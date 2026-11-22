@@ -29,7 +29,8 @@ export default function UsersPage() {
             Tài khoản & Phân quyền
           </h1>
           <p className="text-sm text-muted-foreground">
-            Quản lý tài khoản (`profiles`), vai trò (`user_roles`) và cờ duyệt đơn (`can_review_applications`).
+            Quản lý tài khoản (`profiles`), vai trò (`user_roles`) và cờ duyệt
+            đơn (`can_review_applications`).
           </p>
         </div>
         <Button size="sm">

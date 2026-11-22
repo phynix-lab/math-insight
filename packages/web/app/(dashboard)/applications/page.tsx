@@ -10,7 +10,8 @@ export default function ApplicationsPage() {
 
   // Kiểm tra quyền theo FR-012: Giáo viên chỉ được vào khi Admin bật can_review_applications
   const hasAccess =
-    currentRole === "admin" || (currentRole === "teacher" && canReviewApplications)
+    currentRole === "admin" ||
+    (currentRole === "teacher" && canReviewApplications)
 
   if (!hasAccess) {
     return (
@@ -37,13 +38,14 @@ export default function ApplicationsPage() {
             </span>
           </div>
           <p className="text-sm text-muted-foreground">
-            Tiếp nhận đơn từ form công khai, duyệt hoặc yêu cầu bổ sung thông tin từ phụ huynh.
+            Tiếp nhận đơn từ form công khai, duyệt hoặc yêu cầu bổ sung thông
+            tin từ phụ huynh.
           </p>
         </div>
       </div>
 
       <div className="flex gap-2 border-b border-border pb-2 text-sm font-medium">
-        <button className="border-b-2 border-primary pb-2 text-primary font-semibold">
+        <button className="border-b-2 border-primary pb-2 font-semibold text-primary">
           Chờ duyệt (0)
         </button>
         <button className="pb-2 text-muted-foreground hover:text-foreground">

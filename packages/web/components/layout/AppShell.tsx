@@ -42,7 +42,7 @@ export function AppShell({ children }: AppShellProps) {
   return (
     <div className="flex min-h-svh w-full bg-background text-foreground">
       {/* Sidebar cố định trên Desktop */}
-      <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0 z-40">
+      <div className="z-40 hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
         <Sidebar />
       </div>
 
@@ -62,18 +62,16 @@ export function AppShell({ children }: AppShellProps) {
           />
 
           {/* Vùng nội dung Drawer */}
-          <div className="relative flex w-full max-w-xs flex-1 flex-col bg-sidebar shadow-2xl transition-transform animate-in slide-in-from-left duration-200">
+          <div className="relative flex w-full max-w-xs flex-1 animate-in flex-col bg-sidebar shadow-2xl transition-transform duration-200 slide-in-from-left">
             <Sidebar onCloseMobile={() => setMobileOpen(false)} />
           </div>
         </div>
       )}
 
       {/* Khu vực nội dung chính */}
-      <div className="flex flex-1 flex-col md:pl-64 min-w-0">
+      <div className="flex min-w-0 flex-1 flex-col md:pl-64">
         <Header onOpenMobile={() => setMobileOpen(true)} />
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 min-w-0">
-          {children}
-        </main>
+        <main className="min-w-0 flex-1 p-4 sm:p-6 lg:p-8">{children}</main>
       </div>
     </div>
   )

@@ -36,14 +36,16 @@ export function ThemeToggle() {
     <Button
       variant="ghost"
       size="sm"
-      aria-label={isDark ? "Chuyển sang giao diện sáng" : "Chuyển sang giao diện tối"}
+      aria-label={
+        isDark ? "Chuyển sang giao diện sáng" : "Chuyển sang giao diện tối"
+      }
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className="h-9 w-9 px-0"
     >
       {isDark ? (
-        <Sun className="h-4 w-4 transition-transform text-amber-400" />
+        <Sun className="h-4 w-4 text-amber-400 transition-transform" />
       ) : (
-        <Moon className="h-4 w-4 transition-transform text-muted-foreground" />
+        <Moon className="h-4 w-4 text-muted-foreground transition-transform" />
       )}
     </Button>
   )

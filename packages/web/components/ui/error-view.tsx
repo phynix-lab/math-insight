@@ -34,8 +34,8 @@ export function ErrorView({
     (error instanceof Error
       ? error.message
       : typeof error === "string"
-      ? error
-      : "Hệ thống gặp sự cố trong quá trình xử lý yêu cầu. Vui lòng thử lại sau.")
+        ? error
+        : "Hệ thống gặp sự cố trong quá trình xử lý yêu cầu. Vui lòng thử lại sau.")
 
   const digest =
     error && typeof error === "object" && "digest" in error
@@ -79,7 +79,7 @@ export function ErrorView({
         className
       )}
     >
-      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-destructive/10 text-destructive mb-4">
+      <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-destructive/10 text-destructive">
         <AlertTriangle className="h-7 w-7" />
       </div>
 
@@ -87,12 +87,12 @@ export function ErrorView({
         {title}
       </h2>
 
-      <p className="mt-2 max-w-md text-sm text-muted-foreground break-words">
+      <p className="mt-2 max-w-md text-sm break-words text-muted-foreground">
         {detailedMessage}
       </p>
 
       {digest && (
-        <p className="mt-1 text-xs text-muted-foreground/70 font-mono">
+        <p className="mt-1 font-mono text-xs text-muted-foreground/70">
           Mã lỗi: {digest}
         </p>
       )}
@@ -105,7 +105,10 @@ export function ErrorView({
           </Button>
         )}
         {homeHref && (
-          <Link href={homeHref} className={buttonVariants({ variant: "outline" })}>
+          <Link
+            href={homeHref}
+            className={buttonVariants({ variant: "outline" })}
+          >
             <Home className="mr-1.5 h-4 w-4" />
             Về trang chủ
           </Link>

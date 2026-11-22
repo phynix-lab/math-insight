@@ -32,7 +32,10 @@ export async function createTask(input: CreateTaskInput): Promise<Task> {
   return taskSchema.parse(response.data)
 }
 
-export async function updateTask(id: string, input: UpdateTaskInput): Promise<Task> {
+export async function updateTask(
+  id: string,
+  input: UpdateTaskInput
+): Promise<Task> {
   const response = await request<{ data: unknown }>(`/api/tasks/${id}`, {
     method: "PATCH",
     body: JSON.stringify(input),
