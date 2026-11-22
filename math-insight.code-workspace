@@ -1,0 +1,111 @@
+{
+  "folders": [
+    {
+      "name": "math-insight",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "prettier.configPath": ".prettierrc",
+    "prettier.ignorePath": ".prettierignore",
+    "eslint.workingDirectories": ["packages/web"],
+    "typescript.tsdk": "packages/web/node_modules/typescript/lib",
+    "[typespec]": {
+      "editor.defaultFormatter": "typespec.typespec-vscode"
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint",
+      "typespec.typespec-vscode"
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Web: Dev",
+        "detail": "Chạy máy chủ phát triển Next.js (@math-insight/web) ở chế độ thường",
+        "type": "shell",
+        "command": "pnpm dev",
+        "isBackground": true,
+        "problemMatcher": []
+      },
+      {
+        "label": "Web: Dev (Mock)",
+        "detail": "Chạy máy chủ phát triển Next.js kèm bật dữ liệu API giả lập (ENABLE_MOCK=true)",
+        "type": "shell",
+        "command": "pnpm dev",
+        "options": {
+          "env": {
+            "ENABLE_MOCK": "true"
+          }
+        },
+        "isBackground": true,
+        "problemMatcher": []
+      },
+      {
+        "label": "OpenAPI: Build (JSON + MD)",
+        "detail": "Biên dịch TypeSpec ra file OpenAPI JSON và tạo tài liệu Markdown",
+        "type": "shell",
+        "command": "pnpm --filter @math-insight/openapi build",
+        "problemMatcher": []
+      },
+      {
+        "label": "Web: Generate API (Orval)",
+        "detail": "Sinh tự động React Query hooks, MSW mocks và Zod schemas từ OpenAPI bằng Orval",
+        "type": "shell",
+        "command": "pnpm --filter @math-insight/web generate:api",
+        "problemMatcher": []
+      },
+      {
+        "label": "API: Sync All (TypeSpec -> Orval)",
+        "detail": "Chạy tuần tự build OpenAPI từ TypeSpec rồi sinh lại API client bằng Orval",
+        "dependsOrder": "sequence",
+        "dependsOn": [
+          "OpenAPI: Build (JSON + MD)",
+          "Web: Generate API (Orval)"
+        ],
+        "problemMatcher": []
+      },
+      {
+        "label": "Workspace: Typecheck",
+        "detail": "Kiểm tra kiểu dữ liệu TypeScript và TypeSpec trên toàn bộ workspace",
+        "type": "shell",
+        "command": "pnpm typecheck",
+        "problemMatcher": ["$tsc"]
+      },
+      {
+        "label": "Workspace: Lint",
+        "detail": "Kiểm tra quy tắc và lỗi mã nguồn bằng ESLint trên toàn bộ workspace",
+        "type": "shell",
+        "command": "pnpm lint",
+        "problemMatcher": ["$eslint-stylish"]
+      },
+      {
+        "label": "Workspace: Format",
+        "detail": "Tự động định dạng lại các file TypeScript/TSX bằng Prettier",
+        "type": "shell",
+        "command": "pnpm format",
+        "problemMatcher": []
+      },
+      {
+        "label": "Workspace: Build",
+        "detail": "Build toàn bộ các package trong workspace (task build mặc định)",
+        "type": "shell",
+        "command": "pnpm build",
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": []
+      }
+    ]
+  }
+}
