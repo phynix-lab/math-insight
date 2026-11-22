@@ -2,9 +2,7 @@ import "server-only"
 
 import { z } from "zod"
 
-type BodyResult<T> =
-  | { ok: true; data: T }
-  | { ok: false; response: Response }
+type BodyResult<T> = { ok: true; data: T } | { ok: false; response: Response }
 
 /**
  * Đọc JSON từ request và kiểm tra dữ liệu bằng schema Zod.

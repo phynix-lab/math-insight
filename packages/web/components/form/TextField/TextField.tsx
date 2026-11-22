@@ -14,7 +14,11 @@ import { Field, FieldError } from "@/components/ui/field"
 const TextField = <
   TField extends FieldValues,
   TTransformedValues extends FieldValues = TField,
->({ control, name, ...props }: TextFieldProps<TField, TTransformedValues>) => {
+>({
+  control,
+  name,
+  ...props
+}: TextFieldProps<TField, TTransformedValues>) => {
   return (
     <Controller
       control={control}
@@ -31,10 +35,7 @@ const TextField = <
                 : props["aria-describedby"]
             }
           />
-          <FieldError
-            id={`${field.name}-error`}
-            errors={[fieldState.error]}
-          />
+          <FieldError id={`${field.name}-error`} errors={[fieldState.error]} />
         </Field>
       )}
     />

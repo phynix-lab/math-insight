@@ -4,9 +4,10 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { MockProvider } from "@/components/providers/MockProvider"
 import { QueryProvider } from "@/components/providers/QueryProvider"
+import { RoleProvider } from "@/components/providers/RoleProvider"
 import { cn } from "@/lib/utils"
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'})
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 
 const fontMono = Geist_Mono({
   subsets: ["latin"],
@@ -22,14 +23,21 @@ export default function RootLayout({
 
   return (
     <html
-      lang="en"
+      lang="vi"
       suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", geist.variable)}
+      className={cn(
+        "antialiased",
+        fontMono.variable,
+        "font-sans",
+        geist.variable
+      )}
     >
       <body>
         <ThemeProvider>
           <MockProvider enabled={enableMock}>
-            <QueryProvider>{children}</QueryProvider>
+            <QueryProvider>
+              <RoleProvider>{children}</RoleProvider>
+            </QueryProvider>
           </MockProvider>
         </ThemeProvider>
       </body>
