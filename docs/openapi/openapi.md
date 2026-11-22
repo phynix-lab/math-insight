@@ -287,7 +287,7 @@ Gửi đơn đăng ký học sinh công khai qua server/Edge Function có captch
 ```json
 {
   "studentFullName": "",
-  "studentDob": "2026-11-21",
+  "studentDob": "2026-11-22",
   "requestedGrade": "",
   "requestedClassId": "123e4567-e89b-12d3-a456-426614174000",
   "studentPhone": "",
@@ -321,7 +321,7 @@ Gửi đơn đăng ký học sinh công khai qua server/Edge Function có captch
     "id": "123e4567-e89b-12d3-a456-426614174000",
     "applicationCode": "",
     "status": "pending_review",
-    "createdAt": "2026-11-21T01:01:43.457Z"
+    "createdAt": "2026-11-22T08:18:22.611Z"
   }
 }
 ```
@@ -522,7 +522,7 @@ Duyệt đơn: tạo tối đa 1 hồ sơ học sinh (hoặc liên kết hồ s�
       "id": "123e4567-e89b-12d3-a456-426614174000",
       "applicationCode": "",
       "studentFullName": "",
-      "studentDob": "2026-11-21",
+      "studentDob": "2026-11-22",
       "requestedGrade": "",
       "requestedClassId": "123e4567-e89b-12d3-a456-426614174000",
       "requestedClassName": "",
@@ -533,22 +533,22 @@ Duyệt đơn: tạo tối đa 1 hồ sơ học sinh (hoặc liên kết hồ s�
       "guardianPhone": "",
       "guardianEmail": "hello@example.com",
       "applicantNote": "",
-      "consentAt": "2026-11-21T01:01:43.463Z",
+      "consentAt": "2026-11-22T08:18:22.617Z",
       "consentVersion": "",
       "status": "pending_review",
       "reviewedBy": "123e4567-e89b-12d3-a456-426614174000",
       "reviewedByName": "",
-      "reviewedAt": "2026-11-21T01:01:43.463Z",
+      "reviewedAt": "2026-11-22T08:18:22.617Z",
       "reviewNote": "",
       "createdStudentId": "123e4567-e89b-12d3-a456-426614174000",
-      "createdAt": "2026-11-21T01:01:43.463Z",
-      "updatedAt": "2026-11-21T01:01:43.463Z"
+      "createdAt": "2026-11-22T08:18:22.617Z",
+      "updatedAt": "2026-11-22T08:18:22.617Z"
     },
     "student": {
       "id": "123e4567-e89b-12d3-a456-426614174000",
       "studentCode": "",
       "fullName": "",
-      "dateOfBirth": "2026-11-21",
+      "dateOfBirth": "2026-11-22",
       "gradeLevel": "",
       "studentPhone": "",
       "studentEmail": "hello@example.com",
@@ -559,11 +559,11 @@ Duyệt đơn: tạo tối đa 1 hồ sơ học sinh (hoặc liên kết hồ s�
       "status": "active",
       "authUserId": "123e4567-e89b-12d3-a456-426614174000",
       "accountStatus": "not_invited",
-      "invitedAt": "2026-11-21T01:01:43.463Z",
+      "invitedAt": "2026-11-22T08:18:22.617Z",
       "inviteAttempts": 0,
       "inviteLastError": "",
-      "createdAt": "2026-11-21T01:01:43.463Z",
-      "updatedAt": "2026-11-21T01:01:43.463Z"
+      "createdAt": "2026-11-22T08:18:22.617Z",
+      "updatedAt": "2026-11-22T08:18:22.617Z"
     },
     "enrollment": {
       "id": "123e4567-e89b-12d3-a456-426614174000",
@@ -573,11 +573,11 @@ Duyệt đơn: tạo tối đa 1 hồ sơ học sinh (hoặc liên kết hồ s�
       "classId": "123e4567-e89b-12d3-a456-426614174000",
       "classCode": "",
       "className": "",
-      "startDate": "2026-11-21",
-      "endDate": "2026-11-21",
+      "startDate": "2026-11-22",
+      "endDate": "2026-11-22",
       "status": "active",
-      "createdAt": "2026-11-21T01:01:43.464Z",
-      "updatedAt": "2026-11-21T01:01:43.464Z"
+      "createdAt": "2026-11-22T08:18:22.617Z",
+      "updatedAt": "2026-11-22T08:18:22.617Z"
     }
   }
 }
@@ -650,7 +650,7 @@ Từ chối đơn đăng ký; bắt buộc ghi rõ reviewNote (FR-012).
     "id": "123e4567-e89b-12d3-a456-426614174000",
     "applicationCode": "",
     "studentFullName": "",
-    "studentDob": "2026-11-21",
+    "studentDob": "2026-11-22",
     "requestedGrade": "",
     "requestedClassId": "123e4567-e89b-12d3-a456-426614174000",
     "requestedClassName": "",
@@ -661,16 +661,16 @@ Từ chối đơn đăng ký; bắt buộc ghi rõ reviewNote (FR-012).
     "guardianPhone": "",
     "guardianEmail": "hello@example.com",
     "applicantNote": "",
-    "consentAt": "2026-11-21T01:01:43.466Z",
+    "consentAt": "2026-11-22T08:18:22.619Z",
     "consentVersion": "",
     "status": "pending_review",
     "reviewedBy": "123e4567-e89b-12d3-a456-426614174000",
     "reviewedByName": "",
-    "reviewedAt": "2026-11-21T01:01:43.466Z",
+    "reviewedAt": "2026-11-22T08:18:22.619Z",
     "reviewNote": "",
     "createdStudentId": "123e4567-e89b-12d3-a456-426614174000",
-    "createdAt": "2026-11-21T01:01:43.466Z",
-    "updatedAt": "2026-11-21T01:01:43.466Z"
+    "createdAt": "2026-11-22T08:18:22.620Z",
+    "updatedAt": "2026-11-22T08:18:22.620Z"
   }
 }
 ```
@@ -734,7 +734,7 @@ Chuyển đơn sang trạng thái cần bổ sung thông tin; bắt buộc ghi r
     "id": "123e4567-e89b-12d3-a456-426614174000",
     "applicationCode": "",
     "studentFullName": "",
-    "studentDob": "2026-11-21",
+    "studentDob": "2026-11-22",
     "requestedGrade": "",
     "requestedClassId": "123e4567-e89b-12d3-a456-426614174000",
     "requestedClassName": "",
@@ -745,16 +745,16 @@ Chuyển đơn sang trạng thái cần bổ sung thông tin; bắt buộc ghi r
     "guardianPhone": "",
     "guardianEmail": "hello@example.com",
     "applicantNote": "",
-    "consentAt": "2026-11-21T01:01:43.468Z",
+    "consentAt": "2026-11-22T08:18:22.622Z",
     "consentVersion": "",
     "status": "pending_review",
     "reviewedBy": "123e4567-e89b-12d3-a456-426614174000",
     "reviewedByName": "",
-    "reviewedAt": "2026-11-21T01:01:43.468Z",
+    "reviewedAt": "2026-11-22T08:18:22.622Z",
     "reviewNote": "",
     "createdStudentId": "123e4567-e89b-12d3-a456-426614174000",
-    "createdAt": "2026-11-21T01:01:43.469Z",
-    "updatedAt": "2026-11-21T01:01:43.469Z"
+    "createdAt": "2026-11-22T08:18:22.622Z",
+    "updatedAt": "2026-11-22T08:18:22.622Z"
   }
 }
 ```
@@ -830,12 +830,12 @@ Chuyển đơn sang trạng thái cần bổ sung thông tin; bắt buộc ghi r
     "status": "present",
     "method": "qr",
     "tokenId": "123e4567-e89b-12d3-a456-426614174000",
-    "recordedAt": "2026-11-21T01:01:43.470Z",
+    "recordedAt": "2026-11-22T08:18:22.624Z",
     "recordedBy": "123e4567-e89b-12d3-a456-426614174000",
     "recordedByName": "",
     "reason": "",
-    "createdAt": "2026-11-21T01:01:43.470Z",
-    "updatedAt": "2026-11-21T01:01:43.470Z"
+    "createdAt": "2026-11-22T08:18:22.624Z",
+    "updatedAt": "2026-11-22T08:18:22.624Z"
   }
 }
 ```
@@ -902,7 +902,7 @@ Học sinh yêu cầu phát hành token QR ngắn hạn phía server cho buổi 
   "data": {
     "token": "",
     "sessionId": "123e4567-e89b-12d3-a456-426614174000",
-    "expiresAt": "2026-11-21T01:01:43.472Z",
+    "expiresAt": "2026-11-22T08:18:22.626Z",
     "ttlSeconds": 1
   }
 }
@@ -1057,12 +1057,12 @@ Cập nhật trạng thái điểm danh đã ghi; bắt buộc ghi lý do và đ
     "status": "present",
     "method": "qr",
     "tokenId": "123e4567-e89b-12d3-a456-426614174000",
-    "recordedAt": "2026-11-21T01:01:43.476Z",
+    "recordedAt": "2026-11-22T08:18:22.631Z",
     "recordedBy": "123e4567-e89b-12d3-a456-426614174000",
     "recordedByName": "",
     "reason": "",
-    "createdAt": "2026-11-21T01:01:43.476Z",
-    "updatedAt": "2026-11-21T01:01:43.476Z"
+    "createdAt": "2026-11-22T08:18:22.631Z",
+    "updatedAt": "2026-11-22T08:18:22.631Z"
   }
 }
 ```
@@ -1139,12 +1139,12 @@ Giáo viên phụ trách/dạy thay hoặc Admin quét QR điểm danh; trả v�
       "status": "present",
       "method": "qr",
       "tokenId": "123e4567-e89b-12d3-a456-426614174000",
-      "recordedAt": "2026-11-21T01:01:43.478Z",
+      "recordedAt": "2026-11-22T08:18:22.632Z",
       "recordedBy": "123e4567-e89b-12d3-a456-426614174000",
       "recordedByName": "",
       "reason": "",
-      "createdAt": "2026-11-21T01:01:43.478Z",
-      "updatedAt": "2026-11-21T01:01:43.478Z"
+      "createdAt": "2026-11-22T08:18:22.632Z",
+      "updatedAt": "2026-11-22T08:18:22.632Z"
     },
     "studentCode": "",
     "studentFullName": ""
@@ -1337,7 +1337,7 @@ Tra cứu nhật ký thao tác hệ thống append-only (chỉ Admin có quyền
 - **Operation ID:** `Auth_login`
 - **Tags:** Auth
 
-Đăng nhập bằng email và mật khẩu qua Supabase Auth (FR-001).
+Đăng nhập bằng email và mật khẩu (FR-001).
 
 **Servers:** [Inherited servers](#scalar-context-global-servers)
 
@@ -1349,14 +1349,12 @@ Tra cứu nhật ký thao tác hệ thống append-only (chỉ Admin có quyền
 
 [LoginRequest](#scalar-schema-loginrequest)
 
-<a id="scalar-example-17"></a>
-
-**Generated example:**
+**Example:**
 
 ```json
 {
-  "email": "hello@example.com",
-  "password": ""
+  "email": "admin@mathinsight.edu.vn",
+  "password": "password123"
 }
 ```
 
@@ -1368,34 +1366,33 @@ Tra cứu nhật ký thao tác hệ thống append-only (chỉ Admin có quyền
 
 - **`data` (required)**: [AuthSession](#scalar-schema-authsession)
 
-<a id="scalar-example-18"></a>
-
-**Generated example:**
+**Example:**
 
 ```json
 {
   "data": {
     "user": {
-      "userId": "123e4567-e89b-12d3-a456-426614174000",
-      "email": "hello@example.com",
-      "displayName": "",
-      "phone": "",
+      "userId": "550e8400-e29b-41d4-a716-446655440001",
+      "email": "admin@mathinsight.edu.vn",
+      "displayName": "Nguyễn Quốc Huy",
+      "phone": "0901234567",
       "isActive": true,
       "canReviewApplications": true,
       "roles": [
         "admin"
       ],
-      "studentId": "123e4567-e89b-12d3-a456-426614174000"
+      "studentId": null
     },
-    "expiresAt": "2026-11-21T01:01:43.485Z"
+    "expiresAt": "2026-11-29T00:00:00Z"
   }
 }
 ```
 
-##### 400, 401
+##### 400, 401, 403
 
 - `400` The server could not understand the request due to invalid syntax.
 - `401` Access is unauthorized.
+- `403` Access is forbidden.
 
 **Content type:** `application/json`
 
@@ -1497,7 +1494,7 @@ Làm mới phiên đăng nhập bằng refresh cookie.
 
 - **`data` (required)**: [AuthSession](#scalar-schema-authsession)
 
-<a id="scalar-example-19"></a>
+<a id="scalar-example-17"></a>
 
 **Generated example:**
 
@@ -1516,7 +1513,7 @@ Làm mới phiên đăng nhập bằng refresh cookie.
       ],
       "studentId": "123e4567-e89b-12d3-a456-426614174000"
     },
-    "expiresAt": "2026-11-21T01:01:43.488Z"
+    "expiresAt": "2026-11-22T08:18:22.640Z"
   }
 }
 ```
@@ -1640,7 +1637,7 @@ Tạo lớp học mới và gán giáo viên phụ trách (Admin, FR-002).
 
 [CreateClassRequest](#scalar-schema-createclassrequest)
 
-<a id="scalar-example-20"></a>
+<a id="scalar-example-18"></a>
 
 **Generated example:**
 
@@ -1653,8 +1650,8 @@ Tạo lớp học mới và gán giáo viên phụ trách (Admin, FR-002).
   "scheduleText": "",
   "room": "",
   "maxStudents": 1,
-  "startDate": "2026-11-21",
-  "endDate": "2026-11-21",
+  "startDate": "2026-11-22",
+  "endDate": "2026-11-22",
   "status": "upcoming"
 }
 ```
@@ -1667,7 +1664,7 @@ Tạo lớp học mới và gán giáo viên phụ trách (Admin, FR-002).
 
 - **`data` (required)**: [ClassItem](#scalar-schema-classitem)
 
-<a id="scalar-example-21"></a>
+<a id="scalar-example-19"></a>
 
 **Generated example:**
 
@@ -1683,12 +1680,12 @@ Tạo lớp học mới và gán giáo viên phụ trách (Admin, FR-002).
     "scheduleText": "",
     "room": "",
     "maxStudents": 1,
-    "startDate": "2026-11-21",
-    "endDate": "2026-11-21",
+    "startDate": "2026-11-22",
+    "endDate": "2026-11-22",
     "status": "upcoming",
     "activeStudentCount": 0,
-    "createdAt": "2026-11-21T01:01:43.492Z",
-    "updatedAt": "2026-11-21T01:01:43.492Z"
+    "createdAt": "2026-11-22T08:18:22.644Z",
+    "updatedAt": "2026-11-22T08:18:22.644Z"
   }
 }
 ```
@@ -1792,7 +1789,7 @@ Cập nhật thông tin lớp, giáo viên phụ trách hoặc ngừng hoạt đ
 
 [UpdateClassRequest](#scalar-schema-updateclassrequest)
 
-<a id="scalar-example-22"></a>
+<a id="scalar-example-20"></a>
 
 **Generated example:**
 
@@ -1804,8 +1801,8 @@ Cập nhật thông tin lớp, giáo viên phụ trách hoặc ngừng hoạt đ
   "scheduleText": "",
   "room": "",
   "maxStudents": 1,
-  "startDate": "2026-11-21",
-  "endDate": "2026-11-21",
+  "startDate": "2026-11-22",
+  "endDate": "2026-11-22",
   "status": "upcoming"
 }
 ```
@@ -1818,7 +1815,7 @@ Cập nhật thông tin lớp, giáo viên phụ trách hoặc ngừng hoạt đ
 
 - **`data` (required)**: [ClassItem](#scalar-schema-classitem)
 
-<a id="scalar-example-23"></a>
+<a id="scalar-example-21"></a>
 
 **Generated example:**
 
@@ -1834,12 +1831,12 @@ Cập nhật thông tin lớp, giáo viên phụ trách hoặc ngừng hoạt đ
     "scheduleText": "",
     "room": "",
     "maxStudents": 1,
-    "startDate": "2026-11-21",
-    "endDate": "2026-11-21",
+    "startDate": "2026-11-22",
+    "endDate": "2026-11-22",
     "status": "upcoming",
     "activeStudentCount": 0,
-    "createdAt": "2026-11-21T01:01:43.494Z",
-    "updatedAt": "2026-11-21T01:01:43.494Z"
+    "createdAt": "2026-11-22T08:18:22.647Z",
+    "updatedAt": "2026-11-22T08:18:22.647Z"
   }
 }
 ```
@@ -1956,14 +1953,14 @@ Ghi danh học sinh vào lớp; chặn trùng ghi danh đang active (Admin, FR-0
 
 [CreateEnrollmentRequest](#scalar-schema-createenrollmentrequest)
 
-<a id="scalar-example-24"></a>
+<a id="scalar-example-22"></a>
 
 **Generated example:**
 
 ```json
 {
   "studentId": "123e4567-e89b-12d3-a456-426614174000",
-  "startDate": "2026-11-21"
+  "startDate": "2026-11-22"
 }
 ```
 
@@ -1975,7 +1972,7 @@ Ghi danh học sinh vào lớp; chặn trùng ghi danh đang active (Admin, FR-0
 
 - **`data` (required)**: [Enrollment](#scalar-schema-enrollment)
 
-<a id="scalar-example-25"></a>
+<a id="scalar-example-23"></a>
 
 **Generated example:**
 
@@ -1989,11 +1986,11 @@ Ghi danh học sinh vào lớp; chặn trùng ghi danh đang active (Admin, FR-0
     "classId": "123e4567-e89b-12d3-a456-426614174000",
     "classCode": "",
     "className": "",
-    "startDate": "2026-11-21",
-    "endDate": "2026-11-21",
+    "startDate": "2026-11-22",
+    "endDate": "2026-11-22",
     "status": "active",
-    "createdAt": "2026-11-21T01:01:43.497Z",
-    "updatedAt": "2026-11-21T01:01:43.497Z"
+    "createdAt": "2026-11-22T08:18:22.650Z",
+    "updatedAt": "2026-11-22T08:18:22.650Z"
   }
 }
 ```
@@ -2038,14 +2035,14 @@ Cập nhật trạng thái ghi danh (ended/cancelled yêu cầu endDate, Admin, 
 
 [UpdateEnrollmentRequest](#scalar-schema-updateenrollmentrequest)
 
-<a id="scalar-example-26"></a>
+<a id="scalar-example-24"></a>
 
 **Generated example:**
 
 ```json
 {
   "status": "active",
-  "endDate": "2026-11-21"
+  "endDate": "2026-11-22"
 }
 ```
 
@@ -2057,7 +2054,7 @@ Cập nhật trạng thái ghi danh (ended/cancelled yêu cầu endDate, Admin, 
 
 - **`data` (required)**: [Enrollment](#scalar-schema-enrollment)
 
-<a id="scalar-example-27"></a>
+<a id="scalar-example-25"></a>
 
 **Generated example:**
 
@@ -2071,11 +2068,11 @@ Cập nhật trạng thái ghi danh (ended/cancelled yêu cầu endDate, Admin, 
     "classId": "123e4567-e89b-12d3-a456-426614174000",
     "classCode": "",
     "className": "",
-    "startDate": "2026-11-21",
-    "endDate": "2026-11-21",
+    "startDate": "2026-11-22",
+    "endDate": "2026-11-22",
     "status": "active",
-    "createdAt": "2026-11-21T01:01:43.499Z",
-    "updatedAt": "2026-11-21T01:01:43.499Z"
+    "createdAt": "2026-11-22T08:18:22.652Z",
+    "updatedAt": "2026-11-22T08:18:22.652Z"
   }
 }
 ```
@@ -2260,7 +2257,7 @@ Tạo buổi học mới cho lớp đang hoạt động kèm cửa sổ điểm 
 
 [CreateSessionRequest](#scalar-schema-createsessionrequest)
 
-<a id="scalar-example-28"></a>
+<a id="scalar-example-26"></a>
 
 **Generated example:**
 
@@ -2269,10 +2266,10 @@ Tạo buổi học mới cho lớp đang hoạt động kèm cửa sổ điểm 
   "classId": "123e4567-e89b-12d3-a456-426614174000",
   "sessionNo": 1,
   "title": "",
-  "startsAt": "2026-11-21T01:01:43.504Z",
-  "endsAt": "2026-11-21T01:01:43.504Z",
-  "attendanceOpensAt": "2026-11-21T01:01:43.504Z",
-  "attendanceClosesAt": "2026-11-21T01:01:43.504Z",
+  "startsAt": "2026-11-22T08:18:22.659Z",
+  "endsAt": "2026-11-22T08:18:22.659Z",
+  "attendanceOpensAt": "2026-11-22T08:18:22.659Z",
+  "attendanceClosesAt": "2026-11-22T08:18:22.659Z",
   "substituteTeacherUserId": "123e4567-e89b-12d3-a456-426614174000"
 }
 ```
@@ -2285,7 +2282,7 @@ Tạo buổi học mới cho lớp đang hoạt động kèm cửa sổ điểm 
 
 - **`data` (required)**: [ClassSession](#scalar-schema-classsession)
 
-<a id="scalar-example-29"></a>
+<a id="scalar-example-27"></a>
 
 **Generated example:**
 
@@ -2298,18 +2295,18 @@ Tạo buổi học mới cho lớp đang hoạt động kèm cửa sổ điểm 
     "className": "",
     "sessionNo": 1,
     "title": "",
-    "startsAt": "2026-11-21T01:01:43.504Z",
-    "endsAt": "2026-11-21T01:01:43.504Z",
-    "attendanceOpensAt": "2026-11-21T01:01:43.504Z",
-    "attendanceClosesAt": "2026-11-21T01:01:43.504Z",
+    "startsAt": "2026-11-22T08:18:22.659Z",
+    "endsAt": "2026-11-22T08:18:22.659Z",
+    "attendanceOpensAt": "2026-11-22T08:18:22.659Z",
+    "attendanceClosesAt": "2026-11-22T08:18:22.659Z",
     "substituteTeacherUserId": "123e4567-e89b-12d3-a456-426614174000",
     "substituteTeacherName": "",
     "status": "scheduled",
     "effectiveStatus": "scheduled",
-    "closedAt": "2026-11-21T01:01:43.504Z",
+    "closedAt": "2026-11-22T08:18:22.659Z",
     "createdBy": "123e4567-e89b-12d3-a456-426614174000",
-    "createdAt": "2026-11-21T01:01:43.504Z",
-    "updatedAt": "2026-11-21T01:01:43.504Z"
+    "createdAt": "2026-11-22T08:18:22.659Z",
+    "updatedAt": "2026-11-22T08:18:22.659Z"
   }
 }
 ```
@@ -2425,17 +2422,17 @@ Cập nhật thời gian, cửa sổ điểm danh, giáo viên dạy thay hoặc
 
 [UpdateSessionRequest](#scalar-schema-updatesessionrequest)
 
-<a id="scalar-example-30"></a>
+<a id="scalar-example-28"></a>
 
 **Generated example:**
 
 ```json
 {
   "title": "",
-  "startsAt": "2026-11-21T01:01:43.506Z",
-  "endsAt": "2026-11-21T01:01:43.506Z",
-  "attendanceOpensAt": "2026-11-21T01:01:43.506Z",
-  "attendanceClosesAt": "2026-11-21T01:01:43.506Z",
+  "startsAt": "2026-11-22T08:18:22.662Z",
+  "endsAt": "2026-11-22T08:18:22.662Z",
+  "attendanceOpensAt": "2026-11-22T08:18:22.662Z",
+  "attendanceClosesAt": "2026-11-22T08:18:22.662Z",
   "substituteTeacherUserId": "123e4567-e89b-12d3-a456-426614174000",
   "status": "scheduled"
 }
@@ -2449,7 +2446,7 @@ Cập nhật thời gian, cửa sổ điểm danh, giáo viên dạy thay hoặc
 
 - **`data` (required)**: [ClassSession](#scalar-schema-classsession)
 
-<a id="scalar-example-31"></a>
+<a id="scalar-example-29"></a>
 
 **Generated example:**
 
@@ -2462,18 +2459,18 @@ Cập nhật thời gian, cửa sổ điểm danh, giáo viên dạy thay hoặc
     "className": "",
     "sessionNo": 1,
     "title": "",
-    "startsAt": "2026-11-21T01:01:43.507Z",
-    "endsAt": "2026-11-21T01:01:43.507Z",
-    "attendanceOpensAt": "2026-11-21T01:01:43.507Z",
-    "attendanceClosesAt": "2026-11-21T01:01:43.507Z",
+    "startsAt": "2026-11-22T08:18:22.662Z",
+    "endsAt": "2026-11-22T08:18:22.662Z",
+    "attendanceOpensAt": "2026-11-22T08:18:22.662Z",
+    "attendanceClosesAt": "2026-11-22T08:18:22.662Z",
     "substituteTeacherUserId": "123e4567-e89b-12d3-a456-426614174000",
     "substituteTeacherName": "",
     "status": "scheduled",
     "effectiveStatus": "scheduled",
-    "closedAt": "2026-11-21T01:01:43.507Z",
+    "closedAt": "2026-11-22T08:18:22.662Z",
     "createdBy": "123e4567-e89b-12d3-a456-426614174000",
-    "createdAt": "2026-11-21T01:01:43.507Z",
-    "updatedAt": "2026-11-21T01:01:43.507Z"
+    "createdAt": "2026-11-22T08:18:22.662Z",
+    "updatedAt": "2026-11-22T08:18:22.662Z"
   }
 }
 ```
@@ -2517,7 +2514,7 @@ Cập nhật thời gian, cửa sổ điểm danh, giáo viên dạy thay hoặc
 
 - **`data` (required)**: [CloseSessionResult](#scalar-schema-closesessionresult)
 
-<a id="scalar-example-32"></a>
+<a id="scalar-example-30"></a>
 
 **Generated example:**
 
@@ -2531,18 +2528,18 @@ Cập nhật thời gian, cửa sổ điểm danh, giáo viên dạy thay hoặc
       "className": "",
       "sessionNo": 1,
       "title": "",
-      "startsAt": "2026-11-21T01:01:43.509Z",
-      "endsAt": "2026-11-21T01:01:43.509Z",
-      "attendanceOpensAt": "2026-11-21T01:01:43.509Z",
-      "attendanceClosesAt": "2026-11-21T01:01:43.509Z",
+      "startsAt": "2026-11-22T08:18:22.664Z",
+      "endsAt": "2026-11-22T08:18:22.664Z",
+      "attendanceOpensAt": "2026-11-22T08:18:22.664Z",
+      "attendanceClosesAt": "2026-11-22T08:18:22.664Z",
       "substituteTeacherUserId": "123e4567-e89b-12d3-a456-426614174000",
       "substituteTeacherName": "",
       "status": "scheduled",
       "effectiveStatus": "scheduled",
-      "closedAt": "2026-11-21T01:01:43.509Z",
+      "closedAt": "2026-11-22T08:18:22.664Z",
       "createdBy": "123e4567-e89b-12d3-a456-426614174000",
-      "createdAt": "2026-11-21T01:01:43.509Z",
-      "updatedAt": "2026-11-21T01:01:43.509Z"
+      "createdAt": "2026-11-22T08:18:22.664Z",
+      "updatedAt": "2026-11-22T08:18:22.664Z"
     },
     "generatedAbsentCount": 0,
     "revokedTokenCount": 0
@@ -2684,7 +2681,7 @@ Tạo hồ sơ học sinh thủ công và tùy chọn ghi danh lớp ban đầu 
 
 [CreateStudentRequest](#scalar-schema-createstudentrequest)
 
-<a id="scalar-example-33"></a>
+<a id="scalar-example-31"></a>
 
 **Generated example:**
 
@@ -2692,7 +2689,7 @@ Tạo hồ sơ học sinh thủ công và tùy chọn ghi danh lớp ban đầu 
 {
   "studentCode": "",
   "fullName": "",
-  "dateOfBirth": "2026-11-21",
+  "dateOfBirth": "2026-11-22",
   "gradeLevel": "",
   "studentPhone": "",
   "studentEmail": "hello@example.com",
@@ -2713,7 +2710,7 @@ Tạo hồ sơ học sinh thủ công và tùy chọn ghi danh lớp ban đầu 
 
 - **`data` (required)**: [Student](#scalar-schema-student)
 
-<a id="scalar-example-34"></a>
+<a id="scalar-example-32"></a>
 
 **Generated example:**
 
@@ -2723,7 +2720,7 @@ Tạo hồ sơ học sinh thủ công và tùy chọn ghi danh lớp ban đầu 
     "id": "123e4567-e89b-12d3-a456-426614174000",
     "studentCode": "",
     "fullName": "",
-    "dateOfBirth": "2026-11-21",
+    "dateOfBirth": "2026-11-22",
     "gradeLevel": "",
     "studentPhone": "",
     "studentEmail": "hello@example.com",
@@ -2734,11 +2731,11 @@ Tạo hồ sơ học sinh thủ công và tùy chọn ghi danh lớp ban đầu 
     "status": "active",
     "authUserId": "123e4567-e89b-12d3-a456-426614174000",
     "accountStatus": "not_invited",
-    "invitedAt": "2026-11-21T01:01:43.514Z",
+    "invitedAt": "2026-11-22T08:18:22.668Z",
     "inviteAttempts": 0,
     "inviteLastError": "",
-    "createdAt": "2026-11-21T01:01:43.514Z",
-    "updatedAt": "2026-11-21T01:01:43.514Z"
+    "createdAt": "2026-11-22T08:18:22.668Z",
+    "updatedAt": "2026-11-22T08:18:22.668Z"
   }
 }
 ```
@@ -2907,14 +2904,14 @@ Cập nhật hồ sơ học sinh (Admin, FR-003).
 
 [UpdateStudentRequest](#scalar-schema-updatestudentrequest)
 
-<a id="scalar-example-35"></a>
+<a id="scalar-example-33"></a>
 
 **Generated example:**
 
 ```json
 {
   "fullName": "",
-  "dateOfBirth": "2026-11-21",
+  "dateOfBirth": "2026-11-22",
   "gradeLevel": "",
   "studentPhone": "",
   "studentEmail": "hello@example.com",
@@ -2934,7 +2931,7 @@ Cập nhật hồ sơ học sinh (Admin, FR-003).
 
 - **`data` (required)**: [Student](#scalar-schema-student)
 
-<a id="scalar-example-36"></a>
+<a id="scalar-example-34"></a>
 
 **Generated example:**
 
@@ -2944,7 +2941,7 @@ Cập nhật hồ sơ học sinh (Admin, FR-003).
     "id": "123e4567-e89b-12d3-a456-426614174000",
     "studentCode": "",
     "fullName": "",
-    "dateOfBirth": "2026-11-21",
+    "dateOfBirth": "2026-11-22",
     "gradeLevel": "",
     "studentPhone": "",
     "studentEmail": "hello@example.com",
@@ -2955,11 +2952,11 @@ Cập nhật hồ sơ học sinh (Admin, FR-003).
     "status": "active",
     "authUserId": "123e4567-e89b-12d3-a456-426614174000",
     "accountStatus": "not_invited",
-    "invitedAt": "2026-11-21T01:01:43.517Z",
+    "invitedAt": "2026-11-22T08:18:22.671Z",
     "inviteAttempts": 0,
     "inviteLastError": "",
-    "createdAt": "2026-11-21T01:01:43.517Z",
-    "updatedAt": "2026-11-21T01:01:43.517Z"
+    "createdAt": "2026-11-22T08:18:22.671Z",
+    "updatedAt": "2026-11-22T08:18:22.671Z"
   }
 }
 ```
@@ -3076,7 +3073,7 @@ Gửi hoặc gửi lại lời mời kích hoạt tài khoản cho hồ sơ họ
 
 [InviteStudentAccountRequest](#scalar-schema-invitestudentaccountrequest)
 
-<a id="scalar-example-37"></a>
+<a id="scalar-example-35"></a>
 
 **Generated example:**
 
@@ -3094,7 +3091,7 @@ Gửi hoặc gửi lại lời mời kích hoạt tài khoản cho hồ sơ họ
 
 - **`data` (required)**: [Student](#scalar-schema-student)
 
-<a id="scalar-example-38"></a>
+<a id="scalar-example-36"></a>
 
 **Generated example:**
 
@@ -3104,7 +3101,7 @@ Gửi hoặc gửi lại lời mời kích hoạt tài khoản cho hồ sơ họ
     "id": "123e4567-e89b-12d3-a456-426614174000",
     "studentCode": "",
     "fullName": "",
-    "dateOfBirth": "2026-11-21",
+    "dateOfBirth": "2026-11-22",
     "gradeLevel": "",
     "studentPhone": "",
     "studentEmail": "hello@example.com",
@@ -3115,11 +3112,11 @@ Gửi hoặc gửi lại lời mời kích hoạt tài khoản cho hồ sơ họ
     "status": "active",
     "authUserId": "123e4567-e89b-12d3-a456-426614174000",
     "accountStatus": "not_invited",
-    "invitedAt": "2026-11-21T01:01:43.522Z",
+    "invitedAt": "2026-11-22T08:18:22.674Z",
     "inviteAttempts": 0,
     "inviteLastError": "",
-    "createdAt": "2026-11-21T01:01:43.522Z",
-    "updatedAt": "2026-11-21T01:01:43.522Z"
+    "createdAt": "2026-11-22T08:18:22.674Z",
+    "updatedAt": "2026-11-22T08:18:22.674Z"
   }
 }
 ```
@@ -3163,7 +3160,7 @@ Liên kết tài khoản đăng nhập có sẵn với hồ sơ học sinh (Admi
 
 [LinkStudentAccountRequest](#scalar-schema-linkstudentaccountrequest)
 
-<a id="scalar-example-39"></a>
+<a id="scalar-example-37"></a>
 
 **Generated example:**
 
@@ -3181,7 +3178,7 @@ Liên kết tài khoản đăng nhập có sẵn với hồ sơ học sinh (Admi
 
 - **`data` (required)**: [Student](#scalar-schema-student)
 
-<a id="scalar-example-40"></a>
+<a id="scalar-example-38"></a>
 
 **Generated example:**
 
@@ -3191,7 +3188,7 @@ Liên kết tài khoản đăng nhập có sẵn với hồ sơ học sinh (Admi
     "id": "123e4567-e89b-12d3-a456-426614174000",
     "studentCode": "",
     "fullName": "",
-    "dateOfBirth": "2026-11-21",
+    "dateOfBirth": "2026-11-22",
     "gradeLevel": "",
     "studentPhone": "",
     "studentEmail": "hello@example.com",
@@ -3202,11 +3199,11 @@ Liên kết tài khoản đăng nhập có sẵn với hồ sơ học sinh (Admi
     "status": "active",
     "authUserId": "123e4567-e89b-12d3-a456-426614174000",
     "accountStatus": "not_invited",
-    "invitedAt": "2026-11-21T01:01:43.524Z",
+    "invitedAt": "2026-11-22T08:18:22.677Z",
     "inviteAttempts": 0,
     "inviteLastError": "",
-    "createdAt": "2026-11-21T01:01:43.524Z",
-    "updatedAt": "2026-11-21T01:01:43.524Z"
+    "createdAt": "2026-11-22T08:18:22.677Z",
+    "updatedAt": "2026-11-22T08:18:22.677Z"
   }
 }
 ```
@@ -3320,7 +3317,7 @@ Liên kết tài khoản đăng nhập có sẵn với hồ sơ học sinh (Admi
 
 [CreateTodoRequest](#scalar-schema-createtodorequest)
 
-<a id="scalar-example-41"></a>
+<a id="scalar-example-39"></a>
 
 **Generated example:**
 
@@ -3341,7 +3338,7 @@ Liên kết tài khoản đăng nhập có sẵn với hồ sơ học sinh (Admi
 
 - **`data` (required)**: [Common.IdPayload](#scalar-schema-commonidpayload)
 
-<a id="scalar-example-42"></a>
+<a id="scalar-example-40"></a>
 
 **Generated example:**
 
@@ -3431,7 +3428,7 @@ Liên kết tài khoản đăng nhập có sẵn với hồ sơ học sinh (Admi
 
 [UpdateTodoRequest](#scalar-schema-updatetodorequest)
 
-<a id="scalar-example-43"></a>
+<a id="scalar-example-41"></a>
 
 **Generated example:**
 
@@ -3589,7 +3586,7 @@ Tạo tài khoản giáo viên hoặc quản trị viên mới (Admin).
 
 [CreateUserRequest](#scalar-schema-createuserrequest)
 
-<a id="scalar-example-44"></a>
+<a id="scalar-example-42"></a>
 
 **Generated example:**
 
@@ -3613,7 +3610,7 @@ Tạo tài khoản giáo viên hoặc quản trị viên mới (Admin).
 
 - **`data` (required)**: [UserProfile](#scalar-schema-userprofile)
 
-<a id="scalar-example-45"></a>
+<a id="scalar-example-43"></a>
 
 **Generated example:**
 
@@ -3629,8 +3626,8 @@ Tạo tài khoản giáo viên hoặc quản trị viên mới (Admin).
     "roles": [
       "admin"
     ],
-    "createdAt": "2026-11-21T01:01:43.533Z",
-    "updatedAt": "2026-11-21T01:01:43.533Z"
+    "createdAt": "2026-11-22T08:18:22.684Z",
+    "updatedAt": "2026-11-22T08:18:22.684Z"
   }
 }
 ```
@@ -3669,7 +3666,7 @@ Tự cập nhật tên hiển thị và số điện thoại của tài khoản 
 
 [UpdateMyProfileRequest](#scalar-schema-updatemyprofilerequest)
 
-<a id="scalar-example-46"></a>
+<a id="scalar-example-44"></a>
 
 **Generated example:**
 
@@ -3688,7 +3685,7 @@ Tự cập nhật tên hiển thị và số điện thoại của tài khoản 
 
 - **`data` (required)**: [UserProfile](#scalar-schema-userprofile)
 
-<a id="scalar-example-47"></a>
+<a id="scalar-example-45"></a>
 
 **Generated example:**
 
@@ -3704,8 +3701,8 @@ Tự cập nhật tên hiển thị và số điện thoại của tài khoản 
     "roles": [
       "admin"
     ],
-    "createdAt": "2026-11-21T01:01:43.535Z",
-    "updatedAt": "2026-11-21T01:01:43.535Z"
+    "createdAt": "2026-11-22T08:18:22.685Z",
+    "updatedAt": "2026-11-22T08:18:22.685Z"
   }
 }
 ```
@@ -3803,7 +3800,7 @@ Admin cập nhật hồ sơ, trạng thái hoạt động hoặc cờ duyệt đ
 
 [UpdateUserRequest](#scalar-schema-updateuserrequest)
 
-<a id="scalar-example-48"></a>
+<a id="scalar-example-46"></a>
 
 **Generated example:**
 
@@ -3824,7 +3821,7 @@ Admin cập nhật hồ sơ, trạng thái hoạt động hoặc cờ duyệt đ
 
 - **`data` (required)**: [UserProfile](#scalar-schema-userprofile)
 
-<a id="scalar-example-49"></a>
+<a id="scalar-example-47"></a>
 
 **Generated example:**
 
@@ -3840,8 +3837,8 @@ Admin cập nhật hồ sơ, trạng thái hoạt động hoặc cờ duyệt đ
     "roles": [
       "admin"
     ],
-    "createdAt": "2026-11-21T01:01:43.537Z",
-    "updatedAt": "2026-11-21T01:01:43.537Z"
+    "createdAt": "2026-11-22T08:18:22.688Z",
+    "updatedAt": "2026-11-22T08:18:22.688Z"
   }
 }
 ```
@@ -3884,7 +3881,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 
 [UpdateUserRolesRequest](#scalar-schema-updateuserrolesrequest)
 
-<a id="scalar-example-50"></a>
+<a id="scalar-example-48"></a>
 
 **Generated example:**
 
@@ -3904,7 +3901,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 
 - **`data` (required)**: [UserProfile](#scalar-schema-userprofile)
 
-<a id="scalar-example-51"></a>
+<a id="scalar-example-49"></a>
 
 **Generated example:**
 
@@ -3920,8 +3917,8 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
     "roles": [
       "admin"
     ],
-    "createdAt": "2026-11-21T01:01:43.539Z",
-    "updatedAt": "2026-11-21T01:01:43.539Z"
+    "createdAt": "2026-11-22T08:18:22.689Z",
+    "updatedAt": "2026-11-22T08:18:22.689Z"
   }
 }
 ```
@@ -3975,7 +3972,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`note` (required)**: `string | null`
 - **`toStatus` (required)**: `string`, possible values: `"pending_review", "need_more_info", "approved", "rejected"`
 
-<a id="scalar-example-52"></a>
+<a id="scalar-example-50"></a>
 
 **Generated example:**
 
@@ -3988,7 +3985,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   "changedBy": "123e4567-e89b-12d3-a456-426614174000",
   "changedByName": "",
   "note": "",
-  "changedAt": "2026-11-21T01:01:43.541Z"
+  "changedAt": "2026-11-22T08:18:22.692Z"
 }
 ```
 
@@ -4008,7 +4005,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   - `null`
 - **`sendInvite`**: `boolean`, default: `true`
 
-<a id="scalar-example-53"></a>
+<a id="scalar-example-51"></a>
 
 **Generated example:**
 
@@ -4032,7 +4029,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`enrollment` (required)**: [Enrollment](#scalar-schema-enrollment) | `null`
 - **`student` (required)**: [Student](#scalar-schema-student)
 
-<a id="scalar-example-54"></a>
+<a id="scalar-example-52"></a>
 
 **Generated example:**
 
@@ -4042,7 +4039,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
     "id": "123e4567-e89b-12d3-a456-426614174000",
     "applicationCode": "",
     "studentFullName": "",
-    "studentDob": "2026-11-21",
+    "studentDob": "2026-11-22",
     "requestedGrade": "",
     "requestedClassId": "123e4567-e89b-12d3-a456-426614174000",
     "requestedClassName": "",
@@ -4053,22 +4050,22 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
     "guardianPhone": "",
     "guardianEmail": "hello@example.com",
     "applicantNote": "",
-    "consentAt": "2026-11-21T01:01:43.544Z",
+    "consentAt": "2026-11-22T08:18:22.695Z",
     "consentVersion": "",
     "status": "pending_review",
     "reviewedBy": "123e4567-e89b-12d3-a456-426614174000",
     "reviewedByName": "",
-    "reviewedAt": "2026-11-21T01:01:43.544Z",
+    "reviewedAt": "2026-11-22T08:18:22.695Z",
     "reviewNote": "",
     "createdStudentId": "123e4567-e89b-12d3-a456-426614174000",
-    "createdAt": "2026-11-21T01:01:43.544Z",
-    "updatedAt": "2026-11-21T01:01:43.544Z"
+    "createdAt": "2026-11-22T08:18:22.695Z",
+    "updatedAt": "2026-11-22T08:18:22.695Z"
   },
   "student": {
     "id": "123e4567-e89b-12d3-a456-426614174000",
     "studentCode": "",
     "fullName": "",
-    "dateOfBirth": "2026-11-21",
+    "dateOfBirth": "2026-11-22",
     "gradeLevel": "",
     "studentPhone": "",
     "studentEmail": "hello@example.com",
@@ -4079,11 +4076,11 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
     "status": "active",
     "authUserId": "123e4567-e89b-12d3-a456-426614174000",
     "accountStatus": "not_invited",
-    "invitedAt": "2026-11-21T01:01:43.544Z",
+    "invitedAt": "2026-11-22T08:18:22.695Z",
     "inviteAttempts": 0,
     "inviteLastError": "",
-    "createdAt": "2026-11-21T01:01:43.544Z",
-    "updatedAt": "2026-11-21T01:01:43.544Z"
+    "createdAt": "2026-11-22T08:18:22.695Z",
+    "updatedAt": "2026-11-22T08:18:22.695Z"
   },
   "enrollment": {
     "id": "123e4567-e89b-12d3-a456-426614174000",
@@ -4093,11 +4090,11 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
     "classId": "123e4567-e89b-12d3-a456-426614174000",
     "classCode": "",
     "className": "",
-    "startDate": "2026-11-21",
-    "endDate": "2026-11-21",
+    "startDate": "2026-11-22",
+    "endDate": "2026-11-22",
     "status": "active",
-    "createdAt": "2026-11-21T01:01:43.545Z",
-    "updatedAt": "2026-11-21T01:01:43.545Z"
+    "createdAt": "2026-11-22T08:18:22.695Z",
+    "updatedAt": "2026-11-22T08:18:22.695Z"
   }
 }
 ```
@@ -4119,7 +4116,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`token` (required)**: `string`, minLength: `1`
 - **`ttlSeconds` (required)**: `integer`, format: `int32`, minimum: `1`
 
-<a id="scalar-example-55"></a>
+<a id="scalar-example-53"></a>
 
 **Generated example:**
 
@@ -4127,7 +4124,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 {
   "token": "",
   "sessionId": "123e4567-e89b-12d3-a456-426614174000",
-  "expiresAt": "2026-11-21T01:01:43.545Z",
+  "expiresAt": "2026-11-22T08:18:22.696Z",
   "ttlSeconds": 1
 }
 ```
@@ -4153,7 +4150,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`tokenId` (required)**: `string | null`, format: `uuid`
 - **`updatedAt` (required)**: `string`, format: `date-time`
 
-<a id="scalar-example-56"></a>
+<a id="scalar-example-54"></a>
 
 **Generated example:**
 
@@ -4167,12 +4164,12 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   "status": "present",
   "method": "qr",
   "tokenId": "123e4567-e89b-12d3-a456-426614174000",
-  "recordedAt": "2026-11-21T01:01:43.546Z",
+  "recordedAt": "2026-11-22T08:18:22.697Z",
   "recordedBy": "123e4567-e89b-12d3-a456-426614174000",
   "recordedByName": "",
   "reason": "",
-  "createdAt": "2026-11-21T01:01:43.546Z",
-  "updatedAt": "2026-11-21T01:01:43.546Z"
+  "createdAt": "2026-11-22T08:18:22.697Z",
+  "updatedAt": "2026-11-22T08:18:22.697Z"
 }
 ```
 
@@ -4207,7 +4204,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`id` (required)**: `string`, format: `uuid`
 - **`reason` (required)**: `string | null`
 
-<a id="scalar-example-57"></a>
+<a id="scalar-example-55"></a>
 
 **Generated example:**
 
@@ -4226,7 +4223,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
     "additionalProperty": null
   },
   "reason": "",
-  "createdAt": "2026-11-21T01:01:43.548Z"
+  "createdAt": "2026-11-22T08:18:22.699Z"
 }
 ```
 
@@ -4239,7 +4236,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`expiresAt` (required)**: `string`, format: `date-time`
 - **`user` (required)**: [CurrentUser](#scalar-schema-currentuser)
 
-<a id="scalar-example-58"></a>
+<a id="scalar-example-56"></a>
 
 **Generated example:**
 
@@ -4257,7 +4254,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
     ],
     "studentId": "123e4567-e89b-12d3-a456-426614174000"
   },
-  "expiresAt": "2026-11-21T01:01:43.549Z"
+  "expiresAt": "2026-11-22T08:18:22.700Z"
 }
 ```
 
@@ -4291,7 +4288,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`teacherUserId` (required)**: `string`, format: `uuid`
 - **`updatedAt` (required)**: `string`, format: `date-time`
 
-<a id="scalar-example-59"></a>
+<a id="scalar-example-57"></a>
 
 **Generated example:**
 
@@ -4306,12 +4303,12 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   "scheduleText": "",
   "room": "",
   "maxStudents": 1,
-  "startDate": "2026-11-21",
-  "endDate": "2026-11-21",
+  "startDate": "2026-11-22",
+  "endDate": "2026-11-22",
   "status": "upcoming",
   "activeStudentCount": 0,
-  "createdAt": "2026-11-21T01:01:43.550Z",
-  "updatedAt": "2026-11-21T01:01:43.550Z"
+  "createdAt": "2026-11-22T08:18:22.700Z",
+  "updatedAt": "2026-11-22T08:18:22.700Z"
 }
 ```
 
@@ -4344,7 +4341,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   - `null`
 - **`updatedAt` (required)**: `string`, format: `date-time`
 
-<a id="scalar-example-60"></a>
+<a id="scalar-example-58"></a>
 
 **Generated example:**
 
@@ -4356,18 +4353,18 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   "className": "",
   "sessionNo": 1,
   "title": "",
-  "startsAt": "2026-11-21T01:01:43.552Z",
-  "endsAt": "2026-11-21T01:01:43.552Z",
-  "attendanceOpensAt": "2026-11-21T01:01:43.552Z",
-  "attendanceClosesAt": "2026-11-21T01:01:43.552Z",
+  "startsAt": "2026-11-22T08:18:22.702Z",
+  "endsAt": "2026-11-22T08:18:22.702Z",
+  "attendanceOpensAt": "2026-11-22T08:18:22.702Z",
+  "attendanceClosesAt": "2026-11-22T08:18:22.702Z",
   "substituteTeacherUserId": "123e4567-e89b-12d3-a456-426614174000",
   "substituteTeacherName": "",
   "status": "scheduled",
   "effectiveStatus": "scheduled",
-  "closedAt": "2026-11-21T01:01:43.552Z",
+  "closedAt": "2026-11-22T08:18:22.702Z",
   "createdBy": "123e4567-e89b-12d3-a456-426614174000",
-  "createdAt": "2026-11-21T01:01:43.552Z",
-  "updatedAt": "2026-11-21T01:01:43.552Z"
+  "createdAt": "2026-11-22T08:18:22.702Z",
+  "updatedAt": "2026-11-22T08:18:22.702Z"
 }
 ```
 
@@ -4401,7 +4398,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   - `null`
 - **`updatedAt` (required)**: `string`, format: `date-time`
 
-<a id="scalar-example-61"></a>
+<a id="scalar-example-59"></a>
 
 **Generated example:**
 
@@ -4413,18 +4410,18 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   "className": "",
   "sessionNo": 1,
   "title": "",
-  "startsAt": "2026-11-21T01:01:43.553Z",
-  "endsAt": "2026-11-21T01:01:43.553Z",
-  "attendanceOpensAt": "2026-11-21T01:01:43.553Z",
-  "attendanceClosesAt": "2026-11-21T01:01:43.553Z",
+  "startsAt": "2026-11-22T08:18:22.704Z",
+  "endsAt": "2026-11-22T08:18:22.704Z",
+  "attendanceOpensAt": "2026-11-22T08:18:22.704Z",
+  "attendanceClosesAt": "2026-11-22T08:18:22.704Z",
   "substituteTeacherUserId": "123e4567-e89b-12d3-a456-426614174000",
   "substituteTeacherName": "",
   "status": "scheduled",
   "effectiveStatus": "scheduled",
-  "closedAt": "2026-11-21T01:01:43.553Z",
+  "closedAt": "2026-11-22T08:18:22.704Z",
   "createdBy": "123e4567-e89b-12d3-a456-426614174000",
-  "createdAt": "2026-11-21T01:01:43.553Z",
-  "updatedAt": "2026-11-21T01:01:43.553Z",
+  "createdAt": "2026-11-22T08:18:22.704Z",
+  "updatedAt": "2026-11-22T08:18:22.704Z",
   "attendanceSummary": {
     "expectedCount": 0,
     "recordedCount": 0,
@@ -4453,7 +4450,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`revokedTokenCount` (required)**: `integer`, format: `int32`, minimum: `0`
 - **`session` (required)**: [ClassSession](#scalar-schema-classsession)
 
-<a id="scalar-example-62"></a>
+<a id="scalar-example-60"></a>
 
 **Generated example:**
 
@@ -4466,18 +4463,18 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
     "className": "",
     "sessionNo": 1,
     "title": "",
-    "startsAt": "2026-11-21T01:01:43.555Z",
-    "endsAt": "2026-11-21T01:01:43.555Z",
-    "attendanceOpensAt": "2026-11-21T01:01:43.555Z",
-    "attendanceClosesAt": "2026-11-21T01:01:43.555Z",
+    "startsAt": "2026-11-22T08:18:22.706Z",
+    "endsAt": "2026-11-22T08:18:22.706Z",
+    "attendanceOpensAt": "2026-11-22T08:18:22.706Z",
+    "attendanceClosesAt": "2026-11-22T08:18:22.706Z",
     "substituteTeacherUserId": "123e4567-e89b-12d3-a456-426614174000",
     "substituteTeacherName": "",
     "status": "scheduled",
     "effectiveStatus": "scheduled",
-    "closedAt": "2026-11-21T01:01:43.555Z",
+    "closedAt": "2026-11-22T08:18:22.706Z",
     "createdBy": "123e4567-e89b-12d3-a456-426614174000",
-    "createdAt": "2026-11-21T01:01:43.555Z",
-    "updatedAt": "2026-11-21T01:01:43.555Z"
+    "createdAt": "2026-11-22T08:18:22.706Z",
+    "updatedAt": "2026-11-22T08:18:22.706Z"
   },
   "generatedAbsentCount": 0,
   "revokedTokenCount": 0
@@ -4499,7 +4496,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`error` (required)**: `string`
 - **`details`**: array of [Common.ValidationIssue](#scalar-schema-commonvalidationissue)
 
-<a id="scalar-example-63"></a>
+<a id="scalar-example-61"></a>
 
 **Generated example:**
 
@@ -4525,7 +4522,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 
 - **`id` (required)**: `string`, format: `uuid`
 
-<a id="scalar-example-64"></a>
+<a id="scalar-example-62"></a>
 
 **Generated example:**
 
@@ -4545,7 +4542,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`page` (required)**: `integer`, format: `int32`, minimum: `1`
 - **`total` (required)**: `integer`, format: `int32`, minimum: `0`
 
-<a id="scalar-example-65"></a>
+<a id="scalar-example-63"></a>
 
 **Generated example:**
 
@@ -4578,7 +4575,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   - `string`
   - `integer`, format: `int32`
 
-<a id="scalar-example-66"></a>
+<a id="scalar-example-64"></a>
 
 **Generated example:**
 
@@ -4616,7 +4613,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`startDate`**: `string | null`, format: `date`
 - **`status`**: `string`, possible values: `"upcoming", "active", "inactive"`, default: `"upcoming"`
 
-<a id="scalar-example-67"></a>
+<a id="scalar-example-65"></a>
 
 **Generated example:**
 
@@ -4629,8 +4626,8 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   "scheduleText": "",
   "room": "",
   "maxStudents": 1,
-  "startDate": "2026-11-21",
-  "endDate": "2026-11-21",
+  "startDate": "2026-11-22",
+  "endDate": "2026-11-22",
   "status": "upcoming"
 }
 ```
@@ -4644,14 +4641,14 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`studentId` (required)**: `string`, format: `uuid`
 - **`startDate`**: `string`, format: `date`
 
-<a id="scalar-example-68"></a>
+<a id="scalar-example-66"></a>
 
 **Generated example:**
 
 ```json
 {
   "studentId": "123e4567-e89b-12d3-a456-426614174000",
-  "startDate": "2026-11-21"
+  "startDate": "2026-11-22"
 }
 ```
 
@@ -4674,7 +4671,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   - `string`
   - `null`
 
-<a id="scalar-example-69"></a>
+<a id="scalar-example-67"></a>
 
 **Generated example:**
 
@@ -4683,10 +4680,10 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   "classId": "123e4567-e89b-12d3-a456-426614174000",
   "sessionNo": 1,
   "title": "",
-  "startsAt": "2026-11-21T01:01:43.559Z",
-  "endsAt": "2026-11-21T01:01:43.559Z",
-  "attendanceOpensAt": "2026-11-21T01:01:43.559Z",
-  "attendanceClosesAt": "2026-11-21T01:01:43.559Z",
+  "startsAt": "2026-11-22T08:18:22.712Z",
+  "endsAt": "2026-11-22T08:18:22.712Z",
+  "attendanceOpensAt": "2026-11-22T08:18:22.712Z",
+  "attendanceClosesAt": "2026-11-22T08:18:22.712Z",
   "substituteTeacherUserId": "123e4567-e89b-12d3-a456-426614174000"
 }
 ```
@@ -4730,7 +4727,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   - `string`
   - `null`
 
-<a id="scalar-example-70"></a>
+<a id="scalar-example-68"></a>
 
 **Generated example:**
 
@@ -4738,7 +4735,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 {
   "studentCode": "",
   "fullName": "",
-  "dateOfBirth": "2026-11-21",
+  "dateOfBirth": "2026-11-22",
   "gradeLevel": "",
   "studentPhone": "",
   "studentEmail": "hello@example.com",
@@ -4762,7 +4759,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`description`**: `string`, default: `""`, maxLength: `500`
 - **`priority`**: `string`, possible values: `"low", "medium", "high"`, default: `"medium"`
 
-<a id="scalar-example-71"></a>
+<a id="scalar-example-69"></a>
 
 **Generated example:**
 
@@ -4795,7 +4792,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   - `string`
   - `null`
 
-<a id="scalar-example-72"></a>
+<a id="scalar-example-70"></a>
 
 **Generated example:**
 
@@ -4830,7 +4827,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`studentId` (required)**: `string | null`, format: `uuid`
 - **`userId` (required)**: `string`, format: `uuid`
 
-<a id="scalar-example-73"></a>
+<a id="scalar-example-71"></a>
 
 **Generated example:**
 
@@ -4861,7 +4858,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`pendingApplicationCount` (required)**: `integer`, format: `int32`, minimum: `0`
 - **`todaySessions` (required)**: array of [TodaySessionOverview](#scalar-schema-todaysessionoverview)
 
-<a id="scalar-example-74"></a>
+<a id="scalar-example-72"></a>
 
 **Generated example:**
 
@@ -4877,8 +4874,8 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
       "classCode": "",
       "className": "",
       "sessionNo": 1,
-      "startsAt": "2026-11-21T01:01:43.563Z",
-      "endsAt": "2026-11-21T01:01:43.563Z",
+      "startsAt": "2026-11-22T08:18:22.717Z",
+      "endsAt": "2026-11-22T08:18:22.717Z",
       "effectiveStatus": "scheduled",
       "expectedCount": 0,
       "recordedCount": 0,
@@ -4888,7 +4885,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
       "excusedCount": 0
     }
   ],
-  "asOf": "2026-11-21T01:01:43.564Z"
+  "asOf": "2026-11-22T08:18:22.717Z"
 }
 ```
 
@@ -4905,7 +4902,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`studentId` (required)**: `string`, format: `uuid`
 - **`studentPhone` (required)**: `string | null`
 
-<a id="scalar-example-75"></a>
+<a id="scalar-example-73"></a>
 
 **Generated example:**
 
@@ -4939,7 +4936,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`studentId` (required)**: `string`, format: `uuid`
 - **`updatedAt` (required)**: `string`, format: `date-time`
 
-<a id="scalar-example-76"></a>
+<a id="scalar-example-74"></a>
 
 **Generated example:**
 
@@ -4952,11 +4949,11 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   "classId": "123e4567-e89b-12d3-a456-426614174000",
   "classCode": "",
   "className": "",
-  "startDate": "2026-11-21",
-  "endDate": "2026-11-21",
+  "startDate": "2026-11-22",
+  "endDate": "2026-11-22",
   "status": "active",
-  "createdAt": "2026-11-21T01:01:43.566Z",
-  "updatedAt": "2026-11-21T01:01:43.566Z"
+  "createdAt": "2026-11-22T08:18:22.719Z",
+  "updatedAt": "2026-11-22T08:18:22.719Z"
 }
 ```
 
@@ -5007,7 +5004,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   - `null`
 - **`updatedAt` (required)**: `string`, format: `date-time`
 
-<a id="scalar-example-77"></a>
+<a id="scalar-example-75"></a>
 
 **Generated example:**
 
@@ -5016,7 +5013,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   "id": "123e4567-e89b-12d3-a456-426614174000",
   "applicationCode": "",
   "studentFullName": "",
-  "studentDob": "2026-11-21",
+  "studentDob": "2026-11-22",
   "requestedGrade": "",
   "requestedClassId": "123e4567-e89b-12d3-a456-426614174000",
   "requestedClassName": "",
@@ -5027,16 +5024,16 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   "guardianPhone": "",
   "guardianEmail": "hello@example.com",
   "applicantNote": "",
-  "consentAt": "2026-11-21T01:01:43.568Z",
+  "consentAt": "2026-11-22T08:18:22.720Z",
   "consentVersion": "",
   "status": "pending_review",
   "reviewedBy": "123e4567-e89b-12d3-a456-426614174000",
   "reviewedByName": "",
-  "reviewedAt": "2026-11-21T01:01:43.568Z",
+  "reviewedAt": "2026-11-22T08:18:22.720Z",
   "reviewNote": "",
   "createdStudentId": "123e4567-e89b-12d3-a456-426614174000",
-  "createdAt": "2026-11-21T01:01:43.568Z",
-  "updatedAt": "2026-11-21T01:01:43.568Z"
+  "createdAt": "2026-11-22T08:18:22.720Z",
+  "updatedAt": "2026-11-22T08:18:22.720Z"
 }
 ```
 
@@ -5089,7 +5086,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   - `null`
 - **`updatedAt` (required)**: `string`, format: `date-time`
 
-<a id="scalar-example-78"></a>
+<a id="scalar-example-76"></a>
 
 **Generated example:**
 
@@ -5098,7 +5095,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   "id": "123e4567-e89b-12d3-a456-426614174000",
   "applicationCode": "",
   "studentFullName": "",
-  "studentDob": "2026-11-21",
+  "studentDob": "2026-11-22",
   "requestedGrade": "",
   "requestedClassId": "123e4567-e89b-12d3-a456-426614174000",
   "requestedClassName": "",
@@ -5109,16 +5106,16 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   "guardianPhone": "",
   "guardianEmail": "hello@example.com",
   "applicantNote": "",
-  "consentAt": "2026-11-21T01:01:43.570Z",
+  "consentAt": "2026-11-22T08:18:22.723Z",
   "consentVersion": "",
   "status": "pending_review",
   "reviewedBy": "123e4567-e89b-12d3-a456-426614174000",
   "reviewedByName": "",
-  "reviewedAt": "2026-11-21T01:01:43.570Z",
+  "reviewedAt": "2026-11-22T08:18:22.723Z",
   "reviewNote": "",
   "createdStudentId": "123e4567-e89b-12d3-a456-426614174000",
-  "createdAt": "2026-11-21T01:01:43.570Z",
-  "updatedAt": "2026-11-21T01:01:43.570Z",
+  "createdAt": "2026-11-22T08:18:22.723Z",
+  "updatedAt": "2026-11-22T08:18:22.723Z",
   "statusHistory": [
     {
       "id": "123e4567-e89b-12d3-a456-426614174000",
@@ -5128,7 +5125,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
       "changedBy": "123e4567-e89b-12d3-a456-426614174000",
       "changedByName": "",
       "note": "",
-      "changedAt": "2026-11-21T01:01:43.571Z"
+      "changedAt": "2026-11-22T08:18:22.723Z"
     }
   ],
   "duplicateCandidates": [
@@ -5158,7 +5155,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 
 - **`email`**: `string`, format: `email`
 
-<a id="scalar-example-79"></a>
+<a id="scalar-example-77"></a>
 
 **Generated example:**
 
@@ -5176,7 +5173,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 
 - **`sessionId` (required)**: `string`, format: `uuid`
 
-<a id="scalar-example-80"></a>
+<a id="scalar-example-78"></a>
 
 **Generated example:**
 
@@ -5194,7 +5191,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 
 - **`authUserId` (required)**: `string`, format: `uuid`
 
-<a id="scalar-example-81"></a>
+<a id="scalar-example-79"></a>
 
 **Generated example:**
 
@@ -5213,7 +5210,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`email` (required)**: `string`, format: `email`
 - **`password` (required)**: `string`, minLength: `8`, maxLength: `128`
 
-<a id="scalar-example-82"></a>
+<a id="scalar-example-80"></a>
 
 **Generated example:**
 
@@ -5235,7 +5232,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`status` (required)**: `string`, possible values: `"present", "late", "absent", "excused"`
 - **`studentId` (required)**: `string`, format: `uuid`
 
-<a id="scalar-example-83"></a>
+<a id="scalar-example-81"></a>
 
 **Generated example:**
 
@@ -5259,7 +5256,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`id` (required)**: `string`, format: `uuid`
 - **`status` (required)**: `string`, possible values: `"pending_review", "need_more_info", "approved", "rejected"`
 
-<a id="scalar-example-84"></a>
+<a id="scalar-example-82"></a>
 
 **Generated example:**
 
@@ -5268,7 +5265,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   "id": "123e4567-e89b-12d3-a456-426614174000",
   "applicationCode": "",
   "status": "pending_review",
-  "createdAt": "2026-11-21T01:01:43.575Z"
+  "createdAt": "2026-11-22T08:18:22.728Z"
 }
 ```
 
@@ -5284,7 +5281,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`name` (required)**: `string`
 - **`scheduleText` (required)**: `string | null`
 
-<a id="scalar-example-85"></a>
+<a id="scalar-example-83"></a>
 
 **Generated example:**
 
@@ -5312,7 +5309,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 
 - **`reviewNote` (required)**: `string`, minLength: `1`, maxLength: `1000`
 
-<a id="scalar-example-86"></a>
+<a id="scalar-example-84"></a>
 
 **Generated example:**
 
@@ -5332,7 +5329,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`token` (required)**: `string`, minLength: `1`
 - **`status`**: `string`, possible values: `"present", "late", "absent", "excused"`, default: `"present"`
 
-<a id="scalar-example-87"></a>
+<a id="scalar-example-85"></a>
 
 **Generated example:**
 
@@ -5355,7 +5352,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`studentCode` (required)**: `string`
 - **`studentFullName` (required)**: `string`
 
-<a id="scalar-example-88"></a>
+<a id="scalar-example-86"></a>
 
 **Generated example:**
 
@@ -5371,12 +5368,12 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
     "status": "present",
     "method": "qr",
     "tokenId": "123e4567-e89b-12d3-a456-426614174000",
-    "recordedAt": "2026-11-21T01:01:43.577Z",
+    "recordedAt": "2026-11-22T08:18:22.730Z",
     "recordedBy": "123e4567-e89b-12d3-a456-426614174000",
     "recordedByName": "",
     "reason": "",
-    "createdAt": "2026-11-21T01:01:43.577Z",
-    "updatedAt": "2026-11-21T01:01:43.577Z"
+    "createdAt": "2026-11-22T08:18:22.730Z",
+    "updatedAt": "2026-11-22T08:18:22.730Z"
   },
   "studentCode": "",
   "studentFullName": ""
@@ -5393,7 +5390,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`sessionId` (required)**: `string`, format: `uuid`
 - **`summary` (required)**: [SessionAttendanceSummary](#scalar-schema-sessionattendancesummary)
 
-<a id="scalar-example-89"></a>
+<a id="scalar-example-87"></a>
 
 **Generated example:**
 
@@ -5424,12 +5421,12 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
         "status": "present",
         "method": "qr",
         "tokenId": "123e4567-e89b-12d3-a456-426614174000",
-        "recordedAt": "2026-11-21T01:01:43.578Z",
+        "recordedAt": "2026-11-22T08:18:22.731Z",
         "recordedBy": "123e4567-e89b-12d3-a456-426614174000",
         "recordedByName": "",
         "reason": "",
-        "createdAt": "2026-11-21T01:01:43.578Z",
-        "updatedAt": "2026-11-21T01:01:43.578Z"
+        "createdAt": "2026-11-22T08:18:22.731Z",
+        "updatedAt": "2026-11-22T08:18:22.731Z"
       }
     }
   ]
@@ -5450,7 +5447,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`recordedCount` (required)**: `integer`, format: `int32`, minimum: `0`
 - **`unrecordedCount` (required)**: `integer`, format: `int32`, minimum: `0`
 
-<a id="scalar-example-90"></a>
+<a id="scalar-example-88"></a>
 
 **Generated example:**
 
@@ -5484,7 +5481,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`studentFullName` (required)**: `string`
 - **`studentId` (required)**: `string`, format: `uuid`
 
-<a id="scalar-example-91"></a>
+<a id="scalar-example-89"></a>
 
 **Generated example:**
 
@@ -5503,12 +5500,12 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
     "status": "present",
     "method": "qr",
     "tokenId": "123e4567-e89b-12d3-a456-426614174000",
-    "recordedAt": "2026-11-21T01:01:43.580Z",
+    "recordedAt": "2026-11-22T08:18:22.733Z",
     "recordedBy": "123e4567-e89b-12d3-a456-426614174000",
     "recordedByName": "",
     "reason": "",
-    "createdAt": "2026-11-21T01:01:43.580Z",
-    "updatedAt": "2026-11-21T01:01:43.580Z"
+    "createdAt": "2026-11-22T08:18:22.733Z",
+    "updatedAt": "2026-11-22T08:18:22.733Z"
   }
 }
 ```
@@ -5565,7 +5562,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   - `null`
 - **`updatedAt` (required)**: `string`, format: `date-time`
 
-<a id="scalar-example-92"></a>
+<a id="scalar-example-90"></a>
 
 **Generated example:**
 
@@ -5574,7 +5571,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   "id": "123e4567-e89b-12d3-a456-426614174000",
   "studentCode": "",
   "fullName": "",
-  "dateOfBirth": "2026-11-21",
+  "dateOfBirth": "2026-11-22",
   "gradeLevel": "",
   "studentPhone": "",
   "studentEmail": "hello@example.com",
@@ -5585,11 +5582,11 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   "status": "active",
   "authUserId": "123e4567-e89b-12d3-a456-426614174000",
   "accountStatus": "not_invited",
-  "invitedAt": "2026-11-21T01:01:43.581Z",
+  "invitedAt": "2026-11-22T08:18:22.734Z",
   "inviteAttempts": 0,
   "inviteLastError": "",
-  "createdAt": "2026-11-21T01:01:43.581Z",
-  "updatedAt": "2026-11-21T01:01:43.581Z"
+  "createdAt": "2026-11-22T08:18:22.734Z",
+  "updatedAt": "2026-11-22T08:18:22.734Z"
 }
 ```
 
@@ -5640,14 +5637,14 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   - `string`
   - `null`
 
-<a id="scalar-example-93"></a>
+<a id="scalar-example-91"></a>
 
 **Generated example:**
 
 ```json
 {
   "studentFullName": "",
-  "studentDob": "2026-11-21",
+  "studentDob": "2026-11-22",
   "requestedGrade": "",
   "requestedClassId": "123e4567-e89b-12d3-a456-426614174000",
   "studentPhone": "",
@@ -5684,7 +5681,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`sessionNo` (required)**: `integer`, format: `int32`, minimum: `1`
 - **`startsAt` (required)**: `string`, format: `date-time`
 
-<a id="scalar-example-94"></a>
+<a id="scalar-example-92"></a>
 
 **Generated example:**
 
@@ -5695,8 +5692,8 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   "classCode": "",
   "className": "",
   "sessionNo": 1,
-  "startsAt": "2026-11-21T01:01:43.585Z",
-  "endsAt": "2026-11-21T01:01:43.585Z",
+  "startsAt": "2026-11-22T08:18:22.737Z",
+  "endsAt": "2026-11-22T08:18:22.737Z",
   "effectiveStatus": "scheduled",
   "expectedCount": 0,
   "recordedCount": 0,
@@ -5721,7 +5718,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`title` (required)**: `string`, minLength: `1`, maxLength: `120`
 - **`updatedAt` (required)**: `string`, format: `date-time`
 
-<a id="scalar-example-95"></a>
+<a id="scalar-example-93"></a>
 
 **Generated example:**
 
@@ -5732,8 +5729,8 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   "description": "",
   "priority": "low",
   "completed": true,
-  "createdAt": "2026-11-21T01:01:43.586Z",
-  "updatedAt": "2026-11-21T01:01:43.586Z"
+  "createdAt": "2026-11-22T08:18:22.739Z",
+  "updatedAt": "2026-11-22T08:18:22.739Z"
 }
 ```
 
@@ -5752,7 +5749,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`reason` (required)**: `string`, minLength: `1`, maxLength: `500`
 - **`status` (required)**: `string`, possible values: `"present", "late", "absent", "excused"`
 
-<a id="scalar-example-96"></a>
+<a id="scalar-example-94"></a>
 
 **Generated example:**
 
@@ -5787,7 +5784,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`status`**: `string`, possible values: `"upcoming", "active", "inactive"`
 - **`teacherUserId`**: `string`, format: `uuid`
 
-<a id="scalar-example-97"></a>
+<a id="scalar-example-95"></a>
 
 **Generated example:**
 
@@ -5799,8 +5796,8 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   "scheduleText": "",
   "room": "",
   "maxStudents": 1,
-  "startDate": "2026-11-21",
-  "endDate": "2026-11-21",
+  "startDate": "2026-11-22",
+  "endDate": "2026-11-22",
   "status": "upcoming"
 }
 ```
@@ -5814,14 +5811,14 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`status` (required)**: `string`, possible values: `"active", "ended", "cancelled"`
 - **`endDate`**: `string | null`, format: `date`
 
-<a id="scalar-example-98"></a>
+<a id="scalar-example-96"></a>
 
 **Generated example:**
 
 ```json
 {
   "status": "active",
-  "endDate": "2026-11-21"
+  "endDate": "2026-11-22"
 }
 ```
 
@@ -5838,7 +5835,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   - `string`
   - `null`
 
-<a id="scalar-example-99"></a>
+<a id="scalar-example-97"></a>
 
 **Generated example:**
 
@@ -5867,17 +5864,17 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   - `string`
   - `null`
 
-<a id="scalar-example-100"></a>
+<a id="scalar-example-98"></a>
 
 **Generated example:**
 
 ```json
 {
   "title": "",
-  "startsAt": "2026-11-21T01:01:43.589Z",
-  "endsAt": "2026-11-21T01:01:43.589Z",
-  "attendanceOpensAt": "2026-11-21T01:01:43.589Z",
-  "attendanceClosesAt": "2026-11-21T01:01:43.589Z",
+  "startsAt": "2026-11-22T08:18:22.743Z",
+  "endsAt": "2026-11-22T08:18:22.743Z",
+  "attendanceOpensAt": "2026-11-22T08:18:22.743Z",
+  "attendanceClosesAt": "2026-11-22T08:18:22.743Z",
   "substituteTeacherUserId": "123e4567-e89b-12d3-a456-426614174000",
   "status": "scheduled"
 }
@@ -5920,14 +5917,14 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   - `string`
   - `null`
 
-<a id="scalar-example-101"></a>
+<a id="scalar-example-99"></a>
 
 **Generated example:**
 
 ```json
 {
   "fullName": "",
-  "dateOfBirth": "2026-11-21",
+  "dateOfBirth": "2026-11-22",
   "gradeLevel": "",
   "studentPhone": "",
   "studentEmail": "hello@example.com",
@@ -5950,7 +5947,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`priority`**: `string`, possible values: `"low", "medium", "high"`
 - **`title`**: `string`, minLength: `1`, maxLength: `120`
 
-<a id="scalar-example-102"></a>
+<a id="scalar-example-100"></a>
 
 **Generated example:**
 
@@ -5978,7 +5975,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   - `string`
   - `null`
 
-<a id="scalar-example-103"></a>
+<a id="scalar-example-101"></a>
 
 **Generated example:**
 
@@ -6003,7 +6000,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 
   `string`, possible values: `"admin", "teacher", "student"`
 
-<a id="scalar-example-104"></a>
+<a id="scalar-example-102"></a>
 
 **Generated example:**
 
@@ -6039,7 +6036,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
 - **`updatedAt` (required)**: `string`, format: `date-time`
 - **`userId` (required)**: `string`, format: `uuid`
 
-<a id="scalar-example-105"></a>
+<a id="scalar-example-103"></a>
 
 **Generated example:**
 
@@ -6054,7 +6051,7 @@ Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn
   "roles": [
     "admin"
   ],
-  "createdAt": "2026-11-21T01:01:43.592Z",
-  "updatedAt": "2026-11-21T01:01:43.592Z"
+  "createdAt": "2026-11-22T08:18:22.747Z",
+  "updatedAt": "2026-11-22T08:18:22.747Z"
 }
 ```

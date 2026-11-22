@@ -1399,7 +1399,7 @@
     "/auth/login": {
       "post": {
         "operationId": "Auth_login",
-        "description": "Đăng nhập bằng email và mật khẩu qua Supabase Auth (FR-001).",
+        "description": "Đăng nhập bằng email và mật khẩu (FR-001).",
         "parameters": [],
         "responses": {
           "200": {
@@ -1415,6 +1415,23 @@
                     "data": {
                       "$ref": "#/components/schemas/AuthSession"
                     }
+                  }
+                },
+                "example": {
+                  "data": {
+                    "user": {
+                      "userId": "550e8400-e29b-41d4-a716-446655440001",
+                      "email": "admin@mathinsight.edu.vn",
+                      "displayName": "Nguyễn Quốc Huy",
+                      "phone": "0901234567",
+                      "isActive": true,
+                      "canReviewApplications": true,
+                      "roles": [
+                        "admin"
+                      ],
+                      "studentId": null
+                    },
+                    "expiresAt": "2026-11-29T00:00:00Z"
                   }
                 }
               }
@@ -1439,6 +1456,16 @@
                 }
               }
             }
+          },
+          "403": {
+            "description": "Access is forbidden.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Common.ErrorBody"
+                }
+              }
+            }
           }
         },
         "tags": [
@@ -1450,6 +1477,10 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/LoginRequest"
+              },
+              "example": {
+                "email": "admin@mathinsight.edu.vn",
+                "password": "password123"
               }
             }
           }

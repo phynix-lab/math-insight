@@ -1,6 +1,8 @@
 "use client"
 
 import { createContext, useContext, useState, type ReactNode } from "react"
+import { authLogin, authLogout } from "@/lib/api/generated/auth/auth"
+import { ApiError } from "@/lib/api/custom-fetch"
 import type { AppRole } from "@/types/navigation"
 import { DEMO_ACCOUNTS, type AuthUser } from "@/types/auth"
 import {
@@ -167,57 +169,16 @@ export function RoleProvider({ children }: { children: ReactNode }) {
   }
 
   /**
-   * Gọi API đăng nhập và xử lý chuẩn các mã lỗi theo AC-1, AC-2, AC-3.
+   * Gọi API đăng nhập qua client Orval sinh tự động và xử lý chuẩn các mã lỗi theo AC-1, AC-2, AC-3.
    */
   async function login(
     email: string,
     password: string
   ): Promise<{ success: boolean; error?: string }> {
     try {
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), password }),
-        credentials: "include",
-      })
+      const response = await authLogin({ email: email.trim(), password })
+      const user = response.data.user
 
-      if (!response.ok) {
-        const errorData = (await response.json().catch(() => ({}))) as {
-          error?: string
-          message?: string
-        }
-
-        // AC-3: Tài khoản is_active = false
-        if (response.status === 403 || errorData.error === "ACCOUNT_INACTIVE") {
-          return {
-            success: false,
-            error:
-              errorData.message ||
-              "Tài khoản của bạn đã ngừng hoạt động. Vui lòng liên hệ quản trị viên.",
-          }
-        }
-
-        // AC-2: Sai mật khẩu hoặc tài khoản không tồn tại -> lỗi chung
-        return {
-          success: false,
-          error: "Email hoặc mật khẩu không đúng",
-        }
-      }
-
-      const json = (await response.json()) as {
-        data: {
-          user: {
-            userId: string
-            email: string | null
-            displayName: string
-            isActive: boolean
-            canReviewApplications: boolean
-            roles: AppRole[]
-          }
-        }
-      }
-
-      const user = json.data.user
       const authUser: AuthUser = {
         id: user.userId,
         email: user.email ?? email,
@@ -230,11 +191,23 @@ export function RoleProvider({ children }: { children: ReactNode }) {
       saveUser(authUser)
       setCanReviewApplications(user.canReviewApplications)
       return { success: true }
-    } catch {
-      // Trường hợp mạng lỗi
+    } catch (err) {
+      if (err instanceof ApiError) {
+        // AC-3: Tài khoản is_active = false
+        if (err.status === 403) {
+          return {
+            success: false,
+            error:
+              err.message ||
+              "Tài khoản của bạn đã ngừng hoạt động. Vui lòng liên hệ quản trị viên.",
+          }
+        }
+      }
+
+      // AC-2: Sai mật khẩu hoặc tài khoản không tồn tại -> lỗi chung
       return {
         success: false,
-        error: "Không thể kết nối đến máy chủ xác thực. Vui lòng thử lại.",
+        error: "Email hoặc mật khẩu không đúng",
       }
     }
   }
@@ -249,11 +222,8 @@ export function RoleProvider({ children }: { children: ReactNode }) {
   }
 
   function logout() {
-    // 1. Gửi request hủy session phía server (AC-5)
-    fetch("/api/auth/logout", {
-      method: "POST",
-      credentials: "include",
-    }).catch(() => {})
+    // 1. Gửi request hủy session phía server qua client Orval (AC-5)
+    authLogout().catch(() => {})
 
     // 2. Xóa cookie session tại client
     if (typeof document !== "undefined") {
