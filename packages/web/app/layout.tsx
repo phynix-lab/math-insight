@@ -19,7 +19,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const enableMock = process.env.ENABLE_MOCK === "true"
+  const enableMock =
+    process.env.ENABLE_MOCK === "true" ||
+    (process.env.NODE_ENV === "development" && process.env.ENABLE_MOCK !== "false")
 
   return (
     <html

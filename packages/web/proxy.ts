@@ -11,6 +11,7 @@ const PUBLIC_PATHS = [
   "/api/auth/logout",
   "/applications/public",
   "/api/applications/public",
+  "/mockServiceWorker.js",
 ]
 
 /**
@@ -97,8 +98,8 @@ export function proxy(request: NextRequest) {
 export const config = {
   matcher: [
     /*
-     * Áp dụng proxy cho mọi route ngoại trừ static files, images, favicon.
+     * Áp dụng proxy cho mọi route ngoại trừ static files, images, favicon, mockServiceWorker.
      */
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    "/((?!_next/static|_next/image|favicon.ico|mockServiceWorker\\.js|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 }
