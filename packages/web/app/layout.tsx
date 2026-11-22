@@ -5,7 +5,10 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { MockProvider } from "@/components/providers/MockProvider"
 import { QueryProvider } from "@/components/providers/QueryProvider"
 import { RoleProvider } from "@/components/providers/RoleProvider"
+import { setupZodVietnameseLocale } from "@/lib/zod-i18n"
 import { cn } from "@/lib/utils"
+
+setupZodVietnameseLocale()
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 

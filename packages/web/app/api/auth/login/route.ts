@@ -3,10 +3,10 @@ import {
   authService,
   SESSION_COOKIE_NAME,
 } from "@/server/services/auth.service"
-import { LoginRequest } from "@/types/generated/mathInsightAPI.schemas.zod"
+import { loginSchema } from "@/types/auth"
 
 export async function POST(request: Request) {
-  const parsed = await parseRequestBody(request, LoginRequest)
+  const parsed = await parseRequestBody(request, loginSchema)
   if (!parsed.ok) {
     return parsed.response
   }

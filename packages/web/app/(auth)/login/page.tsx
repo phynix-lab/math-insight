@@ -18,10 +18,11 @@ import TextField from "@/components/form/TextField/TextField"
 import { Button } from "@/components/ui/button"
 import { useCurrentRole } from "@/components/providers/RoleProvider"
 import {
-  LoginRequest,
-  type LoginRequestOutput,
-} from "@/types/generated/mathInsightAPI.schemas.zod"
-import { DEMO_ACCOUNTS } from "@/types/auth"
+  loginSchema,
+  type LoginFormValues,
+  type LoginFormOutput,
+  DEMO_ACCOUNTS,
+} from "@/types/auth"
 
 export default function LoginPage() {
   const router = useRouter()
@@ -29,15 +30,15 @@ export default function LoginPage() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [isPending, startTransition] = useTransition()
 
-  const form = useForm<LoginRequest, unknown, LoginRequestOutput>({
-    resolver: zodResolver(LoginRequest),
+  const form = useForm<LoginFormValues, unknown, LoginFormOutput>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "admin@mathinsight.edu.vn",
       password: "admin123",
     },
   })
 
-  async function onSubmit(values: LoginRequestOutput) {
+  async function onSubmit(values: LoginFormOutput) {
     setErrorMessage(null)
 
     startTransition(async () => {
