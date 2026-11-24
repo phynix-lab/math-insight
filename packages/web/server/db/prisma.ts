@@ -20,8 +20,10 @@ function createPrismaClient(): PrismaClient {
   })
 }
 
-export const prisma = globalThis.__prisma ?? createPrismaClient()
-
-if (process.env.NODE_ENV !== "production") {
-  globalThis.__prisma = prisma
+// Lazy singleton so Next.js build-time route collection does not fail without DATABASE_URL.
+export function getPrisma(): PrismaClient {
+  if (!globalThis.__prisma) {
+    globalThis.__prisma = createPrismaClient()
+  }
+  return globalThis.__prisma
 }

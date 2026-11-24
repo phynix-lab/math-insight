@@ -30,9 +30,14 @@ export function MockProvider({
     if (!enabled) return
 
     let active = true
-    startMockWorker().then(() => {
-      if (active) setIsReady(true)
-    })
+    startMockWorker()
+      .then(() => {
+        if (active) setIsReady(true)
+      })
+      .catch((error) => {
+        console.error("[MSW] Failed to start mock worker:", error)
+        if (active) setIsReady(true)
+      })
 
     return () => {
       active = false

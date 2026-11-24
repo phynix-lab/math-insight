@@ -146,6 +146,34 @@
         "problemMatcher": []
       },
       {
+        "label": "DB: Seed Admin (Dev)",
+        "detail": "Tạo/cập nhật tài khoản admin trên DB dev bằng ADMIN_PASSWORD từ env",
+        "type": "shell",
+        "command": "pnpm db:seed:dev",
+        "problemMatcher": []
+      },
+      {
+        "label": "DB: Seed Admin (Staging)",
+        "detail": "Tạo/cập nhật tài khoản admin trên DB staging bằng ADMIN_PASSWORD từ env",
+        "type": "shell",
+        "command": "pnpm db:seed:staging",
+        "problemMatcher": []
+      },
+      {
+        "label": "DB: Seed Admin (Prod)",
+        "detail": "Tạo/cập nhật tài khoản admin trên DB production bằng ADMIN_PASSWORD từ env",
+        "type": "shell",
+        "command": "pnpm db:seed:prod",
+        "problemMatcher": []
+      },
+      {
+        "label": "DB: Seed Demo Data (Dev)",
+        "detail": "Nạp tài khoản admin (từ env), tài khoản mẫu và dữ liệu demo vào DB dev",
+        "type": "shell",
+        "command": "pnpm db:seed:demo",
+        "problemMatcher": []
+      },
+      {
         "label": "DB: Studio (Dev)",
         "detail": "Mở Prisma Studio kết nối tới DB dev (APP_ENV=development)",
         "type": "shell",

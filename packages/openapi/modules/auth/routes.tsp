@@ -14,11 +14,35 @@ namespace MathInsight;
 interface Auth {
   @post
   @route("/login")
-  @doc("Đăng nhập bằng email và mật khẩu qua Supabase Auth (FR-001).")
+  @doc("Đăng nhập bằng email và mật khẩu (FR-001).")
+  @opExample(#{
+    parameters: #{
+      body: #{
+        email: "admin@mathinsight.edu.vn",
+        password: "password123",
+      },
+    },
+    returnType: #{
+      data: #{
+        user: #{
+          userId: "550e8400-e29b-41d4-a716-446655440001",
+          email: "admin@mathinsight.edu.vn",
+          displayName: "Nguyễn Quốc Huy",
+          phone: "0901234567",
+          isActive: true,
+          canReviewApplications: true,
+          roles: #[AppRole.admin],
+          studentId: null,
+        },
+        expiresAt: utcDateTime.fromISO("2026-11-29T00:00:00Z"),
+      },
+    },
+  })
   login(@body body: LoginRequest):
     | ApiResponse<AuthSession>
     | BadRequestError
-    | UnauthorizedError;
+    | UnauthorizedError
+    | ForbiddenError;
 
   @post
   @route("/logout")

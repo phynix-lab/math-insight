@@ -12,7 +12,11 @@
     "db:generate": "pnpm --filter @math-insight/web db:generate",
     "db:migrate:dev": "pnpm --filter @math-insight/web db:migrate:dev",
     "db:migrate:staging": "pnpm --filter @math-insight/web db:migrate:staging",
-    "db:migrate:prod": "pnpm --filter @math-insight/web db:migrate:prod"
+    "db:migrate:prod": "pnpm --filter @math-insight/web db:migrate:prod",
+    "db:seed:dev": "pnpm --filter @math-insight/web db:seed:dev",
+    "db:seed:staging": "pnpm --filter @math-insight/web db:seed:staging",
+    "db:seed:prod": "pnpm --filter @math-insight/web db:seed:prod",
+    "db:seed:demo": "pnpm --filter @math-insight/web db:seed:demo"
   },
   "devDependencies": {
     "prettier": "^3.9.10",

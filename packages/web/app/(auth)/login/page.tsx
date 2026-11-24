@@ -1,5 +1,10 @@
-import LoginPage from "@/features/login/LoginPage"
+import { LoginForm } from "@/features/auth/LoginForm/LoginForm"
 
-export const Page = () => {
-  return <LoginPage />
+export const metadata = {
+  title: "Đăng nhập | Math Insight",
+  description: "Đăng nhập hệ thống quản lý trung tâm toán học Math Insight",
+}
+
+export default function LoginPage() {
+  return <LoginForm />
 }

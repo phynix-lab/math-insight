@@ -49,3 +49,19 @@ export async function parseRequestBody<TSchema extends z.ZodType>(
 export function notFoundResponse(resource = "Resource") {
   return Response.json({ error: `${resource} not found` }, { status: 404 })
 }
+
+/**
+ * Tạo Response lỗi 401 khi chưa xác thực hoặc thông tin đăng nhập không hợp lệ.
+ */
+export function unauthorizedResponse(message = "Unauthorized") {
+  return Response.json({ error: "UNAUTHORIZED", message }, { status: 401 })
+}
+
+/**
+ * Tạo Response lỗi 403 khi người dùng không đủ quyền hạn (AC-4, NFR-02).
+ */
+export function forbiddenResponse(
+  message = "Bạn không có quyền truy cập tài nguyên này."
+) {
+  return Response.json({ error: "FORBIDDEN", message }, { status: 403 })
+}

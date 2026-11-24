@@ -2,70 +2,23 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { FileQuestion, Shield, Sparkles, Inbox, ListTodo } from "lucide-react"
+import { FileQuestion, Shield, Sparkles, ListTodo } from "lucide-react"
 
-import TextField from "@/components/form/TextField/TextField"
 import { SuspenseWrapper } from "@/components/SuspenseWrapper"
 import { Button, buttonVariants } from "@/components/ui/button"
-import { EmptyState } from "@/components/ui/empty-state"
 import { ErrorView } from "@/components/ui/error-view"
 import { Skeleton } from "@/components/ui/skeleton"
 import { useCurrentRole } from "@/components/providers/RoleProvider"
 import { AddTodo } from "@/features/todos/AddTodo/AddTodo"
 import { TodoList } from "@/features/todos/TodoList/TodoList"
-import { createTask, getTasks, removeTask, updateTask } from "@/lib/api/tasks"
-import { ROLE_CONFIGS, type AppRole } from "@/types/navigation"
-import {
-  createTaskSchema,
-  type CreateTaskFormValues,
-  type CreateTaskInput,
-} from "@/types/task"
-
-const tasksQueryKey = ["tasks"]
+import { ROLE_CONFIGS } from "@/types/navigation"
 
 export default function DashboardHomePage() {
-  const {
-    currentRole,
-    setRole,
-    canReviewApplications,
-    setCanReviewApplications,
-  } = useCurrentRole()
-  const queryClient = useQueryClient()
+  const { currentRole, canReviewApplications } = useCurrentRole()
 
   // State phục vụ việc mô phỏng và kiểm thử các trạng thái UI của ticket MI-002
   const [showSimulatedLoading, setShowSimulatedLoading] = useState(false)
   const [simulatedError, setSimulatedError] = useState<string | null>(null)
-
-  // React Hook Form & React Query cho Task Manager
-  const form = useForm<CreateTaskFormValues, unknown, CreateTaskInput>({
-    resolver: zodResolver(createTaskSchema),
-    defaultValues: { title: "", description: "", completed: false },
-  })
-
-  const tasksQuery = useQuery({ queryKey: tasksQueryKey, queryFn: getTasks })
-  const createMutation = useMutation({
-    mutationFn: createTask,
-    onSuccess: async () => {
-      form.reset()
-      await queryClient.invalidateQueries({ queryKey: tasksQueryKey })
-    },
-  })
-  const updateMutation = useMutation({
-    mutationFn: ({ id, completed }: { id: string; completed: boolean }) =>
-      updateTask(id, { completed }),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: tasksQueryKey }),
-  })
-  const deleteMutation = useMutation({
-    mutationFn: removeTask,
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: tasksQueryKey }),
-  })
-
-  function onSubmit(values: CreateTaskInput) {
-    createMutation.mutate(values)
-  }
 
   const roleInfo = ROLE_CONFIGS[currentRole]
 
@@ -93,24 +46,12 @@ export default function DashboardHomePage() {
             </p>
           </div>
 
-          {/* Quick switcher trên banner */}
-          <div className="flex shrink-0 flex-wrap gap-2">
-            {(["admin", "teacher", "student"] as AppRole[]).map((r) => (
-              <Button
-                key={r}
-                type="button"
-                variant={currentRole === r ? "default" : "outline"}
-                size="sm"
-                onClick={() => setRole(r)}
-                className="text-xs"
-              >
-                {ROLE_CONFIGS[r].label}
-              </Button>
-            ))}
-          </div>
+          <span className="inline-flex shrink-0 items-center rounded-lg border border-primary/20 bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary">
+            {roleInfo.label}
+          </span>
         </div>
 
-        {/* Banner phụ: cảnh báo cờ FR-012 với giáo viên */}
+        {/* Banner phụ: hiển thị quyền xét duyệt đơn FR-012 từ DB với giáo viên */}
         {currentRole === "teacher" && (
           <div className="mt-5 flex items-center justify-between rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 text-xs">
             <div className="flex items-center gap-2 font-medium text-primary">
@@ -122,16 +63,6 @@ export default function DashboardHomePage() {
                 </strong>
               </span>
             </div>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setCanReviewApplications(!canReviewApplications)}
-              className="h-7 bg-background text-xs"
-            >
-              {canReviewApplications
-                ? "Tắt quyền duyệt đơn"
-                : "Bật quyền duyệt đơn"}
-            </Button>
           </div>
         )}
       </div>
@@ -147,13 +78,12 @@ export default function DashboardHomePage() {
               Kiểm tra các trạng thái giao diện chuẩn (MI-002)
             </h2>
             <p className="text-xs text-muted-foreground">
-              Bao gồm: Loading skeleton, Empty state, Error fallback, 404 & 500
-              pages.
+              Bao gồm: Loading skeleton, Error fallback, 404 & 500 pages.
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           {/* Card 1: Mô phỏng Loading Skeleton */}
           <div className="flex flex-col justify-between space-y-3 rounded-xl border border-border bg-card p-4">
             <div className="space-y-1">
@@ -175,23 +105,7 @@ export default function DashboardHomePage() {
             </Button>
           </div>
 
-          {/* Card 2: Thử nghiệm Empty State */}
-          <div className="flex flex-col justify-between space-y-3 rounded-xl border border-border bg-card p-4">
-            <div className="space-y-1">
-              <span className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
-                Trạng thái rỗng
-              </span>
-              <h3 className="text-sm font-medium">Empty State</h3>
-              <p className="text-xs text-muted-foreground">
-                Component hiển thị chuẩn khi danh sách dữ liệu chưa có mục nào.
-              </p>
-            </div>
-            <span className="text-xs font-medium text-primary">
-              Áp dụng tại danh sách bên dưới ↓
-            </span>
-          </div>
-
-          {/* Card 3: Thử nghiệm Error State */}
+          {/* Card 2: Thử nghiệm Error State */}
           <div className="flex flex-col justify-between space-y-3 rounded-xl border border-border bg-card p-4">
             <div className="space-y-1">
               <span className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
@@ -209,7 +123,7 @@ export default function DashboardHomePage() {
                 setSimulatedError(
                   simulatedError
                     ? null
-                    : "Không thể kết nối đến máy chủ Supabase Database. Mã lỗi: DB_CONN_ERR_500"
+                    : "Không thể kết nối đến máy chủ cơ sở dữ liệu. Mã lỗi: DB_CONN_ERR_500"
                 )
               }
               className="w-full text-xs"
@@ -218,7 +132,7 @@ export default function DashboardHomePage() {
             </Button>
           </div>
 
-          {/* Card 4: Kiểm tra trang 404 */}
+          {/* Card 3: Kiểm tra trang 404 */}
           <div className="flex flex-col justify-between space-y-3 rounded-xl border border-border bg-card p-4">
             <div className="space-y-1">
               <span className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
@@ -281,149 +195,6 @@ export default function DashboardHomePage() {
               homeHref="/"
             />
           </div>
-        )}
-      </section>
-
-      {/* Khu vực Task Manager (kết hợp các UI component chuẩn) */}
-      <section className="space-y-4" aria-labelledby="tasks-section-heading">
-        <div className="flex items-center justify-between">
-          <div>
-            <h2
-              id="tasks-section-heading"
-              className="text-lg font-semibold tracking-tight"
-            >
-              Quản lý công việc (Task Manager)
-            </h2>
-            <p className="text-xs text-muted-foreground">
-              Tích hợp API Tasks với form validation, danh sách và Empty State
-              chuẩn.
-            </p>
-          </div>
-          {tasksQuery.data && (
-            <span className="rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
-              {tasksQuery.data.length} công việc
-            </span>
-          )}
-        </div>
-
-        {/* Form thêm mới công việc */}
-        <form
-          className="flex flex-col gap-3 rounded-xl border border-border bg-card p-5 shadow-xs"
-          onSubmit={form.handleSubmit(onSubmit)}
-        >
-          <h3 className="text-sm font-semibold text-foreground">
-            Thêm công việc mới
-          </h3>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <TextField
-              control={form.control}
-              name="title"
-              placeholder="Tên công việc (bắt buộc)"
-              aria-label="Tên công việc"
-            />
-            <TextField
-              control={form.control}
-              name="description"
-              placeholder="Mô tả chi tiết (không bắt buộc)"
-              aria-label="Mô tả công việc"
-            />
-          </div>
-          <div className="flex items-center justify-between pt-1">
-            <Button type="submit" size="sm" disabled={createMutation.isPending}>
-              {createMutation.isPending ? "Đang thêm..." : "Thêm công việc"}
-            </Button>
-            {createMutation.isError && (
-              <p role="alert" className="text-xs text-destructive">
-                {createMutation.error.message}
-              </p>
-            )}
-          </div>
-        </form>
-
-        {/* Danh sách công việc hoặc Empty State / Error View */}
-        {tasksQuery.isPending && (
-          <div className="space-y-2 pt-2">
-            <Skeleton className="h-16 w-full rounded-xl" />
-            <Skeleton className="h-16 w-full rounded-xl" />
-          </div>
-        )}
-
-        {tasksQuery.isError && (
-          <ErrorView
-            compact
-            title="Không thể tải danh sách công việc"
-            message={tasksQuery.error.message}
-            onRetry={() => tasksQuery.refetch()}
-          />
-        )}
-
-        {tasksQuery.data && tasksQuery.data.length === 0 && (
-          <EmptyState
-            icon={Inbox}
-            title="Chưa có công việc nào trong danh sách"
-            description="Hiện tại chưa có công việc nào được ghi nhận. Bạn có thể sử dụng form phía trên để tạo mục công việc đầu tiên."
-          />
-        )}
-
-        {tasksQuery.data && tasksQuery.data.length > 0 && (
-          <ul className="flex flex-col gap-2.5">
-            {tasksQuery.data.map((task) => (
-              <li
-                key={task.id}
-                className="flex items-start justify-between gap-4 rounded-xl border border-border bg-card p-4 shadow-2xs transition-colors hover:border-muted-foreground/30"
-              >
-                <div className="min-w-0 space-y-1">
-                  <h4
-                    className={
-                      task.completed
-                        ? "text-sm font-medium text-muted-foreground line-through"
-                        : "text-sm font-medium text-foreground"
-                    }
-                  >
-                    {task.title}
-                  </h4>
-                  {task.description && (
-                    <p className="text-xs break-words text-muted-foreground">
-                      {task.description}
-                    </p>
-                  )}
-                </div>
-                <div className="flex shrink-0 items-center gap-2">
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    disabled={updateMutation.isPending}
-                    onClick={() =>
-                      updateMutation.mutate({
-                        id: task.id,
-                        completed: !task.completed,
-                      })
-                    }
-                    className="h-8 text-xs"
-                  >
-                    {task.completed ? "Hoàn tác" : "Hoàn thành"}
-                  </Button>
-                  <Button
-                    type="button"
-                    variant="destructive"
-                    size="sm"
-                    disabled={deleteMutation.isPending}
-                    onClick={() => deleteMutation.mutate(task.id)}
-                    className="h-8 text-xs"
-                  >
-                    Xóa
-                  </Button>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
-
-        {(updateMutation.isError || deleteMutation.isError) && (
-          <p role="alert" className="text-xs text-destructive">
-            {updateMutation.error?.message ?? deleteMutation.error?.message}
-          </p>
         )}
       </section>
 

@@ -32,14 +32,14 @@ async function refreshAccessToken(): Promise<boolean> {
 }
 
 function extractErrorMessage(body: unknown, status: number): string {
-  if (
-    typeof body === "object" &&
-    body !== null &&
-    "error" in body &&
-    typeof body.error === "string" &&
-    body.error.length > 0
-  ) {
-    return body.error
+  if (typeof body === "object" && body !== null) {
+    const candidate = body as { message?: unknown; error?: unknown }
+    if (typeof candidate.message === "string" && candidate.message.length > 0) {
+      return candidate.message
+    }
+    if (typeof candidate.error === "string" && candidate.error.length > 0) {
+      return candidate.error
+    }
   }
   return `Request failed with status ${status}`
 }
