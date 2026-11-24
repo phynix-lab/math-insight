@@ -104,10 +104,12 @@ cp packages/web/.env.staging.example packages/web/.env.staging.local
 cp packages/web/.env.production.example packages/web/.env.production.local
 ```
 
-Điền `DATABASE_URL` thật vào từng file:
+Điền `DATABASE_URL` và thông tin tài khoản quản trị vào từng file:
 
 ```env
 DATABASE_URL="postgresql://<USER>:<PASSWORD>@<HOST>:<PORT>/<DB_NAME>?schema=public"
+ADMIN_EMAIL="admin@mathinsight.edu.vn"
+ADMIN_PASSWORD="<MAT_KHAU_ADMIN_TOI_THIEU_8_KY_TU>"
 ```
 
 Thứ tự ưu tiên nạp biến môi trường của Prisma CLI (`packages/web/prisma.config.ts`):
@@ -137,6 +139,8 @@ Cập nhật `<MAT_KHAU>` tương ứng vào `packages/web/.env.development.loca
 | `pnpm db:migrate:dev` | Áp dụng (hoặc tạo mới) migration cho DB **dev** (`APP_ENV=development`) |
 | `pnpm db:migrate:staging` | Áp dụng các migration đã có lên **staging** bằng `prisma migrate deploy` |
 | `pnpm db:migrate:prod` | Áp dụng các migration đã có lên **production** bằng `prisma migrate deploy` |
+| `pnpm db:seed:dev` | Tạo/cập nhật tài khoản admin trên **dev** (đọc `ADMIN_PASSWORD` từ env; tương tự `db:seed:staging`, `db:seed:prod`) |
+| `pnpm db:seed:demo` | Nạp admin + tài khoản mẫu (`teacher`, `student`, `inactive.teacher`) và dữ liệu demo vào **dev** (chặn chạy trên `production`) |
 | `pnpm db:generate` | Sinh lại Prisma Client vào `packages/web/server/db/generated/` (tự chạy sau `pnpm install`) |
 | `pnpm --filter @math-insight/web db:validate` | Kiểm tra cú pháp `packages/web/prisma/schema.prisma` |
 | `pnpm --filter @math-insight/web db:studio:dev` | Mở Prisma Studio kết nối DB dev (tương tự `db:studio:staging`, `db:studio:prod`) |
@@ -185,4 +189,4 @@ import { Button } from "@/components/ui/button"
 Mở file `math-insight.code-workspace` trong VS Code để nhận sẵn:
 
 - **Extensions khuyến nghị**: Prettier, ESLint, TypeSpec, Prisma.
-- **Tasks dựng sẵn** (`Ctrl+Shift+P` → `Tasks: Run Task`): `Web: Dev`, `Web: Dev (Mock)`, `API: Sync All (TypeSpec -> Orval)`, `DB: Generate Client`, `DB: Validate Schema`, `DB: Migrate (Dev)`, `DB: Migrate Deploy (Staging)`, `DB: Migrate Deploy (Prod)`, `DB: Studio (Dev/Staging/Prod)`, `Workspace: Typecheck`, `Workspace: Lint`, `Workspace: Format`, `Workspace: Build`.
+- **Tasks dựng sẵn** (`Ctrl+Shift+P` → `Tasks: Run Task`): `Web: Dev`, `Web: Dev (Mock)`, `API: Sync All (TypeSpec -> Orval)`, `DB: Generate Client`, `DB: Validate Schema`, `DB: Migrate (Dev)`, `DB: Migrate Deploy (Staging)`, `DB: Migrate Deploy (Prod)`, `DB: Seed Admin (Dev/Staging/Prod)`, `DB: Seed Demo Data (Dev)`, `DB: Studio (Dev/Staging/Prod)`, `Workspace: Typecheck`, `Workspace: Lint`, `Workspace: Format`, `Workspace: Build`.

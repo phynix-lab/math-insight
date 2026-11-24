@@ -83,6 +83,18 @@ enum AccountStatus {
   @@map("account_status")
 }
 
+model User {
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email        String   @unique @db.Citext
+  passwordHash String   @map("password_hash")
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt    DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  profile Profile?
+
+  @@map("users")
+}
+
 model Profile {
   userId                String   @id @map("user_id") @db.Uuid
   displayName           String   @map("display_name") @db.VarChar(255)
@@ -92,6 +104,7 @@ model Profile {
   createdAt             DateTime @default(now()) @map("created_at") @db.Timestamptz
   updatedAt             DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
 
+  user                     User                       @relation(fields: [userId], references: [id], onDelete: Cascade)
   roles                    UserRole[]
   taughtClasses            Class[]                    @relation("ClassTeacher")
   createdSessions          ClassSession[]             @relation("SessionCreatedBy")

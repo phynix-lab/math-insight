@@ -12,6 +12,7 @@ import {
   authRepository,
   type StoredUser,
 } from "@/server/repositories/auth.repository"
+import { verifyPassword } from "@/server/utils/password"
 
 export {
   SESSION_COOKIE_NAME,
@@ -64,7 +65,7 @@ export const authService = {
 
     // AC 2: Sai mật khẩu hoặc tài khoản không tồn tại đều trả về lỗi chung
     // "Email hoặc mật khẩu không đúng", không tiết lộ email có tồn tại hay không.
-    if (!user || user.passwordHash !== password) {
+    if (!user || !verifyPassword(password, user.passwordHash)) {
       return {
         ok: false,
         code: "INVALID_CREDENTIALS",

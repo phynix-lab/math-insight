@@ -27,6 +27,7 @@ const TextField = <
         <Field data-invalid={fieldState.invalid}>
           <Input
             {...field}
+            value={field.value ?? ""}
             {...props}
             aria-invalid={fieldState.invalid}
             aria-describedby={

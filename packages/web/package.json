@@ -16,6 +16,11 @@
     "db:migrate:dev": "APP_ENV=development prisma migrate dev",
     "db:migrate:staging": "APP_ENV=staging prisma migrate deploy",
     "db:migrate:prod": "APP_ENV=production prisma migrate deploy",
+    "db:seed:dev": "APP_ENV=development node prisma/seed.ts",
+    "db:seed:staging": "APP_ENV=staging node prisma/seed.ts",
+    "db:seed:prod": "APP_ENV=production node prisma/seed.ts",
+    "db:seed:demo": "APP_ENV=development node prisma/seed-demo.ts",
+    "db:seed:demo:staging": "APP_ENV=staging node prisma/seed-demo.ts",
     "db:studio:dev": "APP_ENV=development prisma studio",
     "db:studio:staging": "APP_ENV=staging prisma studio",
     "db:studio:prod": "APP_ENV=production prisma studio"

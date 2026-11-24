@@ -32,10 +32,6 @@ export function LoginForm() {
 
   const form = useForm<LoginFormValues, unknown, LoginFormOutput>({
     resolver: zodResolver(loginSchema),
-    defaultValues: {
-      email: "admin@mathinsight.edu.vn",
-      password: "admin123",
-    },
   })
 
   async function onSubmit(values: LoginFormOutput) {
