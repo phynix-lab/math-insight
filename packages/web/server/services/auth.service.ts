@@ -3,23 +3,15 @@ import "server-only"
 import type { CurrentUser } from "@/lib/api/generated/model/currentUser"
 import type { AuthSession } from "@/lib/api/generated/model/authSession"
 import {
-  SESSION_COOKIE_NAME,
+  SESSION_MAX_AGE_SECONDS,
   type SessionPayload,
-  encodeSessionPayload,
-  decodeSessionPayload,
+  signSessionPayload,
 } from "@/lib/auth-session"
 import {
   authRepository,
   type StoredUser,
 } from "@/server/repositories/auth.repository"
 import { verifyPassword } from "@/server/utils/password"
-
-export {
-  SESSION_COOKIE_NAME,
-  type SessionPayload,
-  encodeSessionPayload,
-  decodeSessionPayload,
-}
 
 export interface AuthSuccessResult {
   ok: true
@@ -50,21 +42,13 @@ function mapToCurrentUser(user: StoredUser): CurrentUser {
 }
 
 export const authService = {
-  /**
-   * Xác thực người dùng bằng email và mật khẩu (FR-001, AC-1, AC-2, AC-3).
-   *
-   * @param email Email đăng nhập
-   * @param password Mật khẩu
-   * @returns Kết quả phiên làm việc hoặc lỗi chuẩn bảo mật
-   */
   async authenticate(
     email: string,
     password: string
   ): Promise<AuthenticateResult> {
     const user = await authRepository.findByEmail(email)
 
-    // AC 2: Sai mật khẩu hoặc tài khoản không tồn tại đều trả về lỗi chung
-    // "Email hoặc mật khẩu không đúng", không tiết lộ email có tồn tại hay không.
+    // AC 2: Generic error prevents email enumeration.
     if (!user || !verifyPassword(password, user.passwordHash)) {
       return {
         ok: false,
@@ -74,8 +58,7 @@ export const authService = {
       }
     }
 
-    // AC 3: Given profile có is_active = false, when đăng nhập, then bị chặn
-    // với thông báo tài khoản đã ngừng hoạt động.
+    // AC 3: Block inactive profiles.
     if (!user.isActive) {
       return {
         ok: false,
@@ -88,40 +71,35 @@ export const authService = {
 
     const currentUser = mapToCurrentUser(user)
     const expiresAt = new Date(
-      Date.now() + 7 * 24 * 60 * 60 * 1000
-    ).toISOString() // 7 ngày
+      Date.now() + SESSION_MAX_AGE_SECONDS * 1000
+    ).toISOString()
 
     const sessionPayload: SessionPayload = {
       userId: currentUser.userId,
-      email: currentUser.email ?? "",
-      displayName: currentUser.displayName,
       roles: currentUser.roles,
       canReviewApplications: currentUser.canReviewApplications,
-      isActive: currentUser.isActive,
-      studentId: currentUser.studentId,
       expiresAt,
     }
 
-    const session: AuthSession = {
-      user: currentUser,
-      expiresAt,
-    }
+    const cookieValue = await signSessionPayload(sessionPayload)
 
     return {
       ok: true,
-      session,
-      cookieValue: encodeSessionPayload(sessionPayload),
+      session: {
+        user: currentUser,
+        expiresAt,
+      },
+      cookieValue,
     }
   },
 
-  /**
-   * Lấy thông tin phiên từ session payload được giải mã.
-   */
   async getSessionFromPayload(
     payload: SessionPayload
   ): Promise<CurrentUser | null> {
     const user = await authRepository.findById(payload.userId)
-    if (!user || !user.isActive) return null
+    if (!user || !user.isActive) {
+      return null
+    }
     return mapToCurrentUser(user)
   },
 }

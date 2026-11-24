@@ -104,10 +104,11 @@ cp packages/web/.env.staging.example packages/web/.env.staging.local
 cp packages/web/.env.production.example packages/web/.env.production.local
 ```
 
-Điền `DATABASE_URL` và thông tin tài khoản quản trị vào từng file:
+Điền `DATABASE_URL`, `AUTH_SECRET` (tạo bằng `openssl rand -base64 32`) và thông tin tài khoản quản trị vào từng file:
 
 ```env
 DATABASE_URL="postgresql://<USER>:<PASSWORD>@<HOST>:<PORT>/<DB_NAME>?schema=public"
+AUTH_SECRET="<CHUOI_BI_MAT_KY_SESSION_COOKIE>"
 ADMIN_EMAIL="admin@mathinsight.edu.vn"
 ADMIN_PASSWORD="<MAT_KHAU_ADMIN_TOI_THIEU_8_KY_TU>"
 ```

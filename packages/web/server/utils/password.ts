@@ -1,3 +1,3 @@
 import "server-only"
 
-export { hashPassword, verifyPassword } from "@/prisma/password"
+export { verifyPassword } from "@/prisma/password"

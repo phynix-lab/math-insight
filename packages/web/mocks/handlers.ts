@@ -9,7 +9,5 @@ const generatedHandlers: RequestHandler[] = Object.values(
 export const handlers: RequestHandler[] = [
   // Cho phép các endpoint đã triển khai Route Handler thật đi thẳng vào server
   http.all("/api/auth/*", () => passthrough()),
-  http.all("/api/tasks*", () => passthrough()),
   ...generatedHandlers,
 ]
-

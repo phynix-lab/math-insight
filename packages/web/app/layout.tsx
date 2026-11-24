@@ -4,7 +4,6 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { MockProvider } from "@/components/providers/MockProvider"
 import { QueryProvider } from "@/components/providers/QueryProvider"
-import { RoleProvider } from "@/components/providers/RoleProvider"
 import { setupZodVietnameseLocale } from "@/lib/zod-i18n"
 import { cn } from "@/lib/utils"
 
@@ -24,7 +23,8 @@ export default function RootLayout({
 }>) {
   const enableMock =
     process.env.ENABLE_MOCK === "true" ||
-    (process.env.NODE_ENV === "development" && process.env.ENABLE_MOCK !== "false")
+    (process.env.NODE_ENV === "development" &&
+      process.env.ENABLE_MOCK !== "false")
 
   return (
     <html
@@ -40,9 +40,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <MockProvider enabled={enableMock}>
-            <QueryProvider>
-              <RoleProvider>{children}</RoleProvider>
-            </QueryProvider>
+            <QueryProvider>{children}</QueryProvider>
           </MockProvider>
         </ThemeProvider>
       </body>

@@ -1,8 +1,6 @@
+import { buildSessionCookieHeader } from "@/lib/auth-session"
+import { authService } from "@/server/services/auth.service"
 import { parseRequestBody } from "@/server/utils/route-utils"
-import {
-  authService,
-  SESSION_COOKIE_NAME,
-} from "@/server/services/auth.service"
 import { loginSchema } from "@/types/auth"
 
 export async function POST(request: Request) {
@@ -25,12 +23,9 @@ export async function POST(request: Request) {
   }
 
   const response = Response.json({ data: result.session }, { status: 200 })
-
-  // Đặt cookie phiên làm việc cho trình duyệt và Next.js Proxy/Middleware
-  const maxAge = 7 * 24 * 60 * 60 // 7 ngày
   response.headers.set(
     "Set-Cookie",
-    `${SESSION_COOKIE_NAME}=${result.cookieValue}; Path=/; Max-Age=${maxAge}; SameSite=Lax`
+    buildSessionCookieHeader(result.cookieValue)
   )
 
   return response
