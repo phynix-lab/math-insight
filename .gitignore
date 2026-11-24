@@ -30,6 +30,7 @@ pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env*.example
 
 # vercel
 .vercel
@@ -44,3 +45,6 @@ tsp-output/
 # orval
 packages/web/lib/api/generated/
 packages/web/types/generated/
+
+# prisma
+packages/web/server/db/generated/
