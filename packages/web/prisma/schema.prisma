@@ -1,0 +1,352 @@
+generator client {
+  provider        = "prisma-client"
+  output          = "../server/db/generated"
+  previewFeatures = ["postgresqlExtensions", "views"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  extensions = [citext]
+}
+
+enum AppRole {
+  admin
+  teacher
+  student
+
+  @@map("app_role")
+}
+
+enum ApplicationStatus {
+  pending_review
+  need_more_info
+  approved
+  rejected
+
+  @@map("application_status")
+}
+
+enum AttendanceStatus {
+  present
+  late
+  absent
+  excused
+
+  @@map("attendance_status")
+}
+
+enum AttendanceMethod {
+  qr
+  manual
+  system
+
+  @@map("attendance_method")
+}
+
+enum ClassStatus {
+  upcoming
+  active
+  inactive
+
+  @@map("class_status")
+}
+
+enum EnrollmentStatus {
+  active
+  ended
+  cancelled
+
+  @@map("enrollment_status")
+}
+
+enum SessionStatus {
+  scheduled
+  cancelled
+
+  @@map("session_status")
+}
+
+enum StudentStatus {
+  active
+  paused
+  left
+
+  @@map("student_status")
+}
+
+enum AccountStatus {
+  not_invited
+  invited
+  invite_failed
+  linked
+
+  @@map("account_status")
+}
+
+model Profile {
+  userId                String   @id @map("user_id") @db.Uuid
+  displayName           String   @map("display_name") @db.VarChar(255)
+  phone                 String?  @db.VarChar(20)
+  isActive              Boolean  @default(true) @map("is_active")
+  canReviewApplications Boolean  @default(false) @map("can_review_applications")
+  createdAt             DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt             DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  roles                    UserRole[]
+  taughtClasses            Class[]                    @relation("ClassTeacher")
+  createdSessions          ClassSession[]             @relation("SessionCreatedBy")
+  substituteSessions       ClassSession[]             @relation("SessionSubstituteTeacher")
+  reviewedApplications     EnrollmentApplication[]    @relation("ApplicationReviewedBy")
+  applicationStatusChanges ApplicationStatusHistory[] @relation("StatusHistoryChangedBy")
+  recordedAttendances      AttendanceRecord[]         @relation("AttendanceRecordedBy")
+  auditLogs                AuditLog[]                 @relation("AuditLogActor")
+  studentAccount           Student?
+
+  @@map("profiles")
+}
+
+model UserRole {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId    String   @map("user_id") @db.Uuid
+  role      AppRole
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  profile Profile @relation(fields: [userId], references: [userId], onDelete: Cascade)
+
+  @@unique([userId, role])
+  @@index([role])
+  @@map("user_roles")
+}
+
+model Student {
+  id               String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  studentCode      String        @unique @map("student_code") @db.VarChar(50)
+  fullName         String        @map("full_name") @db.VarChar(255)
+  dateOfBirth      DateTime?     @map("date_of_birth") @db.Date
+  gradeLevel       String?       @map("grade_level") @db.VarChar(50)
+  studentPhone     String?       @map("student_phone") @db.VarChar(20)
+  studentEmail     String?       @map("student_email") @db.Citext
+  guardianName     String?       @map("guardian_name") @db.VarChar(255)
+  guardianRelation String?       @map("guardian_relation") @db.VarChar(50)
+  guardianPhone    String?       @map("guardian_phone") @db.VarChar(20)
+  guardianEmail    String?       @map("guardian_email") @db.Citext
+  status           StudentStatus @default(active)
+  authUserId       String?       @unique @map("auth_user_id") @db.Uuid
+  accountStatus    AccountStatus @default(not_invited) @map("account_status")
+  invitedAt        DateTime?     @map("invited_at") @db.Timestamptz
+  inviteAttempts   Int           @default(0) @map("invite_attempts")
+  inviteLastError  String?       @map("invite_last_error")
+  createdAt        DateTime      @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt        DateTime      @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  authUser          Profile?                @relation(fields: [authUserId], references: [userId], onDelete: SetNull)
+  enrollments       Enrollment[]
+  attendanceTokens  AttendanceToken[]
+  attendanceRecords AttendanceRecord[]
+  applications      EnrollmentApplication[]
+
+  @@index([status])
+  @@index([accountStatus])
+  @@index([guardianPhone])
+  @@map("students")
+}
+
+model Class {
+  id            String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  classCode     String      @unique @map("class_code") @db.VarChar(50)
+  name          String      @db.VarChar(255)
+  gradeLevel    String      @map("grade_level") @db.VarChar(50)
+  teacherUserId String      @map("teacher_user_id") @db.Uuid
+  scheduleText  String?     @map("schedule_text")
+  room          String?     @db.VarChar(50)
+  maxStudents   Int?        @map("max_students")
+  startDate     DateTime?   @map("start_date") @db.Date
+  endDate       DateTime?   @map("end_date") @db.Date
+  status        ClassStatus @default(upcoming)
+  createdAt     DateTime    @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt     DateTime    @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  teacher               Profile                 @relation("ClassTeacher", fields: [teacherUserId], references: [userId], onDelete: Restrict)
+  enrollments           Enrollment[]
+  sessions              ClassSession[]
+  requestedApplications EnrollmentApplication[]
+
+  @@index([teacherUserId])
+  @@index([status])
+  @@map("classes")
+}
+
+model Enrollment {
+  id        String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  studentId String           @map("student_id") @db.Uuid
+  classId   String           @map("class_id") @db.Uuid
+  startDate DateTime         @default(dbgenerated("CURRENT_DATE")) @map("start_date") @db.Date
+  endDate   DateTime?        @map("end_date") @db.Date
+  status    EnrollmentStatus @default(active)
+  createdAt DateTime         @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt DateTime         @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  class   Class   @relation(fields: [classId], references: [id], onDelete: Cascade)
+
+  @@index([studentId, classId])
+  @@index([classId, status])
+  @@map("enrollments")
+}
+
+model ClassSession {
+  id                      String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  classId                 String        @map("class_id") @db.Uuid
+  sessionNo               Int?          @map("session_no")
+  title                   String?       @db.VarChar(255)
+  startsAt                DateTime      @map("starts_at") @db.Timestamptz
+  endsAt                  DateTime      @map("ends_at") @db.Timestamptz
+  attendanceOpensAt       DateTime      @map("attendance_opens_at") @db.Timestamptz
+  attendanceClosesAt      DateTime      @map("attendance_closes_at") @db.Timestamptz
+  substituteTeacherUserId String?       @map("substitute_teacher_user_id") @db.Uuid
+  status                  SessionStatus @default(scheduled)
+  closedAt                DateTime?     @map("closed_at") @db.Timestamptz
+  createdBy               String        @map("created_by") @db.Uuid
+  createdAt               DateTime      @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt               DateTime      @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  class             Class              @relation(fields: [classId], references: [id], onDelete: Cascade)
+  creator           Profile            @relation("SessionCreatedBy", fields: [createdBy], references: [userId], onDelete: Restrict)
+  substituteTeacher Profile?           @relation("SessionSubstituteTeacher", fields: [substituteTeacherUserId], references: [userId], onDelete: SetNull)
+  attendanceTokens  AttendanceToken[]
+  attendanceRecords AttendanceRecord[]
+
+  @@index([classId, startsAt])
+  @@index([status])
+  @@map("class_sessions")
+}
+
+model AttendanceToken {
+  id        String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  sessionId String    @map("session_id") @db.Uuid
+  studentId String    @map("student_id") @db.Uuid
+  tokenHash String    @unique @map("token_hash")
+  expiresAt DateTime  @map("expires_at") @db.Timestamptz
+  usedAt    DateTime? @map("used_at") @db.Timestamptz
+  revokedAt DateTime? @map("revoked_at") @db.Timestamptz
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz
+
+  session          ClassSession      @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  student          Student           @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  attendanceRecord AttendanceRecord?
+
+  @@index([sessionId, studentId])
+  @@map("attendance_tokens")
+}
+
+model AttendanceRecord {
+  id         String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  sessionId  String           @map("session_id") @db.Uuid
+  studentId  String           @map("student_id") @db.Uuid
+  status     AttendanceStatus
+  method     AttendanceMethod
+  tokenId    String?          @unique @map("token_id") @db.Uuid
+  recordedAt DateTime         @default(now()) @map("recorded_at") @db.Timestamptz
+  recordedBy String?          @map("recorded_by") @db.Uuid
+  reason     String?
+  createdAt  DateTime         @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt  DateTime         @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  session  ClassSession     @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  student  Student          @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  token    AttendanceToken? @relation(fields: [tokenId], references: [id], onDelete: SetNull)
+  recorder Profile?         @relation("AttendanceRecordedBy", fields: [recordedBy], references: [userId], onDelete: SetNull)
+
+  @@unique([sessionId, studentId])
+  @@index([studentId, recordedAt])
+  @@map("attendance_records")
+}
+
+model EnrollmentApplication {
+  id               String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  applicationCode  String            @unique @default(dbgenerated("((('APP-'::text || to_char(now(), 'YYYY'::text)) || '-'::text) || lpad((nextval('application_code_seq'::regclass))::text, 4, '0'::text))")) @map("application_code") @db.VarChar(50)
+  studentFullName  String            @map("student_full_name") @db.VarChar(255)
+  studentDob       DateTime?         @map("student_dob") @db.Date
+  requestedGrade   String?           @map("requested_grade") @db.VarChar(50)
+  requestedClassId String?           @map("requested_class_id") @db.Uuid
+  studentPhone     String?           @map("student_phone") @db.VarChar(20)
+  studentEmail     String?           @map("student_email") @db.Citext
+  guardianName     String?           @map("guardian_name") @db.VarChar(255)
+  guardianRelation String?           @map("guardian_relation") @db.VarChar(50)
+  guardianPhone    String            @map("guardian_phone") @db.VarChar(20)
+  guardianEmail    String?           @map("guardian_email") @db.Citext
+  applicantNote    String?           @map("applicant_note")
+  consentAt        DateTime          @map("consent_at") @db.Timestamptz
+  consentVersion   String            @map("consent_version") @db.VarChar(20)
+  status           ApplicationStatus @default(pending_review)
+  reviewedBy       String?           @map("reviewed_by") @db.Uuid
+  reviewedAt       DateTime?         @map("reviewed_at") @db.Timestamptz
+  reviewNote       String?           @map("review_note")
+  createdStudentId String?           @map("created_student_id") @db.Uuid
+  createdAt        DateTime          @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt        DateTime          @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  requestedClass Class?                     @relation(fields: [requestedClassId], references: [id], onDelete: SetNull)
+  reviewer       Profile?                   @relation("ApplicationReviewedBy", fields: [reviewedBy], references: [userId], onDelete: SetNull)
+  createdStudent Student?                   @relation(fields: [createdStudentId], references: [id], onDelete: SetNull)
+  statusHistory  ApplicationStatusHistory[]
+
+  @@index([status, createdAt])
+  @@index([requestedClassId])
+  @@map("enrollment_applications")
+}
+
+model ApplicationStatusHistory {
+  id            String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  applicationId String             @map("application_id") @db.Uuid
+  fromStatus    ApplicationStatus? @map("from_status")
+  toStatus      ApplicationStatus  @map("to_status")
+  changedBy     String?            @map("changed_by") @db.Uuid
+  note          String?
+  changedAt     DateTime           @default(now()) @map("changed_at") @db.Timestamptz
+
+  application EnrollmentApplication @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  changer     Profile?              @relation("StatusHistoryChangedBy", fields: [changedBy], references: [userId], onDelete: SetNull)
+
+  @@index([applicationId, changedAt])
+  @@map("application_status_history")
+}
+
+model AuditLog {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  actorUserId String?  @map("actor_user_id") @db.Uuid
+  action      String   @db.VarChar(100)
+  entityType  String   @map("entity_type") @db.VarChar(100)
+  entityId    String?  @map("entity_id") @db.Uuid
+  beforeData  Json?    @map("before_data") @db.JsonB
+  afterData   Json?    @map("after_data") @db.JsonB
+  reason      String?
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  actor Profile? @relation("AuditLogActor", fields: [actorUserId], references: [userId], onDelete: SetNull)
+
+  @@index([entityType, entityId])
+  @@index([actorUserId, createdAt])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+view VClassSession {
+  id                      String        @unique @db.Uuid
+  classId                 String        @map("class_id") @db.Uuid
+  sessionNo               Int?          @map("session_no")
+  title                   String?       @db.VarChar(255)
+  startsAt                DateTime      @map("starts_at") @db.Timestamptz
+  endsAt                  DateTime      @map("ends_at") @db.Timestamptz
+  attendanceOpensAt       DateTime      @map("attendance_opens_at") @db.Timestamptz
+  attendanceClosesAt      DateTime      @map("attendance_closes_at") @db.Timestamptz
+  substituteTeacherUserId String?       @map("substitute_teacher_user_id") @db.Uuid
+  status                  SessionStatus
+  effectiveStatus         String        @map("effective_status")
+  closedAt                DateTime?     @map("closed_at") @db.Timestamptz
+  createdBy               String        @map("created_by") @db.Uuid
+  createdAt               DateTime      @map("created_at") @db.Timestamptz
+  updatedAt               DateTime      @map("updated_at") @db.Timestamptz
+
+  @@map("v_class_sessions")
+}

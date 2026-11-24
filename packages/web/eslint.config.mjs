@@ -17,6 +17,7 @@ const eslintConfig = defineConfig([
     "public/mockServiceWorker.js",
     "lib/api/generated/**",
     "types/generated/**",
+    "server/db/generated/**",
   ]),
 ]);
 

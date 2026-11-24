@@ -7,5 +7,6 @@ pnpm-lock.yaml
 .pnpm-store/
 packages/web/lib/api/generated/
 packages/web/types/generated/
+packages/web/server/db/generated/
 packages/web/public/mockServiceWorker.js
 docs/openapi/

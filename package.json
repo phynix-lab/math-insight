@@ -8,7 +8,11 @@
     "start": "pnpm --filter @math-insight/web start",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",
-    "format": "prettier --write \"**/*.{ts,tsx}\""
+    "format": "prettier --write \"**/*.{ts,tsx}\"",
+    "db:generate": "pnpm --filter @math-insight/web db:generate",
+    "db:migrate:dev": "pnpm --filter @math-insight/web db:migrate:dev",
+    "db:migrate:staging": "pnpm --filter @math-insight/web db:migrate:staging",
+    "db:migrate:prod": "pnpm --filter @math-insight/web db:migrate:prod"
   },
   "devDependencies": {
     "prettier": "^3.9.10",

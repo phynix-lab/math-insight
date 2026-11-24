@@ -34,6 +34,7 @@ pnpm-debug.log*
 !.env.development
 !packages/web/.env.example
 !packages/web/.env.development
+!.env*.example
 
 # vercel
 .vercel
@@ -48,3 +49,6 @@ tsp-output/
 # orval
 packages/web/lib/api/generated/
 packages/web/types/generated/
+
+# prisma
+packages/web/server/db/generated/
