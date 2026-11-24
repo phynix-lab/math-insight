@@ -17,13 +17,17 @@
     "typescript.tsdk": "packages/web/node_modules/typescript/lib",
     "[typespec]": {
       "editor.defaultFormatter": "typespec.typespec-vscode"
+    },
+    "[prisma]": {
+      "editor.defaultFormatter": "Prisma.prisma"
     }
   },
   "extensions": {
     "recommendations": [
       "esbenp.prettier-vscode",
       "dbaeumer.vscode-eslint",
-      "typespec.typespec-vscode"
+      "typespec.typespec-vscode",
+      "Prisma.prisma"
     ]
   },
   "tasks": {
@@ -104,6 +108,65 @@
           "kind": "build",
           "isDefault": true
         },
+        "problemMatcher": []
+      },
+      {
+        "label": "DB: Generate Client",
+        "detail": "Sinh lại Prisma Client trong packages/web/server/db/generated từ schema.prisma",
+        "type": "shell",
+        "command": "pnpm db:generate",
+        "problemMatcher": []
+      },
+      {
+        "label": "DB: Validate Schema",
+        "detail": "Kiểm tra cú pháp và tính hợp lệ của packages/web/prisma/schema.prisma",
+        "type": "shell",
+        "command": "pnpm --filter @math-insight/web db:validate",
+        "problemMatcher": []
+      },
+      {
+        "label": "DB: Migrate (Dev)",
+        "detail": "Tạo và áp dụng Prisma migration trên môi trường dev (APP_ENV=development)",
+        "type": "shell",
+        "command": "pnpm db:migrate:dev",
+        "problemMatcher": []
+      },
+      {
+        "label": "DB: Migrate Deploy (Staging)",
+        "detail": "Áp dụng các Prisma migration hiện có lên môi trường staging (APP_ENV=staging)",
+        "type": "shell",
+        "command": "pnpm db:migrate:staging",
+        "problemMatcher": []
+      },
+      {
+        "label": "DB: Migrate Deploy (Prod)",
+        "detail": "Áp dụng các Prisma migration hiện có lên môi trường production (APP_ENV=production)",
+        "type": "shell",
+        "command": "pnpm db:migrate:prod",
+        "problemMatcher": []
+      },
+      {
+        "label": "DB: Studio (Dev)",
+        "detail": "Mở Prisma Studio kết nối tới DB dev (APP_ENV=development)",
+        "type": "shell",
+        "command": "pnpm --filter @math-insight/web db:studio:dev",
+        "isBackground": true,
+        "problemMatcher": []
+      },
+      {
+        "label": "DB: Studio (Staging)",
+        "detail": "Mở Prisma Studio kết nối tới DB staging (APP_ENV=staging)",
+        "type": "shell",
+        "command": "pnpm --filter @math-insight/web db:studio:staging",
+        "isBackground": true,
+        "problemMatcher": []
+      },
+      {
+        "label": "DB: Studio (Prod)",
+        "detail": "Mở Prisma Studio kết nối tới DB production (APP_ENV=production)",
+        "type": "shell",
+        "command": "pnpm --filter @math-insight/web db:studio:prod",
+        "isBackground": true,
         "problemMatcher": []
       }
     ]
