@@ -4318,6 +4318,21 @@
                       "$ref": "#/components/schemas/UserProfile"
                     }
                   }
+                },
+                "example": {
+                  "data": {
+                    "userId": "550e8400-e29b-41d4-a716-446655440101",
+                    "displayName": "Thầy Nguyễn Minh Quân",
+                    "phone": "0901234567",
+                    "email": "quan.nguyen@mathinsight.vn",
+                    "isActive": true,
+                    "canReviewApplications": true,
+                    "roles": [
+                      "teacher"
+                    ],
+                    "createdAt": "2026-10-01T08:00:00Z",
+                    "updatedAt": "2026-11-26T08:00:00Z"
+                  }
                 }
               }
             }
@@ -4372,6 +4387,9 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/UpdateUserRequest"
+              },
+              "example": {
+                "canReviewApplications": true
               }
             }
           }
@@ -4406,6 +4424,21 @@
                     "data": {
                       "$ref": "#/components/schemas/UserProfile"
                     }
+                  }
+                },
+                "example": {
+                  "data": {
+                    "userId": "550e8400-e29b-41d4-a716-446655440101",
+                    "displayName": "Thầy Nguyễn Minh Quân",
+                    "phone": "0901234567",
+                    "email": "quan.nguyen@mathinsight.vn",
+                    "isActive": true,
+                    "canReviewApplications": true,
+                    "roles": [
+                      "teacher"
+                    ],
+                    "createdAt": "2026-10-01T08:00:00Z",
+                    "updatedAt": "2026-11-26T08:00:00Z"
                   }
                 }
               }
@@ -4471,6 +4504,11 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/UpdateUserRolesRequest"
+              },
+              "example": {
+                "roles": [
+                  "teacher"
+                ]
               }
             }
           }
@@ -6065,8 +6103,7 @@
         "type": "object",
         "required": [
           "email",
-          "displayName",
-          "roles"
+          "displayName"
         ],
         "properties": {
           "email": {
@@ -6092,8 +6129,7 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/AppRole"
-            },
-            "minItems": 1
+            }
           },
           "canReviewApplications": {
             "type": "boolean",

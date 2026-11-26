@@ -93,6 +93,27 @@ interface Users {
 
   @patch
   @doc("Admin cập nhật hồ sơ, trạng thái hoạt động hoặc cờ duyệt đơn (FR-012).")
+  @opExample(#{
+    parameters: #{
+      userId: "550e8400-e29b-41d4-a716-446655440101",
+      body: #{
+        canReviewApplications: true,
+      },
+    },
+    returnType: #{
+      data: #{
+        userId: "550e8400-e29b-41d4-a716-446655440101",
+        displayName: "Thầy Nguyễn Minh Quân",
+        phone: "0901234567",
+        email: "quan.nguyen@mathinsight.vn",
+        isActive: true,
+        canReviewApplications: true,
+        roles: #[AppRole.teacher],
+        createdAt: utcDateTime.fromISO("2026-10-01T08:00:00Z"),
+        updatedAt: utcDateTime.fromISO("2026-11-26T08:00:00Z"),
+      },
+    },
+  })
   update(@path userId: Uuid, @body body: UpdateUserRequest):
     | ApiResponse<UserProfile>
     | BadRequestError
@@ -103,6 +124,27 @@ interface Users {
   @put
   @route("/{userId}/roles")
   @doc("Admin cập nhật danh sách vai trò; bị chặn gỡ role teacher nếu còn phụ trách lớp chưa inactive.")
+  @opExample(#{
+    parameters: #{
+      userId: "550e8400-e29b-41d4-a716-446655440101",
+      body: #{
+        roles: #[AppRole.teacher],
+      },
+    },
+    returnType: #{
+      data: #{
+        userId: "550e8400-e29b-41d4-a716-446655440101",
+        displayName: "Thầy Nguyễn Minh Quân",
+        phone: "0901234567",
+        email: "quan.nguyen@mathinsight.vn",
+        isActive: true,
+        canReviewApplications: true,
+        roles: #[AppRole.teacher],
+        createdAt: utcDateTime.fromISO("2026-10-01T08:00:00Z"),
+        updatedAt: utcDateTime.fromISO("2026-11-26T08:00:00Z"),
+      },
+    },
+  })
   updateRoles(@path userId: Uuid, @body body: UpdateUserRolesRequest):
     | ApiResponse<UserProfile>
     | BadRequestError

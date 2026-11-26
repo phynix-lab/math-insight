@@ -17,6 +17,9 @@ const textDecoder = new TextDecoder()
 function getAuthSecret(): string {
   const secret = process.env.AUTH_SECRET?.trim()
   if (!secret) {
+    if (process.env.NODE_ENV !== "production") {
+      return "math-insight-dev-auth-secret-32-chars-long"
+    }
     throw new Error("Missing AUTH_SECRET environment variable")
   }
   return secret

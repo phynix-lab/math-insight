@@ -49,8 +49,7 @@ model CreateUserRequest {
   @maxLength(20)
   phone?: string | null;
 
-  @minItems(1)
-  roles: AppRole[];
+  roles?: AppRole[];
 
   canReviewApplications?: boolean = false;
 }
