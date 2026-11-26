@@ -3,6 +3,7 @@ import "server-only"
 import { getPrisma } from "@/server/db/prisma"
 import type { Prisma } from "@/server/db/generated/client"
 import type { AppRole } from "@/types/navigation"
+import { memoryStore } from "@/server/repositories/memory-store"
 
 export interface StoredUser {
   id: string
@@ -57,12 +58,23 @@ function mapUserToStoredUser(user: UserWithAuth): StoredUser | null {
 export const authRepository = {
   async findByEmail(email: string): Promise<StoredUser | null> {
     const normalized = email.trim().toLowerCase()
-    const user = await getPrisma().user.findUnique({
-      where: { email: normalized },
-      include: USER_AUTH_INCLUDE,
-    })
 
-    return user ? mapUserToStoredUser(user) : null
+    if (process.env.DATABASE_URL) {
+      try {
+        const user = await getPrisma().user.findUnique({
+          where: { email: normalized },
+          include: USER_AUTH_INCLUDE,
+        })
+        return user ? mapUserToStoredUser(user) : null
+      } catch (err) {
+        console.warn("[Prisma] findByEmail failed, using memory fallback", err)
+      }
+    }
+
+    const memUser = memoryStore.users.find(
+      (u) => u.email.toLowerCase() === normalized
+    )
+    return memUser ? { ...memUser } : null
   },
 
   async findById(id: string): Promise<StoredUser | null> {
@@ -70,11 +82,19 @@ export const authRepository = {
       return null
     }
 
-    const user = await getPrisma().user.findUnique({
-      where: { id },
-      include: USER_AUTH_INCLUDE,
-    })
+    if (process.env.DATABASE_URL) {
+      try {
+        const user = await getPrisma().user.findUnique({
+          where: { id },
+          include: USER_AUTH_INCLUDE,
+        })
+        return user ? mapUserToStoredUser(user) : null
+      } catch (err) {
+        console.warn("[Prisma] findById failed, using memory fallback", err)
+      }
+    }
 
-    return user ? mapUserToStoredUser(user) : null
+    const memUser = memoryStore.users.find((u) => u.id === id)
+    return memUser ? { ...memUser } : null
   },
 }
